@@ -1,1 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+    list-style-type: none;
+}
+
+html {
+    font-size: 62.5%;
+    line-height: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+.btn-primary {
+    text-transform: capitalize;
+    border: none !important;
+    background-image: linear-gradient(to bottom, #7b35bb, #5d2e86) !important;
+    color: #FF9800 !important;
+    border-radius: 20px !important;
+}
+.btn {
+    padding: 12px !important;
+    border-radius: 5px;
+    color: #ffb74d;
+    text-align: center;
+    outline: none !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    min-width: 200px;
+}
+.text-secondary {
+    color: #FF9800 !important;
+}
+
+
+
+
+
+
+

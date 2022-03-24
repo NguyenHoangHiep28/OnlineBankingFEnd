@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'online_banking2203'`, () => {
+  it(`should have as title 'OnlineBankingFE'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('online_banking2203');
+    expect(app.title).toEqual('OnlineBankingFE');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('online_banking2203 app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('OnlineBankingFE app is running!');
   });
 });

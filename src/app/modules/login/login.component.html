@@ -1,0 +1,65 @@
+<div class="login-page">
+        <div class="container">
+            <div class="header">
+                <div class="left">
+                    <a href="">
+                        <img src="assets\login.svg" class="header_logo" alt="">
+                    </a>
+                    
+                </div>
+                <div class="header_navbar">
+                    <ul class="header_navbar-list">
+                        <li class="header_navbar-item">
+                            <span class="ti-home"></span>
+                            <a href="" class="header_navbar-link">Home</a>
+                        </li>
+                        <li class="header_navbar-item">
+                            <span class="ti-help-alt"></span>
+                            <a href="" class="header_navbar-link">About us</a>
+                        </li>
+                        <li class="header_navbar-item">
+                            <span class="ti-headphone"></span>
+                            <a href="" class="header_navbar-link">Hotline</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content-wrap">
+                <form #loginForm ="ngForm" (ngSubmit)="onLogin(loginForm)" class="form">
+                    <h2>Sign In</h2>
+                    <input  type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"  ngModel required autofocus #userPhone ="ngModel"  class="box" placeholder="Enter Email" >
+                    <div *ngIf="userPhone.value === invalidPhone" class="login-error" >
+                        <span>Thong tin Password khong duoc de trong</span>
+                    </div>
+                    <input type="password" id="password" name="password" ngModel required  #userPassword ="ngModel" class="box"
+                    placeholder="Enter Password">
+                    <div *ngIf ="userPassword.value === invalidPassword" class="login-error" >
+                        <span>Thong tin mat khau khong duoc de trong</span>
+                    </div>                   
+                    <button type="submit" class="btn btn-primary btn-login"  data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+                    <a href="" class="">Forgot Password</a>
+                </form>                                    
+            </div>
+
+        </div>
+       
+  <!-- Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="loginModal">ERROR LOGIN</h2>
+        </div>
+        <div class="modal-body content">
+            {{errMessage}}
+            <br>
+            <p *ngIf="supMessage; else elseBLock"> {{ supMessage }}</p>
+            <ng-template #elseBLock>Xin vui long thu lai</ng-template>
+        </div>
+        <div class="actions">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
