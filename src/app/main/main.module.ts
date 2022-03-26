@@ -6,13 +6,15 @@ import { IndexComponent } from './components/index/index.component';
 import { UserinfoComponent } from './components/userinfo/userinfo.component';
 import { TransferComponent } from './components/transfer/transfer.component';
 import { MainComponent } from './main.component';
+import { AccountlistComponent } from './components/accountlist/accountlist.component';
 @NgModule({
   declarations: [
     SavingComponent,
     TransferComponent,
     MainComponent,
     IndexComponent,
-    UserinfoComponent
+    UserinfoComponent,
+    AccountlistComponent
   ],
   imports: [
     CommonModule,

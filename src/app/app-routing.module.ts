@@ -6,6 +6,7 @@ import { UserinfoComponent } from './main/components/userinfo/userinfo.component
 import { IndexComponent } from './main/components/index/index.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuardServiceService } from './auth/auth-guard-service.service';
+import { AccountlistComponent } from './main/components/accountlist/accountlist.component';
 
 const routes: Routes = [{
   path : '',
@@ -19,6 +20,9 @@ const routes: Routes = [{
   },{
     path :'profile',
     component : UserinfoComponent
+  }, {
+    path : 'account-list',
+    component : AccountlistComponent
   }]
 },
   {

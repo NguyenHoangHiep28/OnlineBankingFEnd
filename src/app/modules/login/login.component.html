@@ -25,26 +25,28 @@
                 </div>
             </div>
             <div class="content-wrap">
-                <form #loginForm ="ngForm" (ngSubmit)="onLogin(loginForm)" class="form">
+                <form #loginForm ="ngForm" (ngSubmit)="loginForm.valid && onLogin(loginForm)" class="form">
                     <h2>Sign In</h2>
-                    <input  type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"  ngModel required autofocus #userPhone ="ngModel"  class="box" placeholder="Enter Email" >
-                    <div *ngIf="userPhone.value === invalidPhone" class="login-error" >
-                        <span>Thong tin Password khong duoc de trong</span>
+                    <input  type="text" id="phone" name="phone" maxlength="10"   ngModel required  #userPhone ="ngModel"  class="box" placeholder="Enter Phonenumber" >
+                    <div *ngIf="userPhone.errors?.['required'] && loginForm.submitted " class="login-error" >
+                        <span>Thong tin Phone khong duoc de trong</span>
                     </div>
-                    <input type="password" id="password" name="password" ngModel required  #userPassword ="ngModel" class="box"
+                    <input type="password" id="password" minlength="6" name="password" ngModel required  #userPassword ="ngModel" class="box"
                     placeholder="Enter Password">
-                    <div *ngIf ="userPassword.value === invalidPassword" class="login-error" >
+                    <div *ngIf ="userPassword.errors?.['required'] && loginForm.submitted" class="login-error" >
                         <span>Thong tin mat khau khong duoc de trong</span>
+                    </div>
+                    <div *ngIf ="userPassword.errors?.['minlength'] && loginForm.submitted" class="login-error" >
+                        <span>Do dai mat khau phai it nhat 6 ky tu</span>
                     </div>                   
-                    <button type="submit" class="btn btn-primary btn-login"  data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+                    <button  class="btn btn-primary btn-login" data-bs-target="#loginModal">Login</button>
                     <a href="" class="">Forgot Password</a>
                 </form>                                    
             </div>
 
         </div>
-       
   <!-- Modal -->
-  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
+  <div *ngIf="loginForm.valid" class="modal fade"  id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="false">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -57,7 +59,7 @@
             <ng-template #elseBLock>Xin vui long thu lai</ng-template>
         </div>
         <div class="actions">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id ='btnDismiss' >Close</button>
         </div>
       </div>
     </div>
