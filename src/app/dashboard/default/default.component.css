@@ -10264,7 +10264,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-fill-color: transparent;
+    
   }
   .font-size-xlg {
     font-size: 1.3rem !important;
@@ -10581,9 +10581,7 @@
   Licensed under the MIT license - http://opensource.org/licenses/MIT
   Copyright (c) 2015 Daniel Eden
   */
-  body {
-    -webkit-backface-visibility: hidden;
-  }
+
   .animated {
     -webkit-animation-duration: calc(1s);
     animation-duration: calc(1s);
@@ -14294,27 +14292,27 @@
     }
   }
   .fa-rotate-90 {
-    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
+    /* -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)"; */
     transform: rotate(90deg);
   }
   .fa-rotate-180 {
-    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
+    /* -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)"; */
     transform: rotate(180deg);
   }
   .fa-rotate-270 {
-    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";
+    /* -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)"; */
     transform: rotate(270deg);
   }
   .fa-flip-horizontal {
-    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)";
+    /* -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)"; */
     transform: scale(-1, 1);
   }
   .fa-flip-vertical {
-    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
+    /* -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)"; */
     transform: scale(1, -1);
   }
   .fa-flip-horizontal.fa-flip-vertical {
-    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
+    /* -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)"; */
     transform: scale(-1, -1);
   }
   :root .fa-rotate-90,
@@ -18376,7 +18374,7 @@
   [class*=" pe-7s-"] {
     display: inline-block;
     font-family: "Pe-icon-7-stroke";
-    speak: none;
+    /* speak: none; */
     font-style: normal;
     font-weight: normal;
     font-variant: normal;

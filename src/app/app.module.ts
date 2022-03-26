@@ -10,9 +10,9 @@ import { MainModule } from './main/main.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { JwtModule } from '@auth0/angular-jwt';
-
 export function tokenGetter () {
-  return localStorage.getItem('jwt');
+  const token = window.sessionStorage.getItem('auth-token')
+ return  token
 }
 @NgModule({
   declarations: [
