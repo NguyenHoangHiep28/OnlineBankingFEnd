@@ -11,9 +11,10 @@ import { AccountlistComponent } from './main/components/accountlist/accountlist.
 const routes: Routes = [{
   path : '',
   component : HomeComponent
-},{
+}, {
+  // canActivate : [AuthGuardServiceService] ,
   path :'dashboard',
-  component : DefaultComponent, canActivate : [AuthGuardServiceService] ,
+  component : DefaultComponent,
   children : [{
     path: '',
     component: IndexComponent
