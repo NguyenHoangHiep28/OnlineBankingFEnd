@@ -1,0 +1,99 @@
+.account {
+  border: 1px solid transparent;
+  border-radius: 5px;
+  box-shadow: 0 0 1rem 0 rgb(0 0 0 / 20%);
+  padding: 3rem;
+  margin: 1rem 0 1rem 0;
+  color: white;
+  justify-content: space-between;
+  background-color: #5e2e86;
+}
+
+.account__heading {
+  font-size: 3rem;
+  letter-spacing: 1px;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.account__price p {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0;
+  text-transform: capitalize;
+}
+
+.account__circle {
+  width: 300px;
+  height: 300px;
+  border: 10px solid rgba(254, 153, 1);
+  border-radius: 50%;
+  text-align: center;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.account__circle p {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  transform: translate(-50%, 50%);
+  color: rgba(254, 153, 1);
+  font-size: 4rem;
+}
+
+.account__total {
+  /* text-align: center; */
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  box-shadow: 0 0 1rem 0 rgb(0 0 0 / 20%);
+  padding: 2rem;
+  font-style: italic;
+}
+
+.account__total span {
+  color: rgba(254, 153, 1);
+}
+
+.account__service {
+  text-align: right;
+}
+
+.account__service .account__item {
+  margin: 5px;
+
+}
+
+.account__service .account__item button {
+  padding: 2rem;
+  width: 300px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  box-shadow: 0 0 1rem 0 rgba(254, 153, 1/20%);
+  box-shadow: 0 0 1rem 0 rgb(0 0 0 / 20%);
+  background-color: #5e2e86;
+  text-align: center;
+}
+
+.account__service .account__item button:focus {
+  outline: none;
+}
+
+.account__item p {
+  font-size: 2rem;
+  text-align: left;
+  font-weight: 500;
+  text-transform: capitalize;
+  color: white;
+}
+
+.account__item i {
+  margin-right: 1rem;
+  font-size: 5rem;
+  color: rgba(254, 153, 1);
+}
+
+.account__item p .balance {
+  margin-top: 5px;
+}

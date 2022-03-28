@@ -25893,4 +25893,14 @@ a.fc-more:hover {
   font-weight: 600;
   letter-spacing: 1px;
   margin-bottom: 0;
+  color: #040505;
 }
+
+/* .app-header__content {
+  background-color: #5e2e86;
+}
+
+.app-sidebar {
+  background-color: #5e2e86 !important;
+  color: rgba(254, 153, 1) !important;
+} */
