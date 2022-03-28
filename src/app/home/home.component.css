@@ -310,7 +310,7 @@ header .btn__login i {
     box-shadow: 0px 1px 7px #8e8e8e;
     /* background-color: rgba(0, 0, 0, 0.363); */
     background-color: rgba(94, 46, 134);
-    padding: 1rem;
+    padding: 3rem;
 }
 
 .feedback__content .item {

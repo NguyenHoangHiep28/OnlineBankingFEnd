@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+// import CarouselModule
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DefaultModule } from './dashboard/default/default.module';
@@ -22,6 +24,8 @@ export function tokenGetter () {
   ],
   imports: [
     BrowserModule,
+    CarouselModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     DefaultModule,
     FormsModule,
