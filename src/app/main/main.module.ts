@@ -43,4 +43,4 @@ import { ReprotComponent } from './components/reprot/reprot.component';
    
   ]
 })
-export class MainModule { }
+export class MainModule {}

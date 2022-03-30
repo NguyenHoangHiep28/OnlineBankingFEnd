@@ -15,15 +15,21 @@ const routes: Routes = [{
   component : HomeComponent
 },{
   path :'dashboard', 
-  // canActivate : [AuthGuardServiceService],
+  canActivate : [AuthGuardServiceService],
   component : DefaultComponent, 
   children : [{
     path: '',
     component: IndexComponent
-  },{
+  },
+  {
     path :'profile',
     component : UserinfoComponent
-  }, {
+    },
+  {
+    path :'transfer',
+    component : TransferComponent
+  },
+  {
     path : 'account-list',
     component : AccountlistComponent
   } ,{

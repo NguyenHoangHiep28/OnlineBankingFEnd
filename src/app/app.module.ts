@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+// import CarouselModule
+import { CarouselModule } from 'ngx-owl-carousel-o';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DefaultModule } from './dashboard/default/default.module';
@@ -15,13 +17,11 @@ export function tokenGetter () {
  return  token
 }
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    HomeComponent,
-  ],
+  declarations: [AppComponent, LoginComponent, HomeComponent],
   imports: [
     BrowserModule,
+    CarouselModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     DefaultModule,
     FormsModule,
@@ -34,9 +34,8 @@ export function tokenGetter () {
         throwNoTokenError :true
       }
     }),
-    BrowserAnimationsModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

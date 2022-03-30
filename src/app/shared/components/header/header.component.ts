@@ -8,13 +8,13 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 })
 export class HeaderComponent implements OnInit {
   constructor(private route:Router, private tokenStorage: TokenStorageService) { }
-  
-  
+  userName = "User Name";
+
   logOut() {
     this.tokenStorage.signOut()
-    this.route.navigate(["/"]);   
+    this.route.navigate(["/"]);
   }
   ngOnInit(): void {
-    
+
   }
 }
