@@ -33,6 +33,7 @@
               "src/styles.css"
             ],
             "scripts": [
+              "src/assets/js/dashboard/index.js",
               "src/main.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ]

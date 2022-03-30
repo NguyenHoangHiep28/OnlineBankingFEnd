@@ -7,6 +7,7 @@ import { UserinfoComponent } from './components/userinfo/userinfo.component';
 import { TransferComponent } from './components/transfer/transfer.component';
 import { MainComponent } from './main.component';
 import { AccountlistComponent } from './components/accountlist/accountlist.component';
+
 @NgModule({
   declarations: [
     SavingComponent,
@@ -14,18 +15,15 @@ import { AccountlistComponent } from './components/accountlist/accountlist.compo
     MainComponent,
     IndexComponent,
     UserinfoComponent,
-    AccountlistComponent
+    AccountlistComponent,
   ],
-  imports: [
-    CommonModule,
-    RouterModule
-  ],
-  exports : [
+  imports: [CommonModule, RouterModule],
+  exports: [
     SavingComponent,
     TransferComponent,
     MainComponent,
     IndexComponent,
-    TransferComponent
-  ]
+    TransferComponent,
+  ],
 })
-export class MainModule { }
+export class MainModule {}

@@ -1,0 +1,176 @@
+.account {
+  padding: 3rem;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+}
+
+.account-heading {
+  font-size: 3rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  margin-bottom: 1.5rem;
+}
+
+.account-dashboard {
+  border: 2px solid #ccc;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 1rem 0 rgb(0 0 0 / 20%);
+}
+
+.account-left-heading {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.account-left {
+  margin-right: 1rem;
+}
+
+.account-left-circle {
+  width: 300px;
+  height: 300px;
+  border: 10px solid blue;
+  border-radius: 50%;
+  margin: 1.5rem 0;
+  text-align: center;
+  position: relative;
+}
+
+.account-left-circle h2 {
+  font-size: 3rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.account-left-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 2rem;
+}
+
+.account-left-total h3 {
+  font-size: 1.5rem;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.account-left-total p {
+  margin: 0 0.5rem;
+}
+
+.account-left-total i {
+  color: blue;
+  cursor: pointer;
+}
+
+.account-price {
+  margin-right: 0.5rem;
+  font-style: italic;
+  color: blue;
+}
+
+.account-price i {
+  color: blue;
+}
+
+/* account right  */
+.account-right {
+  padding: 2rem;
+  font-weight: 600;
+}
+
+.account-right-item {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 1rem 0;
+  height: 100px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+
+}
+
+.account-right-item i:first-child {
+  font-size: 4rem;
+  color: purple;
+}
+
+.account-right-item:hover i:last-child {
+  color: blue;
+}
+
+/* account-tool */
+.account-tool {
+  font-size: 2rem;
+  font-weight: 500;
+  border: 2px solid #ccc;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 1rem 0 rgb(0 0 0 / 20%);
+}
+
+.account-tool h2 {
+  margin-bottom: 1rem;
+}
+
+.account-tool-banner {
+  background-image: url(../../../../assets/images/home/WP_ONLINEBANKS.jpg);
+  background-size: contain;
+  height: 100px;
+  width: 100%;
+}
+
+.account-tool-form {
+  margin-top: 1rem;
+}
+
+.account-tool-form input {
+  padding: 2rem;
+}
+
+.account-tool-form input:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.account-tool-form select {
+  padding: 2rem;
+}
+
+.account-tool-form select:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.account-tool-form button {
+  min-width: 180px;
+}
+
+.account-tool-form .form-control:focus {
+  border: 1px solid #ced4da;
+
+}
+
+.account-tool-form .form-select:focus {
+  border: 1px solid #ced4da;
+}
+.btn-done {
+  background-color: purple;
+}
+/* banner */
+/* .banner {
+  padding: 0;
+  width:100%;
+  overflow: scroll;
+} */
+
+
