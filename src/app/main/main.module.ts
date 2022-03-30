@@ -7,6 +7,12 @@ import { UserinfoComponent } from './components/userinfo/userinfo.component';
 import { TransferComponent } from './components/transfer/transfer.component';
 import { MainComponent } from './main.component';
 import { AccountlistComponent } from './components/accountlist/accountlist.component';
+import { MatStepperModule } from '@angular/material/stepper';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { ReprotComponent } from './components/reprot/reprot.component';
 @NgModule({
   declarations: [
     SavingComponent,
@@ -14,11 +20,17 @@ import { AccountlistComponent } from './components/accountlist/accountlist.compo
     MainComponent,
     IndexComponent,
     UserinfoComponent,
-    AccountlistComponent
+    AccountlistComponent,
+    ReprotComponent
   ],
   imports: [
+    BrowserModule,
     CommonModule,
-    RouterModule
+    RouterModule, 
+    MatStepperModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    MatIconModule
   ],
   exports : [
     SavingComponent,
@@ -26,6 +38,9 @@ import { AccountlistComponent } from './components/accountlist/accountlist.compo
     MainComponent,
     IndexComponent,
     TransferComponent
+  ],
+  providers : [
+   
   ]
 })
 export class MainModule { }

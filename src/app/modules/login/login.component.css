@@ -29,8 +29,10 @@
     margin-left: 5px;
     
 }
-.header_navbar-link:hover {
+.header_navbar-item :hover {
+    color: #ff9800;
     opacity: 0.6;
+
 }
 .header_navbar-item , .header_navbar-link{
     display: inline-block;
@@ -38,6 +40,7 @@
     color: #fff;
     text-decoration: none;
 }
+
 .header_navbar-list {
     padding-left: 0;
 }
@@ -72,6 +75,7 @@
     color: #fff;
 }
 .content-wrap form a:hover {
+    color: #ff9800;
     opacity: 0.6;
 }
 .box {

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-transfer',
   templateUrl: './transfer.component.html',
-  styleUrls: ['./transfer.component.css']
+  styleUrls: ['../../../dashboard/default/default.component.css','./transfer.component.css']
 })
 export class TransferComponent implements OnInit {
 
@@ -13,3 +14,4 @@ export class TransferComponent implements OnInit {
   }
 
 }
+

@@ -1,1 +1,236 @@
-<p>This is transfer page</p>
+<div style="margin:50px 5%;">
+  <mat-stepper orientation="vertical" style="padding:0 5%;">
+  <mat-step>
+    <ng-template matStepLabel> Chuyển tiền tới tài khoản ngân hàng</ng-template>
+    <ng-template matStepContent>
+      <div class="main-card mb-3 card" style="margin:50px 5%;">
+        <div class="card-body"><h5 class="card-title" >Thông tin chuyển tiền </h5>
+            <div>
+                <form class="form-inline">
+                    <div class="mb-2 mr-sm-2 mb-sm-0 position-relative form-group">
+                      <label for="exampleEmail22" class="card-title">Hình thức chuyển</label>
+                    </div>
+                    <div class="mb-2 mr-sm-2 mb-sm-0 position-relative form-group">
+                      <input name="password" id="examplePassword22" placeholder="Chuyển tiền qua số tài khoản" type="password"class="form-control">
+                    </div>
+                </form>
+                <div class="divider"></div>
+                <form class="form-inline">
+                  <div class="mb-2 mr-sm-2 mb-sm-0 position-relative form-group">
+                    <label for="exampleEmail22" class="card-title">Tài khoản nguồn</label>
+                  </div>
+                  <div class="mb-2 mr-sm-2 mb-sm-0 position-relative form-group">
+                    <input name="password" id="examplePassword22" placeholder="5797934566666/NGUYEN CONG LUAT
+                    12,924,054 VND" type="password"class="form-control">
+                  </div>
+              </form>
+            </div>
+        </div>
+    </div>
+          <button mat-button matStepperNext type="button" class="btn btn-primary">Tiếp</button>
+    </ng-template>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>THÔNG TIN NGƯỜI NHẬN</ng-template>
+    <ng-template matStepContent>
+      <div class="main-card mb-3 card" style="margin:50px 5%;">
+        <div class="card-body"><h5 class="card-title">THÔNG TIN NGƯỜI NHẬN</h5>
+          <form class="">
+              <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">Ngân hàng thụ hưởng</label>
+                  <div class="col-sm-10"><input name="email" id="exampleEmail" placeholder="Ngoại thương Việt Nam (VCB)" type="email" class="form-control"></div>
+              </div>
+              <div class="position-relative row form-group"><label for="examplePassword" class="col-sm-2 col-form-label">Số tài khoản</label>
+                  <div class="col-sm-10"><input name="password" id="examplePassword" placeholder="" type="password" class="form-control"></div>
+              </div>
+              <div class="position-relative row form-group"><label for="examplePassword" class="col-sm-2 col-form-label">Tên tài khoản</label>
+                <div class="col-sm-10"><input name="password" id="examplePassword" placeholder="" type="password" class="form-control"></div>
+              </div>
+               <div class="position-relative row form-group"><label for="examplePassword" class="col-sm-2 col-form-label">Số tiền</label>
+                <div class="col-sm-10"><input name="password" id="examplePassword" placeholder=".VND" type="password" class="form-control"></div>
+               </div>
+               <div class="position-relative row form-group"><label for="exampleText" class="col-sm-2 col-form-label">Nội dung</label>
+                <div class="col-sm-10"><textarea name="text" id="exampleText" class="form-control" placeholder="NGUYEN CONG LUAT chuyen tien"></textarea></div>
+                </div>
+              <div class="position-relative row form-group"><label for="checkbox2" class="col-sm-2 col-form-label"></label>
+                  <div class="col-sm-10">
+                      <div class="position-relative form-check"><label class="form-check-label"><input id="checkbox2" type="checkbox" class="form-check-input">LƯU NGƯỜI THỤ HƯỞNG</label></div>
+                  </div>
+              </div>
+              <div class="position-relative row form-check">
+                  <div class="col-sm-10 offset-sm-2">
+                    <button mat-button matStepperNext type="button" class="btn btn-primary">Tiếp</button>
+                  </div>
+              </div>
+          </form>
+      </div>
+    </div>
+    <button mat-button matStepperPrevious type="button" class="btn btn-warning">Quay lại</button>
+    </ng-template>
+
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>XÁC NHẬN THÔNG TIN</ng-template>
+    <div class="main-card mb-3 card" style="margin:50px 5%;">
+      <div class="card-body"><h5 class="card-title">Thông tin chuyển tiền</h5>
+        <div class="row">
+          <div class="col-md-12">
+              <div class="main-card mb-3 card">
+                  <div class="card-header">Tài khoản nguồn :  <div class="badge badge-warning">5797934566666</div>
+                  </div>
+                  <div class="table-responsive">
+                      <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+                          <tbody>
+
+                          <tr>
+                              <td class="text-center text-muted">1</td>
+                              <td>
+                                  <div class="widget-content p-0">
+                                      <div class="widget-content-wrapper">
+                                          <div class="widget-content-left mr-3">
+
+                                          </div>
+                                          <div class="widget-content-left flex2">
+                                              <div class="widget-heading">Người nhận :</div>
+                                              <div class="widget-subheading opacity-7"></div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </td>
+                              <td class="text-center"></td>
+                              <td class="text-center">
+                                 NGUYEN CONG LUAT
+                              </td>
+                              <td class="text-center">
+                              </td>
+                          </tr>
+
+                          <tr>
+                              <td class="text-center text-muted">2</td>
+                              <td>
+                                  <div class="widget-content p-0">
+                                      <div class="widget-content-wrapper">
+                                          <div class="widget-content-left mr-3">
+
+                                          </div>
+                                          <div class="widget-content-left flex2">
+                                              <div class="widget-heading">Ngân hàng :</div>
+                                              <div class="widget-subheading opacity-7"></div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </td>
+                              <td class="text-center"></td>
+                              <td class="text-center">
+                                Ngoại thương Việt Nam (VCB)
+                              </td>
+                              <td class="text-center">
+                              </td>
+                          </tr>
+
+                          <tr>
+                            <td class="text-center text-muted">3</td>
+                            <td>
+                                <div class="widget-content p-0">
+                                    <div class="widget-content-wrapper">
+                                        <div class="widget-content-left mr-3">
+
+                                        </div>
+                                        <div class="widget-content-left flex2">
+                                            <div class="widget-heading">Số tiền chuyển :</div>
+                                            <div class="widget-subheading opacity-7"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-center"></td>
+                            <td class="text-center">
+                              1.000.000 VND
+                            </td>
+                            <td class="text-center">
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td class="text-center text-muted">4</td>
+                            <td>
+                                <div class="widget-content p-0">
+                                    <div class="widget-content-wrapper">
+                                        <div class="widget-content-left mr-3">
+
+                                        </div>
+                                        <div class="widget-content-left flex2">
+                                            <div class="widget-heading">Số tiền bằng chữ :</div>
+                                            <div class="widget-subheading opacity-7"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-center"></td>
+                            <td class="text-center">
+                             Một triệu Việt Nam Đồng
+
+                            </td>
+                            <td class="text-center">
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td class="text-center text-muted">5</td>
+                            <td>
+                                <div class="widget-content p-0">
+                                    <div class="widget-content-wrapper">
+                                        <div class="widget-content-left mr-3">
+
+                                        </div>
+                                        <div class="widget-content-left flex2">
+                                            <div class="widget-heading">Nội dung :</div>
+                                            <div class="widget-subheading opacity-7"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-center"></td>
+                            <td class="text-center">
+                              NGUYEN CONG LUAT chuyen tien
+                            </td>
+                            <td class="text-center">
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td class="text-center text-muted">6</td>
+                            <td>
+                                <div class="widget-content p-0">
+                                    <div class="widget-content-wrapper">
+                                        <div class="widget-content-left mr-3">
+
+                                        </div>
+                                        <div class="widget-content-left flex2">
+                                            <div class="widget-heading">Hình thức xác thực :</div>
+                                            <div class="widget-subheading opacity-7"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-center"></td>
+                            <td class="text-center">
+                              Digital OTP
+                            </td>
+                            <td class="text-center">
+                            </td>
+                          </tr>
+                          </tbody>
+                      </table>
+                  </div>
+                  <div class="d-block text-center card-footer">
+                      <button class="btn-wide btn btn-success">Xác nhận</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <button mat-button matStepperPrevious type="button" class="btn btn-warning">Quay lại</button>
+  </mat-step>
+</mat-stepper>
+</div>

@@ -26,10 +26,6 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(loginForm: NgForm) : void {
-    
-
-      
-
     this.authSerice.login(loginForm.value.phone, loginForm.value.password).subscribe(
       (data : any) => {
         const logginModalElement = document.getElementById('loginModal');
@@ -39,7 +35,7 @@ export class LoginComponent implements OnInit {
           this.errMessage = JSON.stringify(data.errors)       
           console.log(this.errMessage)
           if((this.errMessage).includes('locked!')){
-            this.supMessage = 'Vui long lien he trung tam CSKH'
+            this.supMessage = 'Please contact support center'
           }  
           if (logginModalElement) {
           
@@ -48,8 +44,8 @@ export class LoginComponent implements OnInit {
           }                    
         } else { 
           this.tokenStorage.saveToken(data.token);
-          this.tokenStorage.saveUser(data);
-          this.router.navigate(["/dashboard"]);
+          this.tokenStorage.saveUser(data.id);
+          this.router.navigate(["/dashboard/account-list"]);
         }
       }
     );

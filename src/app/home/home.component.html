@@ -50,7 +50,11 @@
                     <a class="nav-link" href="#">CONTACT</a>
                 </li>
             </ul>
-            <button type="button" class="btn  btn-primary">Sign In<span class="fa fa-lock"></span></button>
+                
+            <button *ngIf="isLoggin ; else elseBLock " routerLink="dashboard" type="button" class="btn  btn-primary">Go to dashboard<span class="fa fa-lock"></span></button>
+            <ng-template #elseBLock>
+                <button  routerLink="login" type="button" class="btn  btn-primary">Sign In<span class="fa fa-lock"></span></button>
+            </ng-template>
         </div>
     </nav>
 </header>

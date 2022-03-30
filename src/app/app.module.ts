@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DefaultModule } from './dashboard/default/default.module';
 import { LoginComponent } from './modules/login/login.component';
 import { FormsModule } from '@angular/forms';
-import { MainModule } from './main/main.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { JwtModule } from '@auth0/angular-jwt';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { authInterceptorProviders } from './_helper/auth.interceptor';
 export function tokenGetter () {
   const token = window.sessionStorage.getItem('auth-token')
  return  token
@@ -25,7 +25,6 @@ export function tokenGetter () {
     AppRoutingModule,
     DefaultModule,
     FormsModule,
-    MainModule,
     HttpClientModule,
     JwtModule.forRoot({
       config: {
@@ -34,9 +33,10 @@ export function tokenGetter () {
         disallowedRoutes : [],
         throwNoTokenError :true
       }
-    })
+    }),
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
