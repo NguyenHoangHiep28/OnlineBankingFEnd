@@ -1,0 +1,72 @@
+<!-- <div *ngFor="let accounts of  acccount">
+    <div *ngIf=""
+</div> -->
+
+<div class="accountlist_page">
+    <div class="card bg-dark text-white">
+    
+        <div class="card-img-overlay">
+          <div class="colum">
+              <div class="text-path">
+    
+                  <a href="http://">Home</a>
+                  <div class="ti ti-angle-right"></div>
+                  <a href="http://">List Account</a>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="main-content" *ngFor="let account of accounts">
+
+        <div class=" mb-3 main-item" *ngIf="account.accountNumber !== currentAccount">
+            <div class="atm-item">
+                <img src="../../../../assets/images/dashboard/account-list/card (1).png" class="img-fluid rounded-start" alt="...">
+                <div class="text-atm">
+                    <p class="text-atm_number">{{ account.accountNumber}}</p>
+                </div>
+                 <p class="text-epire">CREATE DATE : {{ account.createdAt }}</p>
+            </div>
+            <div class="atm_info_right">
+                <h2>Account infomation</h2>
+                <div class="atm_info_right_list">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <p  class="list-group-item_text">Card status</p>
+                            <div *ngIf="account.active === 1 ; else StatusLock" class="badge  text-wrap">
+                                Active
+                              </div>
+                              <ng-template #StatusLock>
+                                <div  class="badge  text-wrap">
+                                Locked
+                              </div>
+                              </ng-template>                            
+                        </li>
+                        <li class="list-group-item">
+                            <p class="list-group-item_text">Card own's</p>
+                            <div class="badge  text-wrap">
+                               {{account.userName}}
+                              </div>                            
+                        </li>
+                        <li class="list-group-item">
+                            <p class="list-group-item_text">Expire Date</p>
+                            <div class="badge  text-wrap">
+                                {{account.createdAt}}
+                              </div>                            
+                        </li>
+                        <li class="list-group-item">
+                            <p class="list-group-item_text">Ballance</p>
+                            <div class="badge  text-wrap">
+                                {{account.balance}}
+                              </div>                            
+                        </li>
+                        
+                      </ul>
+                </div>
+                <div class="atm-lock">
+                    <button class="btn btn-primary" (click)="onSelect(account.accountNumber)">Select Card</button>
+                </div>
+            </div>
+           
+            </div>
+      </div>
+</div>
