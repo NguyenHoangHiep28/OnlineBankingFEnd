@@ -3,7 +3,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Observable ,of } from 'rxjs';
 import { Account } from 'src/models/accounts/accounts';
-const myAPI_url = "https://localhost:44367/controller/accounts"
+const listaccount_url = "https://localhost:44367/controller/accounts"
+const myaccount_url = "https://localhost:44367/controller/myaccount"
+
 
 const Acount_KEY = 'Account_Number';
 
@@ -17,7 +19,7 @@ export class AccountListService {
 
   getAccountList (userID: any): Observable<Account[]>{
 
-    return this.http.post<Account[]>(myAPI_url,userID).pipe(
+    return this.http.post<Account[]>(listaccount_url,userID).pipe(
       tap(_ => console.log('get Account list')),
       catchError(this.handleError<any>(`get Account List`))
     )
@@ -36,6 +38,13 @@ export class AccountListService {
       return of(result as T);
     };
   }
+
+getMyAccount(accountNumber : any) : Observable<Account> {
+  return this.http.post<Account>(myaccount_url,accountNumber).pipe(
+    tap(_ => console.log('get Account list')),
+      // catchError(this.handleError<any>(`get Account List`))
+  )
+}
 
 
   saveAccountNumberDisplay(accountNumber : string) {

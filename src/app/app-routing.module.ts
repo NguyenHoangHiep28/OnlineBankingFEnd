@@ -32,10 +32,8 @@ const routes: Routes = [{
   {
     path : 'account-list',
     component : AccountlistComponent
-  } ,{
-    path : 'transfer',
-    component : TransferComponent
-  }, {
+  } 
+  , {
     path : 'report',
     component :ReprotComponent
   }]

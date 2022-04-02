@@ -13,6 +13,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { ReprotComponent } from './components/reprot/reprot.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogContentComponent } from './components/transfer/dialog-content/dialog-content.component';
+import { MatButtonModule } from '@angular/material/button';
 @NgModule({
   declarations: [
     SavingComponent,
@@ -21,7 +24,8 @@ import { ReprotComponent } from './components/reprot/reprot.component';
     IndexComponent,
     UserinfoComponent,
     AccountlistComponent,
-    ReprotComponent
+    ReprotComponent,
+    DialogContentComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +34,9 @@ import { ReprotComponent } from './components/reprot/reprot.component';
     MatStepperModule,
     BrowserAnimationsModule,
     FormsModule,
-    MatIconModule
+    MatIconModule , 
+    MatDialogModule ,
+    MatButtonModule
   ],
   exports : [
     SavingComponent,
