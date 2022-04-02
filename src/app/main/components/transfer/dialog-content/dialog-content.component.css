@@ -1,0 +1,38 @@
+.container { 
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    padding: 15px;
+    position: relative;
+    font-size: 16px
+}
+
+.verify-content {
+    display: flex;
+    align-content: center;
+    flex-wrap: nowrap;
+}
+
+.verify-content input {
+    height: 100%;
+}
+
+.dialog-button-close {
+    position: absolute;
+    top : 80%;
+    left: 0%;
+    margin-left: 10px;
+}
+
+.alert { 
+    padding: 0;
+    border: none;
+    margin-top: 1.5rem;
+    background: none;
+}
+
+.mat-dialog-title {
+    margin: 0 ;
+    padding: 0;
+}

@@ -1,8 +1,62 @@
-.mat-stepper-horizontal {
-    margin-top: 8px;
+::ng-deep .mat-stepper-horizontal, .mat-stepper-vertical{
+ background: none;
+}
+
+.card {
+      background: none;
+}
+
+.row.form-nowarp {
+  flex-wrap: nowrap;
+}
+  .back-next {
+      display: flex;
+      width: 150px;
   }
+
+  .transfer-button {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    width: 850px;
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+
+  .amount-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 1rem;
+    background-color: #3f51b5;
+    color: white;
+    margin-bottom: 1.5rem;
+  }
+  .reciver-container {
+    color: white;
+    background-color: #3f51b5;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  .reciver-content {
+    padding-left: 3rem;
+  }
+.reciver-content h2 {
+  font-weight: bold;
+}
   
-  .mat-form-field {
-    margin-top: 16px;
+  .list-group-item   {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
- 
+  .mat-step-header {
+    pointer-events: none;
+  }
+
+  /* #5d2e86 */

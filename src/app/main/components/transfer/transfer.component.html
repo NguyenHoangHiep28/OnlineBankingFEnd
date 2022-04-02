@@ -1,236 +1,217 @@
+
 <div style="margin:50px 5%;">
-  <mat-stepper orientation="vertical" style="padding:0 5%;">
-  <mat-step>
-    <ng-template matStepLabel> Chuyển tiền tới tài khoản ngân hàng</ng-template>
+  <mat-stepper orientation="vertical" linear  style="padding:0 5%;" #stepper *ngIf="!stateTransferValid"> 
+  <mat-step label="Step 1">
+    <ng-template matStepLabel>Sender's Information</ng-template>
     <ng-template matStepContent>
       <div class="main-card mb-3 card" style="margin:50px 5%;">
-        <div class="card-body"><h5 class="card-title" >Thông tin chuyển tiền </h5>
+        <div class="card-body"><h5 class="card-title" >Fill in sender Information</h5>
             <div>
-                <form class="form-inline">
-                    <div class="mb-2 mr-sm-2 mb-sm-0 position-relative form-group">
-                      <label for="exampleEmail22" class="card-title">Hình thức chuyển</label>
-                    </div>
-                    <div class="mb-2 mr-sm-2 mb-sm-0 position-relative form-group">
-                      <input name="password" id="examplePassword22" placeholder="Chuyển tiền qua số tài khoản" type="password"class="form-control">
-                    </div>
+              <form class="">
+                <div class="position-relative row form-group form-nowarp"><label  class="col-sm-2 col-form-label">Select bank</label>
+                  <div>
+                    <select class="form-select col-sm-10" aria-label="Default select example">
+                      <option>MT bank</option>
+                    </select>
+                  </div>
+               </div>
+               <div class="position-relative row form-group form-nowarp"><label  class="col-sm-2 col-form-label">Select Account</label>
+                <div>
+                  <select class="form-select col-sm-10" #AccountSelect (change)="changeAccount(AccountSelect.value)"> 
+                    <option  *ngFor="let account of accounts" 
+                    [value] ="account.accountNumber"
+                    [selected] = "account.accountNumber === currentAccount">
+                      {{ account.accountNumber === currentAccount ? account.accountNumber + ' ( Current ) ' : account.accountNumber  }}</option>
+                  </select>
+                </div>
+               
+             </div>
                 </form>
-                <div class="divider"></div>
-                <form class="form-inline">
-                  <div class="mb-2 mr-sm-2 mb-sm-0 position-relative form-group">
-                    <label for="exampleEmail22" class="card-title">Tài khoản nguồn</label>
-                  </div>
-                  <div class="mb-2 mr-sm-2 mb-sm-0 position-relative form-group">
-                    <input name="password" id="examplePassword22" placeholder="5797934566666/NGUYEN CONG LUAT
-                    12,924,054 VND" type="password"class="form-control">
-                  </div>
-              </form>
             </div>
         </div>
+        
     </div>
-          <button mat-button matStepperNext type="button" class="btn btn-primary">Tiếp</button>
+          <button mat-button matStepperNext type="button" color="primary">Next</button>
     </ng-template>
   </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>THÔNG TIN NGƯỜI NHẬN</ng-template>
+
+  <form #transferForm  = "ngForm"   class="">
+  <mat-step label="Step 2" [completed]="transferForm.valid">
+    <ng-template matStepLabel>Reciver's Information</ng-template>
     <ng-template matStepContent>
       <div class="main-card mb-3 card" style="margin:50px 5%;">
-        <div class="card-body"><h5 class="card-title">THÔNG TIN NGƯỜI NHẬN</h5>
-          <form class="">
-              <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">Ngân hàng thụ hưởng</label>
-                  <div class="col-sm-10"><input name="email" id="exampleEmail" placeholder="Ngoại thương Việt Nam (VCB)" type="email" class="form-control"></div>
+        <div class="card-body"><h5 class="card-title">Reciver's Information</h5>
+              <div class="position-relative row form-group"><label for="BankBranch" class="col-sm-2 col-form-label">Bank Branch</label>
+                  <div class="col-sm-10"><input  readonly name="BankBranch"  value="MT Bank" type="text" class="form-control"></div>
               </div>
-              <div class="position-relative row form-group"><label for="examplePassword" class="col-sm-2 col-form-label">Số tài khoản</label>
-                  <div class="col-sm-10"><input name="password" id="examplePassword" placeholder="" type="password" class="form-control"></div>
+              <div class="position-relative row form-group"><label for = "ReciverNumber" class="col-sm-2 col-form-label">AccountNumber</label>
+                  <div class="col-sm-10"><input minlength="6" onkeypress='return event.charCode >= 48 && event.charCode <= 57' (input)="onInput(reciverInfo.toAccountNumber)" maxlength="12" type="text" name="toAccountNumber"  [(ngModel)]="reciverInfo.toAccountNumber" required  class="form-control" [class.is-invalid] = "!reciverInfo.toAccountNumber"></div>
               </div>
-              <div class="position-relative row form-group"><label for="examplePassword" class="col-sm-2 col-form-label">Tên tài khoản</label>
-                <div class="col-sm-10"><input name="password" id="examplePassword" placeholder="" type="password" class="form-control"></div>
-              </div>
-               <div class="position-relative row form-group"><label for="examplePassword" class="col-sm-2 col-form-label">Số tiền</label>
-                <div class="col-sm-10"><input name="password" id="examplePassword" placeholder=".VND" type="password" class="form-control"></div>
+              <div class="position-relative row form-group"><label for="toName" class="col-sm-2 col-form-label">To Name</label>
+                <div class="col-sm-10"><input  name = "toName" [(ngModel)]="reciverInfo.name" readonly required  type="text"  class="form-control"></div>
                </div>
-               <div class="position-relative row form-group"><label for="exampleText" class="col-sm-2 col-form-label">Nội dung</label>
-                <div class="col-sm-10"><textarea name="text" id="exampleText" class="form-control" placeholder="NGUYEN CONG LUAT chuyen tien"></textarea></div>
+               <div class="position-relative row form-group"><label for="Amount" class="col-sm-2 col-form-label">Amount</label>
+                <div class="col-sm-10"><input name = "amount" [(ngModel)]="reciverInfo.amount"   required  type="number" class="form-control" [class.is-invalid] = "!reciverInfo.amount"></div>
+               </div>
+               <div class="position-relative row form-group"><label for="Content" class="col-sm-2 col-form-label">Content</label>
+                <div class="col-sm-10"><textarea minlength="6"  name="text" [(ngModel)]="reciverInfo.content"  required  maxlength="50"  class="form-control" placeholder="Fill contetn here" [class.is-invalid] = "!reciverInfo.content" ></textarea></div>
                 </div>
               <div class="position-relative row form-group"><label for="checkbox2" class="col-sm-2 col-form-label"></label>
                   <div class="col-sm-10">
                       <div class="position-relative form-check"><label class="form-check-label"><input id="checkbox2" type="checkbox" class="form-check-input">LƯU NGƯỜI THỤ HƯỞNG</label></div>
                   </div>
               </div>
-              <div class="position-relative row form-check">
-                  <div class="col-sm-10 offset-sm-2">
-                    <button mat-button matStepperNext type="button" class="btn btn-primary">Tiếp</button>
+            </div>
+          </div>
+          <div class="back-next">
+            <div>
+              <button mat-button matStepperNext type="button" color="primary">Next</button>
+            </div>
+            <div>
+              <button mat-button matStepperPrevious type="button" color="primary" class="mf-3">Back</button>
+            </div>
+        </div>
+      </ng-template>
+    </mat-step>
+  </form>
+
+  <mat-step label="Step 3" completed="false">
+      <ng-template matStepLabel>Confirm Form transfer</ng-template>
+      <ng-template matStepContent>
+        <div class="main-card mb-3 card" style="margin:50px 5%;">
+          <div class="card-body"><h5 class="card-title">Sender's Information</h5>
+            <form class="">
+                <div class="position-relative row form-group"><label for="fromAccountNumber" class="col-sm-2 col-form-label">From AccountNumber</label>
+                    <div class="col-sm-10"><input readonly [value]="currentAccount"  class="form-control"></div>
+                </div>
+                <h5 class="card-title">Reciver's Information</h5>
+                <div class="position-relative row form-group"><label for="toAccountName" class="col-sm-2 col-form-label">Name</label>
+                    <div class="col-sm-10"><input readonly [value]="reciverInfo.name"  class="form-control"></div>
+                </div>
+                <div class="position-relative row form-group"><label for="examplePassword" class="col-sm-2 col-form-label">Bank</label>
+                  <div class="col-sm-10"><input readonly value="MT BANK" class="form-control"></div>
+                </div>
+                  <div class="position-relative row form-group"><label for="examplePassword" class="col-sm-2 col-form-label">To AccountNumber</label>
+                      <div class="col-sm-10"><input  readonly [value]="reciverInfo.toAccountNumber" class="form-control"></div>
+                  </div>
+                 <div class="position-relative row form-group"><label for="examplePassword" class="col-sm-2 col-form-label">Amount</label>
+                  <div class="col-sm-10"><input readonly [value]="reciverInfo.amount"  class="form-control"></div>
+                 </div>
+                 <div class="position-relative row form-group"><label for="examplePassword" class="col-sm-2 col-form-label">Fee</label>
+                  <div class="col-sm-10"><input readonly [value]="reciverInfo.fee" class="form-control"></div>
+                 </div>
+                 <div class="position-relative row form-group"><label for="exampleText" class="col-sm-2 col-form-label">Content</label>
+                  <div class="col-sm-10"><textarea name="text" readonly [value]="reciverInfo.content" maxlength="50" class="form-control"></textarea></div>
+                  </div>
+               
+                  <div class="position-relative row form-group form-nowarp"><label for="examplePassword" class="col-sm-2 col-form-label">Confirmmation Method</label>
+                      <div>
+                        <select class="form-select col-sm-10" aria-label="Default select example">
+                          <option selected>Verify OTP</option>
+                        </select>
+                      </div>
+                   </div>
+           
+                  
+                <div class="position-relative row form-group"><label for="checkbox2" class="col-sm-2 col-form-label"></label>
+                  <div class="col-sm-10">
+                      <div class="position-relative form-check"><label class="form-check-label"><input id="checkbox2" type="checkbox" class="form-check-input"> Save reciver's info</label></div>
                   </div>
               </div>
-          </form>
+                <div class="position-relative row form-check">
+                    <div class="col-sm-10 offset-sm-2">
+                      <button mat-raised-button color="primary" (click)="openDiaLog()">
+                        Send OTP
+                      </button>
+                    </div>
+                </div>
+            </form>
+            
+        </div>
       </div>
-    </div>
-    <button mat-button matStepperPrevious type="button" class="btn btn-warning">Quay lại</button>
-    </ng-template>
+      <button mat-button matStepperPrevious type="button" color="primary">Back</button>
+      </ng-template>
+  
+    </mat-step>
 
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>XÁC NHẬN THÔNG TIN</ng-template>
-    <div class="main-card mb-3 card" style="margin:50px 5%;">
-      <div class="card-body"><h5 class="card-title">Thông tin chuyển tiền</h5>
-        <div class="row">
-          <div class="col-md-12">
-              <div class="main-card mb-3 card">
-                  <div class="card-header">Tài khoản nguồn :  <div class="badge badge-warning">5797934566666</div>
-                  </div>
-                  <div class="table-responsive">
-                      <table class="align-middle mb-0 table table-borderless table-striped table-hover">
-                          <tbody>
-
-                          <tr>
-                              <td class="text-center text-muted">1</td>
-                              <td>
-                                  <div class="widget-content p-0">
-                                      <div class="widget-content-wrapper">
-                                          <div class="widget-content-left mr-3">
-
-                                          </div>
-                                          <div class="widget-content-left flex2">
-                                              <div class="widget-heading">Người nhận :</div>
-                                              <div class="widget-subheading opacity-7"></div>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </td>
-                              <td class="text-center"></td>
-                              <td class="text-center">
-                                 NGUYEN CONG LUAT
-                              </td>
-                              <td class="text-center">
-                              </td>
-                          </tr>
-
-                          <tr>
-                              <td class="text-center text-muted">2</td>
-                              <td>
-                                  <div class="widget-content p-0">
-                                      <div class="widget-content-wrapper">
-                                          <div class="widget-content-left mr-3">
-
-                                          </div>
-                                          <div class="widget-content-left flex2">
-                                              <div class="widget-heading">Ngân hàng :</div>
-                                              <div class="widget-subheading opacity-7"></div>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </td>
-                              <td class="text-center"></td>
-                              <td class="text-center">
-                                Ngoại thương Việt Nam (VCB)
-                              </td>
-                              <td class="text-center">
-                              </td>
-                          </tr>
-
-                          <tr>
-                            <td class="text-center text-muted">3</td>
-                            <td>
-                                <div class="widget-content p-0">
-                                    <div class="widget-content-wrapper">
-                                        <div class="widget-content-left mr-3">
-
-                                        </div>
-                                        <div class="widget-content-left flex2">
-                                            <div class="widget-heading">Số tiền chuyển :</div>
-                                            <div class="widget-subheading opacity-7"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="text-center"></td>
-                            <td class="text-center">
-                              1.000.000 VND
-                            </td>
-                            <td class="text-center">
-                            </td>
-                          </tr>
-
-                          <tr>
-                            <td class="text-center text-muted">4</td>
-                            <td>
-                                <div class="widget-content p-0">
-                                    <div class="widget-content-wrapper">
-                                        <div class="widget-content-left mr-3">
-
-                                        </div>
-                                        <div class="widget-content-left flex2">
-                                            <div class="widget-heading">Số tiền bằng chữ :</div>
-                                            <div class="widget-subheading opacity-7"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="text-center"></td>
-                            <td class="text-center">
-                             Một triệu Việt Nam Đồng
-
-                            </td>
-                            <td class="text-center">
-                            </td>
-                          </tr>
-
-                          <tr>
-                            <td class="text-center text-muted">5</td>
-                            <td>
-                                <div class="widget-content p-0">
-                                    <div class="widget-content-wrapper">
-                                        <div class="widget-content-left mr-3">
-
-                                        </div>
-                                        <div class="widget-content-left flex2">
-                                            <div class="widget-heading">Nội dung :</div>
-                                            <div class="widget-subheading opacity-7"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="text-center"></td>
-                            <td class="text-center">
-                              NGUYEN CONG LUAT chuyen tien
-                            </td>
-                            <td class="text-center">
-                            </td>
-                          </tr>
-
-                          <tr>
-                            <td class="text-center text-muted">6</td>
-                            <td>
-                                <div class="widget-content p-0">
-                                    <div class="widget-content-wrapper">
-                                        <div class="widget-content-left mr-3">
-
-                                        </div>
-                                        <div class="widget-content-left flex2">
-                                            <div class="widget-heading">Hình thức xác thực :</div>
-                                            <div class="widget-subheading opacity-7"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="text-center"></td>
-                            <td class="text-center">
-                              Digital OTP
-                            </td>
-                            <td class="text-center">
-                            </td>
-                          </tr>
-                          </tbody>
-                      </table>
-                  </div>
-                  <div class="d-block text-center card-footer">
-                      <button class="btn-wide btn btn-success">Xác nhận</button>
-                  </div>
+  <!-- <mat-step label="Step 4">
+      <ng-template matStepLabel> Hoàn thành</ng-template>
+      <ng-template matStepContent>
+        <div class="main-card mb-3 card" style="margin:50px 5%;">
+          <div class="card-body"><h5 class="card-title" >Thông tin chuyển tiền </h5>
+              <div>
+                  <form class="form-inline">
+                      <div class="mb-2 mr-sm-2 mb-sm-0 position-relative form-group">
+                        <label for="exampleEmail22" class="card-title">Hình thức chuyển</label>
+                      </div>
+                      <div class="mb-2 mr-sm-2 mb-sm-0 position-relative form-group">
+                        <input name="password" id="examplePassword22" placeholder="Chuyển tiền qua số tài khoản" type="password"class="form-control">
+                      </div>
+                  </form>
+                  <div class="divider"></div>
+                  <form class="form-inline">
+                    <div class="mb-2 mr-sm-2 mb-sm-0 position-relative form-group">
+                      <label for="exampleEmail22" class="card-title">Tài khoản nguồn</label>
+                    </div>
+                    <div class="mb-2 mr-sm-2 mb-sm-0 position-relative form-group">
+                      <input name="password" id="examplePassword22" placeholder="5797934566666/NGUYEN CONG LUAT
+                      12,924,054 VND" type="password"class="form-control">
+                    </div>
+                </form>
               </div>
           </div>
       </div>
-    </div>
-  </div>
-  <button mat-button matStepperPrevious type="button" class="btn btn-warning">Quay lại</button>
-  </mat-step>
+            <button mat-raised-button matStepperNext type="button" (click)="stepper.reset() ; removeInput()" color="primary">Resert</button>
+      </ng-template>
+    </mat-step> -->
 </mat-stepper>
+
+<div *ngIf="stateTransferValid" class="main-container">
+
+  <div class="amount-message">
+  <div class="amount-message-text">
+      <p>You are transfer successly</p>
+      <h2> 1.0000.0000 VND</h2>
+  </div>
 </div>
+
+<div class="reciver-container">
+  <h5>Account Reciver</h5>
+  <div class="reciver-content">
+    <h2> {{ reciverInfo.name }}</h2>
+    <h4> {{ reciverInfo.toAccountNumber }}</h4>
+  </div>
+</div>
+
+<div class="sender-container">
+  <ul class="list-group">
+      <li class="list-group-item">
+        <p>My account</p>
+        <h5>{{ currentAccount }}</h5>
+      </li>
+      <li class="list-group-item">
+        <p>Content</p>
+        <h5>{{ reciverInfo.content }}</h5>
+      </li>
+      <li class="list-group-item">
+        <p>Time</p>
+        <h5>Time text</h5>
+      </li>
+      <li class="list-group-item"> 
+        <p>Type Transfer</p>
+        <h5>Fast Transfer</h5>
+      </li>
+      <li class="list-group-item" >
+        <p>Transction Code</p>
+        <h5>DQZZ9032SAASA</h5>
+      </li>
+  </ul>
+</div>
+  <div class="btn-transfer-again">
+    <button mat-raised-button color="primary" (click) = "transferAgain()" > Transfer Again</button>
+  </div>
+</div>
+
+</div>
+
+

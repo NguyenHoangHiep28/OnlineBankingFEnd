@@ -13,7 +13,6 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     CommonModule,
     RouterModule,
     MainModule,
-    BrowserAnimationsModule,
     CarouselModule,
   ],
   exports: [HeaderComponent, FooterComponent],
