@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="list-history">
+    <h2 class="list-history-heading">Account</h2>
+    <div class="list-history-account row">
+      <div class="list-history-right col-6">
+        <h3>Total balance <i class="fa fa-eye"></i></h3>
+        <div class="div-account-circle">
+          <canvas id="myChart"></canvas>
+          <!-- </div> -->
+        </div>
+      </div>
+      <div class="list-history-left col-6">
+        <h3>My card</h3>
+        <div class="list-history-card">
+          <img src="../../../../assets/images/dashboard/account-list/card (1).png" alt="" class="img-fluid col-6">
+          <div class="list-history-text col-6">
+            <h4 class="list-history-card-sub">Account Name</h4>
+            <p class="list-history-info">Vũ Văn Diệu</p>
+            <h4 class="list-history-card-sub">Card number</h4>
+            <p class="list-history-info">1234567890</p>
+            <h4 class="list-history-card-sub">Account Balance</h4>
+            <p class="list-history-info">{{valuePrice}}</p>
+            <h4 class="list-history-card-sub">Status</h4>
+            <p class="list-history-info">Active</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <h2 class="list-history-heading">transaction history query</h2>
+    <div class="list-history-query row">
+      <div class="list-history-query-item col-4">
+        <h4 class="list-history-query-sub col-4">Number Card</h4>
+        <input type="text" disabled placeholder="123456789/Vũ Văn Diệu" class="col-8">
+        <div></div>
+      </div>
+      <div class="list-history-query-item col-4">
+        <h4 class="list-history-query-sub col-4">Duration</h4>
+        <div class="list-history-time">
+          <input type="date" name="" id="" value="2018-07-22">
+          <input type="date" name="" id="" value="2018-07-22">
+        </div>
+        <button type="button" class="list-history-btn">Choose</button>
+      </div>
+      <div class="list-history-query-item col-4">
+        <h4 class="list-history-query-sub col-4">Format</h4>
+        <input type="text" disabled placeholder="PDF" class="col-8">
+        <button type="button" class="list-history-btn">Download</button>
+      </div>
+    </div>
+  </div>
+</div>

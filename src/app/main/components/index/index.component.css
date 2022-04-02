@@ -1,41 +1,42 @@
 .account {
-  padding: 3rem;
+  padding: 2rem;
   font-size: 16px;
   letter-spacing: 1px;
   text-transform: capitalize;
+  background-color: #EBEBFA;
 }
 
 .account-heading {
   font-size: 3rem;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: capitalize;
+  letter-spacing: 2px;
   margin-bottom: 1.5rem;
+  color: #42236a ;
 }
 
 .account-dashboard {
-  border: 2px solid #ccc;
+  border: 2px solid #fff;
   padding: 2rem;
   border-radius: 0.5rem;
   box-shadow: 0 0 1rem 0 rgb(0 0 0 / 20%);
+  background-color: #fff;
 }
 
 .account-left-heading {
   font-size: 2rem;
-  font-weight: 600;
+  font-weight: 400;
+  color: white;
+  letter-spacing: 1.5px;
+  color: #37236a;
 }
 
 .account-left {
   margin-right: 1rem;
 }
 
-.account-left-circle {
-  width: 300px;
-  height: 300px;
-  border: 10px solid blue;
-  border-radius: 50%;
-  margin: 1.5rem 0;
-  text-align: center;
-  position: relative;
+.div-account-circle {
+  padding: 10px;
 }
 
 .account-left-circle h2 {
@@ -44,6 +45,7 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  color: rgba(254, 153, 1);
 }
 
 .account-left-total {
@@ -53,6 +55,9 @@
   border: 1px solid #ccc;
   border-radius: 3px;
   padding: 2rem;
+  color: white;
+  margin-top: 1rem;
+  background:linear-gradient(to bottom, #7b35bb, #5d2e86) !important;
 }
 
 .account-left-total h3 {
@@ -66,14 +71,15 @@
 }
 
 .account-left-total i {
-  color: blue;
+  color: rgba(254, 153, 1);
   cursor: pointer;
 }
 
 .account-price {
   margin-right: 0.5rem;
   font-style: italic;
-  color: blue;
+  color:#ff9800;
+  font-weight: 500;
 }
 
 .account-price i {
@@ -85,41 +91,57 @@
   padding: 2rem;
   font-weight: 600;
 }
-
+.account-right .account-text {
+  font-weight: 400;
+  font-size: 2rem;
+  margin: 0;
+}
+.account-right .account-text a {
+  text-decoration: none;
+  color: #EBEBFA;
+  display: block;
+  width: 100%;
+  font-size: 1.75rem;
+}
 .account-right-item {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   margin: 1rem 0;
   height: 100px;
-  width: 100%;
+  width: 106%;
   border: 1px solid #ccc;
   border-radius: 3px;
   cursor: pointer;
-
+  color: #fff;
+  font-weight: 400;
+  background:linear-gradient(to bottom, #7b35bb, #5d2e86) !important;
 }
 
 .account-right-item i:first-child {
   font-size: 4rem;
-  color: purple;
+  color: rgba(254, 153, 1);
 }
 
 .account-right-item:hover i:last-child {
-  color: blue;
+  color: rgba(254, 153, 1);
 }
 
 /* account-tool */
 .account-tool {
   font-size: 2rem;
   font-weight: 500;
-  border: 2px solid #ccc;
+  border: 2px solid #fff;
   padding: 2rem;
   border-radius: 0.5rem;
-  box-shadow: 0 0 1rem 0 rgb(0 0 0 / 20%);
+    box-shadow: 0 0 1rem 0 rgb(0 0 0 / 20%);
+  background-color: #fff;
 }
 
 .account-tool h2 {
   margin-bottom: 1rem;
+  color: #42236a;
+  font-weight: 400;
 }
 
 .account-tool-banner {
@@ -132,11 +154,30 @@
 .account-tool-form {
   margin-top: 1rem;
 }
-
+.account-tool-form .form-label {
+  font-weight: 400;
+  color: #42236a;
+}
 .account-tool-form input {
   padding: 2rem;
+  background: linear-gradient(to bottom, #7b35bb, #5d2e86) !important;
+  font-size: 1.5rem;
+  color: #fff;
 }
+.account-tool-form input::placeholder {
+  font-size: 1.5rem;
+  color: #ff9800;
+}
+.account-tool-form .form-select {
+   font-size: 1.5rem;
+  color: #ff9800;
+  background: linear-gradient(to bottom, #7b35bb, #5d2e86) !important;
 
+}
+.account-tool-form .form-select option {
+  background-color: #EBEBFA;
+  color: #42236a;
+}
 .account-tool-form input:focus {
   box-shadow: none;
   outline: none;
@@ -163,14 +204,64 @@
 .account-tool-form .form-select:focus {
   border: 1px solid #ced4da;
 }
+
 .btn-done {
-  background-color: purple;
+  background: linear-gradient(to bottom, #7b35bb, #5d2e86) !important;
+  color: #FF9800 !important;
+  width: 100%;
 }
+
 /* banner */
 /* .banner {
   padding: 0;
-  width:100%;
+  width:100account-right-item%;
   overflow: scroll;
 } */
 
-
+.card-info-none {
+  display: none;
+}
+.card-info-none h2 {
+  font-size: 0.75rem;
+}
+.card-number {
+  font-style: italic;
+  color: rgba(254, 153, 1);
+  cursor: pointer;
+  font-weight: 500;
+}
+/* hiển thị hove mắt */
+.account-left-total #eyes {
+    position: relative;
+}
+.showInfoEyes {
+  position: absolute;
+  display: block;
+  transform: translate(-80px,-87px);
+  height: 50px;
+  line-height: 50px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background-color: #42236a;
+  opacity: 0 ;
+  /* display: none; */
+  /* top: 100%; */
+  /* transform: translateX(10px); */
+  transition: 0.5s all;
+}
+.showInfoEyes::after {
+  position: absolute;
+  content: '';
+  width: 20px;
+  height: 20px;
+  background-color: #42236a;
+  border-top: transparent;
+  border-right-color: transparent;
+  display: block;
+  transform: rotate(45deg);
+      bottom: -8px;
+    left: 78px;
+}
+.account-left-total #eyes:hover~.showInfoEyes{
+  opacity: 1;
+}
