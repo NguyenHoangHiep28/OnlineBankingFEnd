@@ -16,6 +16,7 @@ import { ReprotComponent } from './components/reprot/reprot.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogContentComponent } from './components/transfer/dialog-content/dialog-content.component';
 import { MatButtonModule } from '@angular/material/button';
+import { ListHistoryComponent } from './components/list-history/list-history.component';
 @NgModule({
   declarations: [
     SavingComponent,
@@ -25,7 +26,8 @@ import { MatButtonModule } from '@angular/material/button';
     UserinfoComponent,
     AccountlistComponent,
     ReprotComponent,
-    DialogContentComponent
+    DialogContentComponent,
+    ListHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,7 @@ import { MatButtonModule } from '@angular/material/button';
     FormsModule,
     MatIconModule , 
     MatDialogModule ,
-    MatButtonModule
+    MatButtonModule,
   ],
   exports : [
     SavingComponent,

@@ -9,6 +9,7 @@ import { AuthGuardServiceService } from './auth/auth-guard-service.service';
 import { AccountlistComponent } from './main/components/accountlist/accountlist.component';
 import { TransferComponent } from './main/components/transfer/transfer.component';
 import { ReprotComponent } from './main/components/reprot/reprot.component';
+import { ListHistoryComponent } from './main/components/list-history/list-history.component';
 
 const routes: Routes = [{
   path : '',
@@ -36,6 +37,9 @@ const routes: Routes = [{
   , {
     path : 'report',
     component :ReprotComponent
+  },{
+    path : 'list-history',
+    component : ListHistoryComponent
   }]
 },
   {
