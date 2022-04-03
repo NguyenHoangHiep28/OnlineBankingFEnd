@@ -1,64 +1,60 @@
 import { Component, OnInit } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { Chart, registerables } from 'chart.js';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { Account } from 'src/models/accounts/accounts';
+import { AccountListService } from 'src/app/services/account-list.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { Chart } from 'chart.js';
+
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.css'],
 })
 export class IndexComponent implements OnInit {
+  cartID: string | number | undefined;
+  cart: Account | undefined;
+  totalNumberCart: number = 0;
+
+  //dieu
   eyes = {
     eyesOpen: 'fa fa-eye',
     eyesCLose: 'fa fa-eye-slash',
   };
   eyesDisplay = 'Show';
-  valuePrice: any = 9999999;
+  valuePrice: any = '********';
   circle: any;
-  constructor() {
-    //format mặc định của price
-    this.valuePrice = this.valuePrice
-      .toString()
-      .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
-  }
-  ngOnInit(): void {
-    //unshowPrice
-    const unShowPrice = () => {
-      // get list element tag contains valuePrice
-      let newValuePrice = this.valuePrice;
-      const listAccountPrice = document.querySelectorAll('.account-price');
-      for (let index = 0; index < newValuePrice.length; index++) {
-        let element = newValuePrice[index]; // lấy ra 1 thành phần của mảng listAccountPrice
-        newValuePrice = newValuePrice.toString().replace(element, '*');
-      }
-      for (let index = 0; index < listAccountPrice.length; index++) {
-        listAccountPrice[index].innerHTML = newValuePrice;
-      }
-      const eyesElement = document.querySelector('#eyes');
-      this.eyesDisplay = 'Show';
-      eyesElement?.setAttribute('class', this.eyes.eyesCLose);
-    };
-    const showPrice = () => {
-      const listAccountPrice = document.querySelectorAll('.account-price');
-      for (let index = 0; index < listAccountPrice.length; index++) {
-        listAccountPrice[index].innerHTML = this.valuePrice;
-      }
-      this.eyesDisplay = 'Unshow';
-      eyesElement?.setAttribute('class', this.eyes.eyesOpen);
-    };
-    unShowPrice();
-    const eyesElement = document.querySelector('#eyes');
-    eyesElement?.addEventListener('click', (e) => {
-      const listAccountPrice = document.querySelectorAll('.account-price');
-      if (!listAccountPrice[0].innerHTML.toString().includes('*')) {
-        unShowPrice();
-      } else {
-        showPrice();
-      }
-      e.stopPropagation();
-    });
+//diru
 
-    //vẽ hình tròn
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private accountlistService: AccountListService,
+    private tokenStorage: TokenStorageService
+  ) {}
+
+
+//  getlist
+  getAccountListt(): void {
+    if (this.tokenStorage.getToken()) {
+      const userID = this.tokenStorage.getUser();
+      const accountReq = {
+        userId: userID,
+      };
+      this.accountlistService
+        .getAccountList(accountReq)
+        .subscribe((accounts) => this.findCart(accounts));
+    }
+  }
+
+
+//onInit//
+  ngOnInit() {
+    
+    // chart
     this.circle = document.getElementById('myChart');
     const data = {
       labels: ['Total Card', 'Total Account'],
@@ -86,5 +82,53 @@ export class IndexComponent implements OnInit {
       },
     };
     const myChart = new Chart(this.circle, config);
+
+    this.route.params.subscribe((params) => {
+      console.log('params', !params);
+      if (!params['id']) {
+        const prs = sessionStorage.getItem('Account_Number');
+        this.router.navigate([`/dashboard/${prs}`]);
+      }
+      this.cartID = params['id'];
+    });
+    this.getAccountListt();
+
+//dieu
+    const eyesElement = document.querySelector('#eyes');
+    eyesElement?.addEventListener('click', () => {
+      let listAccountPrice = document.querySelectorAll('.account-price');
+      // thay đổi tất cả số thành *
+      if (this.valuePrice.includes('*')) {
+        for (let index = 0; index < listAccountPrice.length; index++) {
+          let valueHTML = listAccountPrice[index].innerHTML;
+          valueHTML = valueHTML.replace(valueHTML, '999,999');
+          this.valuePrice = valueHTML;
+          this.eyesDisplay = 'Unshow';
+        }
+        // đổi thẻ eyes
+        eyesElement.setAttribute('class', this.eyes.eyesOpen);
+      } else if (!this.valuePrice.includes('*')) {
+        for (let index = 0; index < this.valuePrice.length; index++) {
+          let element = this.valuePrice[index]; // lấy ra 1 phần tử của chuỗi
+          //tìm kiếm trong chuỗi có phần từ nào khồn thì thay
+          this.valuePrice = this.valuePrice.replace(element, '*');
+          this.eyesDisplay = 'show';
+        }
+        eyesElement.setAttribute('class', this.eyes.eyesCLose);
+      }
+    });
+    //dieu
+  }
+
+
+
+//cart + for my account
+  findCart(data: Account[]) {
+    data.forEach((item) => {
+      this.totalNumberCart += item.balance;
+    });
+    const result = data.find((item) => item.accountNumber === this.cartID);
+    this.cart = result;
   }
 }
+

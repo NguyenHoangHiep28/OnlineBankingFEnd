@@ -25948,9 +25948,9 @@ a.fc-more:hover {
 .sidebar-item.active-control a {
    color: rgba(254, 153, 1) !important;
 }
-body > app-root > app-default > app-header > div > div.app-header.header-shadow > div.app-header__content > div.app-header-right > div > div > div > div > div > div{
+/* body > app-root > app-default > app-header > div > div.app-header.header-shadow > div.app-header__content > div.app-header-right > div > div > div > div > div > div{
     transform: translate3d(0px, 44px, 0px) !important;
-}
+} */
 /* footer */
 #user-btn {
   background: transparent !important;

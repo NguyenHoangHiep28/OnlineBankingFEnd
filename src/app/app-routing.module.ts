@@ -18,7 +18,7 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    // canActivate: [AuthGuardServiceService],
+    canActivate: [AuthGuardServiceService],
     component: DefaultComponent,
     children: [
       {
@@ -49,11 +49,10 @@ const routes: Routes = [
         path: 'report',
         component: ReprotComponent,
       },
-    ],
-  },
+    ],},
   {
     path: 'login',
-    component: LoginComponent,
+    component: LoginComponent
   }
 ];
 @NgModule({

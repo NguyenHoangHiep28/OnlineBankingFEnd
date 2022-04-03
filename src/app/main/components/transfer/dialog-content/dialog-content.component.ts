@@ -33,10 +33,10 @@ verifyState = true
       otp : otpCode
     }
    this.transferSerivce.verifyTransactionOTP(verifyReq).subscribe( response => {
-    this.closeDialog()
       console.log('Verify success fully')
       alert('Verify success fully')
       }, (err) => {
+        this.closeDialog()
        this.verifyError.isError = true
     })
     }

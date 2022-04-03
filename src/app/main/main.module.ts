@@ -31,7 +31,7 @@ import { ListHistoryComponent } from './components/list-history/list-history.com
     AccountlistComponent,
     ReprotComponent,
     DialogContentComponent,
-    ListHistoryComponent,
+    ListHistoryComponent
   ],
   imports: [
     BrowserModule,
