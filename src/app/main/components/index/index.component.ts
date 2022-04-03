@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Account } from 'src/models/accounts/accounts';
 import { AccountListService } from 'src/app/services/account-list.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-index',
@@ -24,6 +25,7 @@ export class IndexComponent implements OnInit {
   };
   eyesDisplay = 'Show';
   valuePrice: any = '********';
+  circle: any;
 //diru
 
 
@@ -51,6 +53,36 @@ export class IndexComponent implements OnInit {
 
 //onInit//
   ngOnInit() {
+    
+    // chart
+    this.circle = document.getElementById('myChart');
+    const data = {
+      labels: ['Total Card', 'Total Account'],
+      datasets: [
+        {
+          label: '# of Votes',
+          data: [1000, 9999],
+          borderWidth: 1,
+          backgroundColor: ['rgba(254, 153, 1)', '#7b35bb'],
+          hoverOffset: 4,
+          // pointHoverBackgroundColor: 'red',
+        },
+      ],
+    };
+    const config: any = {
+      type: 'pie',
+      data: data,
+      //config
+      options: {
+        tooltips: { enabled: false },
+        hover: { mode: null },
+        layout: {
+          // padding: 20,
+        },
+      },
+    };
+    const myChart = new Chart(this.circle, config);
+
     this.route.params.subscribe((params) => {
       console.log('params', !params);
       if (!params['id']) {

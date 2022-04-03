@@ -11,35 +11,40 @@
           </div>
           <div class="account-left-total">
             <h3 class="">Tổng tài sản : </h3>
-            <p><span class="account-price">999,999</span>VND</p>
-            <i class="fa fa-eye"></i>
-
+            <p><span class="account-price">{{valuePrice}}</span>VND</p>
+            <div>
+              <i [className]="eyes.eyesCLose" id="eyes"></i>
+              <span class="showInfoEyes">{{eyesDisplay}} account balance</span>
+            </div>
           </div>
         </div>
       </div>
       <div class="account-right col-6">
         <div class="d-flex flex-column">
-          <div class="account-right-item">
-            <i class="fa fa-piggy-bank"></i>
+          <div class="account-right-item" id="account-card">
+            <i class="fab fa-cc-visa"></i>
             <div class="col-6">
-              <p class="account-text">My Blance</p>
-              <span class="account-price">99999 </span>
+              <p class="account-text"><a href="">My card (2)</a></p>
+              <span class="card-number">(123456789)</span>
+            </div>
+            <i class="fa fa-long-arrow-alt-right"></i>
+          </div>
+          <div class="account-right-item">
+            <i class="fa fa-dollar-sign"></i>
+            <div class="col-6">
+              <p class="account-text"><a href="">My Blance</a></p>
+              <span class="account-price">{{valuePrice}}</span>
               VND
             </div>
             <i class="fa fa-long-arrow-alt-right"></i>
           </div>
-          <div class="account-right-item">
-            <i class="fab fa-cc-visa"></i>
-            <div class="col-6">
-              <p class="account-text">My card (2)</p>
-            </div>
-            <i class="fa fa-long-arrow-alt-right"></i>
-          </div>
+
+
           <div class="account-right-item">
             <i class="fa fa-piggy-bank"></i>
             <div class="col-6">
-              <p class="account-text">saving account</p>
-              <span class="account-price">99999 </span>
+              <p class="account-text"><a href="">saving account</a></p>
+              <span class="account-price">{{valuePrice}}</span>
               VND
             </div>
             <i class="fa fa-long-arrow-alt-right"></i>
@@ -47,7 +52,7 @@
           <div class="account-right-item">
             <i class="fa fa-exchange-alt"></i>
             <div class="col-6">
-              <p class="account-text">Transfer account</p>
+              <p class="account-text"><a href="">Switch account</a> </p>
             </div>
             <i class="fa fa-long-arrow-alt-right"></i>
           </div>
@@ -62,7 +67,8 @@
         <form>
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Deposits</label>
-            <input type="number" class="form-control" id="exampleInputEmail1" min="1" placeholder="Enter the Deposits">
+            <input type="number" maxlength="10" class="form-control" id="inputDeposits" minlength="1" min="1"
+              placeholder="Enter the Deposits" step="1">
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Choose a term</label>
@@ -75,7 +81,7 @@
           </div>
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Predicted profit</label>
-            <input type="number" class="form-control" id="exampleInputEmail1" disabled placeholder="Predicted profit">
+            <input type="number" class="form-control" id="exampleInputEmail1" disabled placeholder="-">
           </div>
           <button class="btn btn-success btn-done" type="button">Done</button>
         </form>
@@ -97,10 +103,7 @@
             Total money
           </h2>
           <div class="account-left-circle">
-
-
-
-            <canvas class="circle">
+           <canvas class="circle">
             </canvas>
 
 
@@ -199,7 +202,8 @@
   </div>
 </div>
   -->
-  <div class="account">
+ 
+ <div class="account">
     <h2 class="account-heading">Welcome to {{ this.cart?.userName }}</h2>
     <div class="row">
       <div class="col-9 d-flex account-dashboard">
@@ -208,7 +212,9 @@
             <h2 class="account-left-heading">Total money in the account</h2>
             <div class="account-left-circle">
               <!-- <canvas class="circle">
+                
               </canvas> -->
+              
               <h2>100%</h2>
             </div>
             <div class="account-left-total">
@@ -290,5 +296,4 @@
       </div>
     </div>
   </div>
-  <!-- test -->
   

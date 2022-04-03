@@ -11,43 +11,52 @@ import { TransferComponent } from './main/components/transfer/transfer.component
 import { ReprotComponent } from './main/components/reprot/reprot.component';
 import { ListHistoryComponent } from './main/components/list-history/list-history.component';
 
-const routes: Routes = [{
-  path : '',
-  component : HomeComponent
-},{
-  path :'dashboard', 
-  canActivate : [AuthGuardServiceService],
-  component : DefaultComponent, 
-  children : [{
+const routes: Routes = [
+  {
     path: '',
-    component: IndexComponent
+    component: HomeComponent,
   },
   {
-    path :'profile',
-    component : UserinfoComponent
-    },
+    path: 'dashboard',
+    canActivate: [AuthGuardServiceService],
+    component: DefaultComponent,
+    children: [
+      {
+        path: '',
+        component: IndexComponent,
+      },
+      {
+        path: 'profile',
+        component: UserinfoComponent,
+      },
+      {
+        path: 'transfer',
+        component: TransferComponent,
+      },
+      {
+        path: 'account-list',
+        component: AccountlistComponent,
+      },
+      {
+        path: 'transfer',
+        component: TransferComponent,
+      },
+      {
+        path: 'list-history',
+        component: ListHistoryComponent,
+      },
+      {
+        path: 'report',
+        component: ReprotComponent,
+      },
+    ],},
   {
-    path :'transfer',
-    component : TransferComponent
-  },
-  {
-    path : 'account-list',
-    component : AccountlistComponent
-  } 
-  , {
-    path : 'report',
-    component :ReprotComponent
-  },{
-    path : 'list-history',
-    component : ListHistoryComponent
-  }]
-},
-  {
-    path : 'login',
+    path: 'login',
     component: LoginComponent
-  }]
+  }
+];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

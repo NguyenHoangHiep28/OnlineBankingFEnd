@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { HistoryAccountService } from 'src/app/services/history-account.service';
 import * as moment from 'moment';
+import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-history',
@@ -9,6 +10,9 @@ import * as moment from 'moment';
   styleUrls: ['./list-history.component.css'],
 })
 export class ListHistoryComponent implements OnInit {
+
+
+  circle: any; // variable cirle
   dataHistory: any;
   timeStart: Date | String | undefined;
   dataSub: any;
@@ -16,14 +20,60 @@ export class ListHistoryComponent implements OnInit {
   myDate2: string= moment().format('YYYY-MM-DD');
 
   
-  constructor(private historyAccountService: HistoryAccountService) {
-  }
+  constructor(private historyAccountService: HistoryAccountService) {}
+  
 
   ngOnInit(): void {
+
+    this.circle = document.getElementById('myChart');
+    const data = {
+      // labels: ['Total Balance'],
+      datasets: [
+        {
+          label: '# of Votes',
+          data: [9999],
+          borderWidth: 1,
+          backgroundColor: ['#7b35bb'],
+
+          hoverOffset: 4,
+          // pointHoverBackgroundColor: 'red',
+        },
+      ],
+    };
+    const config: any = {
+      type: 'pie',
+      data: data,
+      //config
+      options: {
+        tooltips: { enabled: false },
+        hover: { mode: null },
+        layout: {
+          // padding: 20,
+        },
+      },
+    };
+    const myChart = new Chart(this.circle, config);
     this.List();
     
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   List(): void {
     this.historyAccountService
       .historyCart(sessionStorage.getItem('Account_Number')!)

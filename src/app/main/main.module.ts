@@ -13,10 +13,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { ReprotComponent } from './components/reprot/reprot.component';
+
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogContentComponent } from './components/transfer/dialog-content/dialog-content.component';
 import { MatButtonModule } from '@angular/material/button';
+
+import { NgChartsModule } from 'ng2-charts';
 import { ListHistoryComponent } from './components/list-history/list-history.component';
+
 @NgModule({
   declarations: [
     SavingComponent,
@@ -32,23 +36,21 @@ import { ListHistoryComponent } from './components/list-history/list-history.com
   imports: [
     BrowserModule,
     CommonModule,
-    RouterModule, 
+    RouterModule,
     MatStepperModule,
     BrowserAnimationsModule,
     FormsModule,
     MatIconModule , 
     MatDialogModule ,
     MatButtonModule,
+    NgChartsModule
   ],
-  exports : [
+  exports: [
     SavingComponent,
-    TransferComponent,
     MainComponent,
     IndexComponent,
-    TransferComponent
+    TransferComponent,
   ],
-  providers : [
-   
-  ]
+  providers: [],
 })
 export class MainModule {}
