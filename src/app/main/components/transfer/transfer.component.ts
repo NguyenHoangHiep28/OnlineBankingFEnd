@@ -18,9 +18,26 @@ export class TransferComponent implements OnInit {
     private tokenStorage : TokenStorageService,
       private transferService : TransferService,
   ) { }
-  stateTransferValid = false ;
+  stateTransferValid = false;
   amounInputInvalid = false
+  ngOnInit(): void {
+    // Validate Form
+    // get currentAccountNumber
+    if(this.accountlistService.getAccountNumberDisplay()) {
+      const  req =  {
+        accountNumber : this.accountlistService.getAccountNumberDisplay()
+      }
 
+        this.accountlistService.getMyAccount(req).subscribe(respone => {
+          this.senderInfo.currentAccount =respone.accountNumber
+          this.senderInfo.senderName = respone.userName
+          this.senderInfo.balance = respone.balance
+          this.reciverInfo.content = this.senderInfo.senderName.concat(' transfer money')
+        })
+    }
+  }
+
+  
   transferInfo = {
     transactionId : '',
     transferTime : ''
@@ -37,40 +54,9 @@ export class TransferComponent implements OnInit {
       amount : 0 ,
       fee : 10000
     }
-  //   getAccountListt() : void {
-  //   if(this.tokenStorage.getToken()){
-  //     const userID = this.tokenStorage.getUser()
-  //     const accountReq = {
-  //       userId: userID
-  //     }
+  @ViewChild('textContent',{read:HTMLTextAreaElement})  textContent!: HTMLTextAreaElement;
 
-  //    this.accountlistService.getAccountList(accountReq).subscribe( accounts => this.accounts = accounts)
-  // }
-  //   }
-  //   changeAccount(number : any) {
-  // this.accountlistService.saveAccountNumberDisplay(number);
-  // window.location.reload()
-  //   }
-  // @ViewChild('textDefault',{read:HTMLTextAreaElement})  txtareaDefault!: HTMLTextAreaElement;
 
-  // ngAfterViewInit() {
-  //   this.txtareaDefault.value = 'sasasasaassa'
-  // }
-  ngOnInit(): void {
-    // Validate Form
-    // get currentAccountNumber
-    if(this.accountlistService.getAccountNumberDisplay()) {
-      const  req =  {
-        accountNumber : this.accountlistService.getAccountNumberDisplay()
-      }
-
-        this.accountlistService.getMyAccount(req).subscribe(respone => {
-          this.senderInfo.currentAccount =respone.accountNumber
-          this.senderInfo.senderName = respone.userName
-          this.senderInfo.balance = respone.balance
-        })
-    }
-  }
   openDiaLog ()  { 
     console.log(this.stateTransferValid)
     const acc_number = {
@@ -128,9 +114,17 @@ onInput(accountNumber: string) {
 onAmountInput(amount : number) {
   if(amount > this.senderInfo.balance) {
     this.amounInputInvalid = true
-  }else {
+  }else{
+      this.amounInputInvalid = false
+  }
+  if(amount < 10000){
     this.amounInputInvalid = false
   }
+}
+onContentInput(txt : string) {
+  this.reciverInfo.content = txt
+  console.log(this.reciverInfo)
+  console.log(txt)
 }
 @ViewChild('stepper',{read:MatStepper}) stepper:MatStepper | undefined;
 
