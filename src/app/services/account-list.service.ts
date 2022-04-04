@@ -41,7 +41,7 @@ export class AccountListService {
 
 getMyAccount(accountNumber : any) : Observable<Account> {
   return this.http.post<Account>(myaccount_url,accountNumber).pipe(
-    tap(_ => console.log('get Account list')),
+    tap(_ => console.log('get My Account')),
       // catchError(this.handleError<any>(`get Account List`))
   )
 }

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 // import CarouselModule
 import { CarouselModule } from 'ngx-owl-carousel-o';
@@ -35,7 +35,7 @@ export function tokenGetter () {
       }
     }),
   ],
-  providers: [authInterceptorProviders],
+  providers: [authInterceptorProviders,],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

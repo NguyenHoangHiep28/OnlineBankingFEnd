@@ -36,12 +36,33 @@
     color: white;
     margin-bottom: 1.5rem;
   }
+  .amount-message-text {
+    text-align: center;
+  }
+  .amount-message-text h2 {
+    font-size: 3.5rem;
+  }
   .reciver-container {
     color: white;
     background-color: #3f51b5;
     padding: 1rem;
     margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+  }
+  .reciver-container-icon {
+    z-index: 1;
+    position: absolute;
+    width: 200px;
+    font-size: 4rem;
+  }
+  .reciver-content {
+    width: 100%;
     text-align: center;
+  }
+  .reciver-container  h5 {
+    width: 80%;
+    font-size: 1.5rem;
   }
   .reciver-content {
     padding-left: 3rem;
@@ -58,5 +79,9 @@
   .mat-step-header {
     pointer-events: none;
   }
-
+  .btn-transfer-again {
+    margin-top: 30px;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
   /* #5d2e86 */

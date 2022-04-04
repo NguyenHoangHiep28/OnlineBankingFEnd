@@ -27,7 +27,7 @@
   </mat-step>
 
   <form #transferForm  = "ngForm"   class="">
-  <mat-step label="Step 2" [completed]="transferForm.valid">
+  <mat-step label="Step 2" [completed]="!amounInputInvalid && transferForm.valid">
     <ng-template matStepLabel>Reciver's Information</ng-template>
     <ng-template matStepContent>
       <div class="main-card mb-3 card" style="margin:50px 5%;">
@@ -42,18 +42,15 @@
                 <div class="col-sm-10"><input  name = "toName" [(ngModel)]="reciverInfo.name" readonly required  type="text"  class="form-control"></div>
                </div>
                <div class="position-relative row form-group"><label for="Amount" class="col-sm-2 col-form-label">Amount</label>
-                <div class="col-sm-10 has-error"><input name = "amount" maxlength="10" [(ngModel)]="reciverInfo.amount" (input)="onAmountInput(reciverInfo.amount)" [class.is-invalid]= "amounInputInvalid"   required  type="number" class="form-control">
+                <div class="col-sm-10 has-error"><input name = "amount" maxlength="10" [(ngModel)]="reciverInfo.amount" (input)="onAmountInput(reciverInfo.amount)" [class.is-invalid]= "amounInputInvalid"   required  type="number" min="10000" class="form-control">
                   <span *ngIf="amounInputInvalid" class="help-block text-danger amounInputInvalid">the amount transferred cannot exceed the balance</span>
+                  <span *ngIf="reciverInfo.amount < 10000" class="help-block text-danger amounInputInvalid">The money transfer must be  greater  than 10.000</span>
+
                 </div>
                </div>
                <div class="position-relative row form-group"><label for="Content" class="col-sm-2 col-form-label">Content</label>
-                <div class="col-sm-10"><textarea placeholder="" minlength="6" name="text" [(ngModel)]="reciverInfo.content"  required  maxlength="50" class="form-control"></textarea></div>
+                <div class="col-sm-10"><textarea #textContent  [defaultValue]="reciverInfo.content" (input)="onContentInput(textContent.value)"   minlength="4" name="text"   required  maxlength="50" class="form-control"></textarea></div>
                 </div>
-              <div class="position-relative row form-group"><label for="checkbox2" class="col-sm-2 col-form-label"></label>
-                  <div  class="col-sm-10">
-                      <div class="position-relative form-check"><label class="form-check-label"><input id="checkbox2" type="checkbox" class="form-check-input">LƯU NGƯỜI THỤ HƯỞNG</label></div>
-                  </div>
-              </div>
             </div>
           </div>
           <div class="back-next">
@@ -66,7 +63,7 @@
         </div>
       </ng-template>
     </mat-step>
-  </form>
+
 
   <mat-step label="Step 3" completed="false">
       <ng-template matStepLabel>Confirm Form transfer</ng-template>
@@ -74,8 +71,8 @@
         <div class="main-card mb-3 card" style="margin:50px 5%;">
           <div class="card-body"><h5 class="card-title">Sender's Information</h5>
             <form class="">
-                <div class="position-relative row form-group"><label for="fromAccountNumber" class="col-sm-2 col-form-label">From AccountNumber</label>
-                    <div class="col-sm-10"><input readonly [value]="senderInfo.currentAccount"  class="form-control"></div>
+                <div class="position-relative row form-group"><label for="fromAccountNumber" class="col-sm-2 col-form-label" >From AccountNumber</label>
+                    <div class="col-sm-10"><input readonly [value]="senderInfo.currentAccount"  class="form-control" style="height: 100%;"></div>
                 </div>
                 <h5 class="card-title">Reciver's Information</h5>
                 <div class="position-relative row form-group"><label for="toAccountName" class="col-sm-2 col-form-label">Name</label>
@@ -85,10 +82,10 @@
                   <div class="col-sm-10"><input readonly value="MT BANK" class="form-control"></div>
                 </div>
                   <div class="position-relative row form-group"><label for="examplePassword" class="col-sm-2 col-form-label">To AccountNumber</label>
-                      <div class="col-sm-10"><input  readonly [value]="reciverInfo.toAccountNumber" class="form-control"></div>
+                      <div class="col-sm-10"><input  readonly [value]="reciverInfo.toAccountNumber" class="form-control" style="height: 100%;"></div>
                   </div>
                  <div class="position-relative row form-group"><label for="examplePassword" class="col-sm-2 col-form-label">Amount</label>
-                  <div class="col-sm-10"><input readonly [value]="reciverInfo.amount"  class="form-control"></div>
+                  <div class="col-sm-10"><input  readonly [value]="reciverInfo.amount"  class="form-control"></div>
                  </div>
                  <div class="position-relative row form-group"><label for="examplePassword" class="col-sm-2 col-form-label">Fee</label>
                   <div class="col-sm-10"><input readonly [value]="reciverInfo.fee" class="form-control"></div>
@@ -126,7 +123,7 @@
       </ng-template>
   
     </mat-step>
-
+  </form>
   <!-- <mat-step label="Step 4">
       <ng-template matStepLabel> Hoàn thành</ng-template>
       <ng-template matStepContent>
@@ -164,15 +161,18 @@
   <div class="amount-message">
   <div class="amount-message-text">
       <p>You are transfer successly</p>
-      <h2></h2>
+      <h2>{{ 100000 |currency:'VND':'symbol':'4.0-3'}}</h2>
   </div>
 </div>
 
 <div class="reciver-container">
-  <h5>Account Reciver</h5>
+  <div class="reciver-container-icon">
+    <span class="ti-hand-point-right"></span>
+  </div>
   <div class="reciver-content">
-    <h2> {{ reciverInfo.name }}</h2>
-    <h4> {{ reciverInfo.toAccountNumber }}</h4>
+    <h2> {{reciverInfo.name}} </h2>
+    <h4> {{reciverInfo.toAccountNumber}} </h4>
+    <h4 >MT BANK BRANCH </h4> 
   </div>
 </div>
 
@@ -192,7 +192,7 @@
       </li>
       <li class="list-group-item"> 
         <p>Type Transfer</p>
-        <h5>Local Brand</h5>
+        <h5>Local Branch</h5>
       </li>
       <li class="list-group-item" >
         <p>Transction Code</p>

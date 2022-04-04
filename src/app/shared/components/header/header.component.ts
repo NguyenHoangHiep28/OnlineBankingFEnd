@@ -12,7 +12,6 @@ export class HeaderComponent implements OnInit {
     private tokenStorage: TokenStorageService
   ) {}
   userName = 'User Name';
-
   logOut() {
     this.tokenStorage.signOut();
     this.route.navigate(['/']);
