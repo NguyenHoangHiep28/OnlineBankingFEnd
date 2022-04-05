@@ -32,7 +32,7 @@
     align-items: center;
     justify-content: center;
     padding: 1rem 1rem;
-    background-color: #3f51b5;
+   background: linear-gradient(to bottom, #7b35bb, #5d2e86) !important;
     color: white;
     margin-bottom: 1.5rem;
   }
@@ -49,6 +49,7 @@
     margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
+      background: linear-gradient(to bottom, #7b35bb, #5d2e86) !important;
   }
   .reciver-container-icon {
     z-index: 1;
@@ -59,6 +60,7 @@
   .reciver-content {
     width: 100%;
     text-align: center;
+
   }
   .reciver-container  h5 {
     width: 80%;
@@ -70,7 +72,7 @@
 .reciver-content h2 {
   font-weight: bold;
 }
-  
+
   .list-group-item   {
     display: flex;
     justify-content: space-between;
@@ -85,3 +87,20 @@
     text-align: center;
   }
   /* #5d2e86 */
+  /* customize */
+  .transfer {
+    padding: 2rem;
+  }
+  .transfer .transfer-heading{
+    font-size: 3rem !important;
+    font-weight: 500 !important;
+    text-transform: capitalize !important;
+    letter-spacing: 2px !important;
+    margin-bottom: 1.5rem !important;
+    color: #42236a !important;
+    margin-left: 2rem !important;
+  }
+  .transfer-content .mat-step-icon {
+   background: linear-gradient(to bottom, #7b35bb, #5d2e86) !important
+  }
+

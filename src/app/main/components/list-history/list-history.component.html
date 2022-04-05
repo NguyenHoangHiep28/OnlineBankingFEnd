@@ -16,6 +16,9 @@
             <input type="date" name="timeEnd" ngModel [(ngModel)]='myDate2' required pattern="\d{4}-\d{2}-\d{2}">
           </div>
           <button type="submit" class="list-history-btn">Choose</button>
+
+          <button (click)="reset()" class="list-history-btn ms-3">Reset</button>
+
         </div>
       </form>
       <div class="list-history-query-item col-4">
@@ -116,9 +119,7 @@
           </li>
         </ul>
       </nav>
-      <p>
-        <button (click)="reset()">reset</button>
-      </p>
+
     </div>
   </div>
 </div>

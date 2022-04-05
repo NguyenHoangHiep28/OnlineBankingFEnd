@@ -26169,7 +26169,7 @@ a.fc-more:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 2.5rem 0.75rem;
+  margin: 1rem 0.75rem;
   letter-spacing: 1px;
   /* font-weight: 500; */
   max-height: 100px;
@@ -26184,9 +26184,9 @@ a.fc-more:hover {
 .app-header-control .sidebar-item:hover a {
   color: rgba(254, 153, 1);
 }
-/* .app-header-control .sidebar-item:nth-child(3):hover a {
-  color: #42236a;
-} */
+.app-header-control .sidebar-item:nth-child(3):hover a {
+  color: rgba(254, 153, 1);
+}
 /* .app-header-control .sidebar-item:hover span:last-child {
   color: rgba(254, 153, 1);
 } */
@@ -26248,6 +26248,7 @@ a.fc-more:hover {
   justify-content: space-between;
   align-items: center;
   margin-right: auto;
+  padding: 0 !important;
 }
 .btn-service button:focus{
   background: none !important;
@@ -26294,7 +26295,15 @@ a.fc-more:hover {
   /* text-align: center !important; */
     color: #42236a !important;
     margin-left: auto;
+    background: none;
+}
+.dropdown-menu li a:hover {
+  background: none;
+ color: rgba(254, 153, 1) !important;
+}
+.dropdown-menu li .active-service {
+     color: rgba(254, 153, 1) !important;
 }
 .btn-service .dropdown-menu {
-  transform: translate3d(-26px, 50px, 0px) !important;
+  transform: translate3d(-26px, 40px, 0px) !important;
 }
