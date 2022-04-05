@@ -66,7 +66,7 @@ export class IndexComponent implements OnInit {
         // console.log(this.myAccount.balance);
         this.myAccount.userName = data.userName;
         // console.log(this.myAccount.userName);
-        this.getChart(this.myAccount.balance, this.myAccount.totalNumberCart);
+        // this.getChart(this.myAccount.balance, this.myAccount.totalNumberCart);
       });
     }
   }
@@ -122,6 +122,7 @@ export class IndexComponent implements OnInit {
       }
     });
     //dieu
+    this.getChart(1000,9999);
   }
 
   getChart(myBalance: number, total: number) {

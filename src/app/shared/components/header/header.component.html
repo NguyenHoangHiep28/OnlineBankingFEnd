@@ -71,9 +71,7 @@
               list
             </span>
             <a routerLink="account-list">Account list</a>
-            <span class="material-icons">
-              chevron_right
-            </span>
+
           </li>
           <li class="sidebar-item">
             <span class="material-icons">
@@ -89,11 +87,11 @@
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li><i class="fa fa-exchange-alt"></i><a class="dropdown-item" routerLink="transfer">Transfer</a></li>
                 <li><i class="fa fa-piggy-bank"></i><a class="dropdown-item" routerLink="saving">Saving</a></li>
-                <li><i class="fa fa-exchange-alt"></i><a class="dropdown-item" routerLink="list-history">List history</a></li>
+                <li><i class="fa fa-history"></i><a class="dropdown-item" routerLink="list-history">List history</a></li>
               </ul>
             </div>
             <span class="material-icons" id="settingService">
-              chevron_right
+                {{stringArrow}}
             </span>
           </li>
         </ul>

@@ -1,6 +1,6 @@
 <div class="container">
 
-    <h2 mat-dialog-title>Verify  OTP </h2>
+    <h2 mat-dialog-title>Verify  OTP</h2>
     <p class="mt-4"> OTP has sent to  phone number
         <br>
         +84{{data?.fromAccountNumber}}
@@ -9,7 +9,7 @@
  <div>
     <input type="text" placeholder="Enter Your OTP" #otpCode class="form-control" [class.is-invalid]="verifyError.isError" >
  </div>
-    <button mat-raised-button   color="primary" type="button" id="verify" (click)="verify(otpCode.value)">Verify</button>
+    <button mat-raised-button   class="btn-transfer" type="button" id="verify" (click)="verify(otpCode.value)">Verify</button>
 </div>
 <div *ngIf="verifyError.isError" class="alert alert-danger alert-dismissible d-flex align-items-center fade show">
     <i class="bi-exclamation-octagon-fill"></i>
