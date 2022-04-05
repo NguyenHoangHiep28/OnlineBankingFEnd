@@ -1,69 +1,31 @@
-
 <div class="container">
-    <div class="list-history">
-      <h2 class="list-history-heading">transaction history query</h2>
-      <div class="list-history-account row">
-        <div class="list-history-right col-4">
-          <h3>Total balance <i class="fa fa-eye"></i></h3>
-          <div class="div-account-circle">
-            <canvas id="myChart"></canvas>
-            <!-- </div> -->
-          </div>
-        </div>
-        <div class="list-history-left col-8">
-          <h3>My card</h3>
-          <div class="list-history-card">
-            <img src="../../../../assets/images/dashboard/account-list/card (1).png" alt="" class="img-fluid col-6">
-            <div class="list-history-text col-6">
-              <h4 class="list-history-card-sub">Account Name</h4>
-              <p class="list-history-info">Vũ Văn Diệu</p>
-              <h4 class="list-history-card-sub">Card number</h4>
-              <p class="list-history-info">1234567890</p>
-              <h4 class="list-history-card-sub">Account Balance</h4>
-              <p class="list-history-info"></p>
-              <h4 class="list-history-card-sub">Status</h4>
-              <p class="list-history-info">Active</p>
-  
-            </div>
-          </div>
-        </div>
+  <div class="list-history">
+    <h2 class="list-history-heading">transaction history query</h2>
+    <div class="list-history-query row">
+      <div class="list-history-query-item col-4">
+        <h4 class="list-history-query-sub col-4">Number Card</h4>
+        <input type="text" disabled placeholder="123456789/Vũ Văn Diệu" class="col-8">
+        <div></div>
       </div>
-      <div class="list-history-query row">
-        <div class="list-history-query-item col-4">
-          <h4 class="list-history-query-sub col-4">Number Card</h4>
-          <input type="text" disabled placeholder="123456789/Vũ Văn Diệu" class="col-8">
-          <div></div>
-        </div>
-        <form #getTime="ngForm" (ngSubmit)="onSubmit(getTime)">
+      <form #getTime="ngForm" (ngSubmit)="onSubmit(getTime)">
         <div class="list-history-query-item col-4">
           <h4 class="list-history-query-sub col-4">Duration</h4>
           <div class="list-history-time">
-            <input type="date"
-            name="timeStart"
-            ngModel
-            required
-            [(ngModel)]='myDate1'
-            id="test_Datetime"
-            autocomplete="on"
-            >
-            <input type="date"
-              name="timeEnd"
-              ngModel
-              [(ngModel)]='myDate2'
-              required
-              pattern="\d{4}-\d{2}-\d{2}">
+            <input type="date" name="timeStart" ngModel required [(ngModel)]='myDate1' id="test_Datetime"
+              autocomplete="on">
+            <input type="date" name="timeEnd" ngModel [(ngModel)]='myDate2' required pattern="\d{4}-\d{2}-\d{2}">
           </div>
           <button type="submit" class="list-history-btn">Choose</button>
         </div>
       </form>
-        <div class="list-history-query-item col-4">
-          <h4 class="list-history-query-sub col-4">Format</h4>
-          <input type="text" disabled placeholder="PDF" class="col-8">
-          <button type="button" class="list-history-btn">Download</button>
-        </div>
+      <div class="list-history-query-item col-4">
+        <h4 class="list-history-query-sub col-4">Format</h4>
+        <input type="text" disabled placeholder="PDF" class="col-8">
+        <button type="button" class="list-history-btn">Download</button>
       </div>
     </div>
-      <!-- <div class="list-history-query row">
+  </div>
+  <!-- <div class="list-history-query row">
         <form #getTime="ngForm" (ngSubmit)="onSubmit(getTime)">
           <label
             >Khoảng thời gian:
@@ -75,7 +37,7 @@
               [(ngModel)]='myDate1'
               id="test_Datetime"
               autocomplete="on"
-          
+
             />
             <span class="validity"></span>
           </label>
@@ -95,73 +57,70 @@
             <button>Xác nhận</button>
           </p>
         </form>
-  
+
         <div class="list-history-query-item col-4">
           <input type="text" disabled placeholder="PDF" class="col-8" />
           <button class="list-history-btn">Download</button>
         </div>
       </div> -->
-    </div>
-  <div class="container">
-    <div class="list-history">
-      <div class="list-history-query row">
-        <div class="panel-body">
-          <div class="table-responsive">
-            <table class="table table-striped table-hover">
-              <thead>
-                <tr>
-                  <th>Code Transaction</th>
-                  <th>Time</th>
-                  <th>Amount</th>
-                  <th>Ballance</th>
-                  <th>Detail</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let item1 of dataHistory">
-                  <td>{{ item1.id }}</td>
-                  <td>{{ item1.createdAt | date: "medium" }}</td>
-                  <td>{{ item1.changedAmount | currency: "VND" | lowercase }}</td>
-                  <td>
-                    {{ item1.myCurrentBalance | currency: "VND" | lowercase }}
-                  </td>
-                  <td>
-                    <div class="input-group">
-                      <textarea readonly disabled
-                        class="form-control-plaintext"
-                        aria-label="With textarea"
-                        >{{ item1.content }}</textarea
-                      >
-                    </div>
-                  </td>
-                 
-                </tr>
-              </tbody>
-            </table>
-          </div>
+</div>
+<div class="container">
+  <div class="list-history">
+    <div class="list-history-query row">
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Code Transaction</th>
+                <th>Time</th>
+                <th>Amount</th>
+                <th>Ballance</th>
+                <th>Detail</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item1 of dataHistory">
+                <td>{{ item1.id }}</td>
+                <td>{{ item1.createdAt | date: "medium" }}</td>
+                <td>{{ item1.changedAmount | currency: "VND" | lowercase }}</td>
+                <td>
+                  {{ item1.myCurrentBalance | currency: "VND" | lowercase }}
+                </td>
+                <td>
+                  <div class="input-group">
+                    <textarea readonly disabled class="form-control-plaintext"
+                      aria-label="With textarea">{{ item1.content }}</textarea>
+                  </div>
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        <p>  
-          <button (click)="reset()">reset</button>
-        </p>
       </div>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <p>
+        <button (click)="reset()">reset</button>
+      </p>
     </div>
   </div>
+</div>
 
-  <!-- Luat -->
+<!-- Luat -->

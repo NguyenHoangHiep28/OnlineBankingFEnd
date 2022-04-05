@@ -3,19 +3,21 @@
   font-size: 16px;
   letter-spacing: 1px;
   text-transform: capitalize;
-  background-color: #EBEBFA;
+  background-color: #ebebfa;
 }
 
 .account-heading {
   font-size: 3rem;
-  font-weight: 600;
+  font-weight: 500;
   text-transform: capitalize;
   letter-spacing: 2px;
   margin-bottom: 1.5rem;
-  color: #42236a ;
+  color: #42236a;
+  margin-left: 2rem;
 }
 
 .account-dashboard {
+  font-size: 16px;
   border: 2px solid #fff;
   padding: 2rem;
   border-radius: 0.5rem;
@@ -57,7 +59,7 @@
   padding: 2rem;
   color: white;
   margin-top: 1rem;
-  background:linear-gradient(to bottom, #7b35bb, #5d2e86) !important;
+  background: linear-gradient(to bottom, #7b35bb, #5d2e86) !important;
 }
 
 .account-left-total h3 {
@@ -78,7 +80,7 @@
 .account-price {
   margin-right: 0.5rem;
   font-style: italic;
-  color:#ff9800;
+  color: #ff9800;
   font-weight: 500;
 }
 
@@ -98,7 +100,7 @@
 }
 .account-right .account-text a {
   text-decoration: none;
-  color: #EBEBFA;
+  color: #ebebfa;
   display: block;
   width: 100%;
   font-size: 1.75rem;
@@ -115,7 +117,7 @@
   cursor: pointer;
   color: #fff;
   font-weight: 400;
-  background:linear-gradient(to bottom, #7b35bb, #5d2e86) !important;
+  background: linear-gradient(to bottom, #7b35bb, #5d2e86) !important;
 }
 
 .account-right-item i:first-child {
@@ -134,7 +136,7 @@
   border: 2px solid #fff;
   padding: 2rem;
   border-radius: 0.5rem;
-    box-shadow: 0 0 1rem 0 rgb(0 0 0 / 20%);
+  box-shadow: 0 0 1rem 0 rgb(0 0 0 / 20%);
   background-color: #fff;
 }
 
@@ -169,13 +171,12 @@
   color: #ff9800;
 }
 .account-tool-form .form-select {
-   font-size: 1.5rem;
+  font-size: 1.5rem;
   color: #ff9800;
   background: linear-gradient(to bottom, #7b35bb, #5d2e86) !important;
-
 }
 .account-tool-form .form-select option {
-  background-color: #EBEBFA;
+  background-color: #ebebfa;
   color: #42236a;
 }
 .account-tool-form input:focus {
@@ -198,7 +199,6 @@
 
 .account-tool-form .form-control:focus {
   border: 1px solid #ced4da;
-
 }
 
 .account-tool-form .form-select:focus {
@@ -207,7 +207,7 @@
 
 .btn-done {
   background: linear-gradient(to bottom, #7b35bb, #5d2e86) !important;
-  color: #FF9800 !important;
+  color: #ff9800 !important;
   width: 100%;
 }
 
@@ -232,18 +232,18 @@
 }
 /* hiển thị hove mắt */
 .account-left-total #eyes {
-    position: relative;
+  position: relative;
 }
 .showInfoEyes {
   position: absolute;
   display: block;
-  transform: translate(-80px,-87px);
+  transform: translate(-80px, -87px);
   height: 50px;
   line-height: 50px;
   border-radius: 10px;
   border: 1px solid #ccc;
   background-color: #42236a;
-  opacity: 0 ;
+  opacity: 0;
   /* display: none; */
   /* top: 100%; */
   /* transform: translateX(10px); */
@@ -251,7 +251,7 @@
 }
 .showInfoEyes::after {
   position: absolute;
-  content: '';
+  content: "";
   width: 20px;
   height: 20px;
   background-color: #42236a;
@@ -259,9 +259,9 @@
   border-right-color: transparent;
   display: block;
   transform: rotate(45deg);
-      bottom: -8px;
-    left: 78px;
+  bottom: -8px;
+  left: 78px;
 }
-.account-left-total #eyes:hover~.showInfoEyes{
+.account-left-total #eyes:hover ~ .showInfoEyes {
   opacity: 1;
 }
