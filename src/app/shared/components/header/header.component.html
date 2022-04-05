@@ -1,38 +1,8 @@
 <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
-  <div class="app-header header-shadow">
-    <div class="app-header__logo">
-      <div class="logo-src"></div>
-      <!-- <div class="header__pane ml-auto">
-        <div>
-          <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
-            <span class="hamburger-box">
-              <span class="hamburger-inner"></span>
-            </span>
-          </button>
-        </div>
-      </div> -->
-    </div>
-    <div class="app-header__mobile-menu">
-      <!-- <div>
-        <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
-          <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-          </span>
-        </button>
-      </div> -->
-    </div>
-    <div class="app-header__menu">
-      <span>
-        <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
-          <span class="btn-icon-wrapper">
-            <i class="fa fa-ellipsis-v fa-w-6"></i>
-          </span>
-        </button>
-      </span>
-    </div>
+  <div class="app-header header-shadow row">
     <div class="app-header__content">
       <div class="app-header-left">
-        <h2>Welcome to {{userName}}</h2>
+        <h2>Welcome back to MTBANK</h2>
       </div>
       <div class="app-header-right">
         <div class="header-btn-lg pr-0">
@@ -64,22 +34,12 @@
         <div class="app-header-right"></div>
       </div>
     </div>
+    <div class="div-logo">
+      <img src="../../../../assets/images/dashboard/index/logoMTBank.PNG" alt="">
+    </div>
   </div>
-
   <div class="app-main">
     <div class="app-sidebar sidebar-shadow">
-      <div class="app-header__logo">
-        <div class="logo-src"></div>
-        <div class="header__pane ml-auto">
-          <div>
-            <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
-              <span class="hamburger-box">
-                <span class="hamburger-inner"></span>
-              </span>
-            </button>
-          </div>
-        </div>
-      </div>
       <div class="app-header__mobile-menu">
         <div>
           <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
@@ -100,15 +60,11 @@
       </div>
       <div class="app-header-control">
         <ul class="header-sidebar">
-
           <li class="sidebar-item active-control">
             <span class="material-icons">
               account_balance
             </span>
             <a routerLink="/dashboard">Home</a>
-            <span class="material-icons">
-              chevron_right
-            </span>
           </li>
           <li class="sidebar-item">
             <span class="material-icons">
@@ -123,17 +79,20 @@
             <span class="material-icons">
               settings
             </span>
-            <a routerLink="profile">account information</a>
-            <span class="material-icons">
-              chevron_right
-            </span>
-          </li>
-          <li class="sidebar-item">
-            <span class="material-icons">
-              savings
-            </span>
-            <a href="">Service</a>
-            <span class="material-icons">
+            <div class="dropdown btn-service">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                data-bs-toggle="dropdown" aria-expanded="false">
+
+                <span class="service-text">Service</span>
+
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><i class="fa fa-exchange-alt"></i><a class="dropdown-item" routerLink="transfer">Transfer</a></li>
+                <li><i class="fa fa-piggy-bank"></i><a class="dropdown-item" routerLink="saving">Saving</a></li>
+                <li><i class="fa fa-exchange-alt"></i><a class="dropdown-item" routerLink="list-history">List history</a></li>
+              </ul>
+            </div>
+            <span class="material-icons" id="settingService">
               chevron_right
             </span>
           </li>

@@ -12,7 +12,7 @@
     margin-bottom: 1.5rem;
     color: #42236a;
   }
-  
+
   .list-history h3 {
     font-size: 2rem;
     font-weight: 400;
@@ -80,7 +80,7 @@
   }
   .list-history-query-item input {
     display: inline-block;
-    width: 100%;
+    width: 129%;
     text-align: center;
     padding: 1rem 0;
     background: linear-gradient(to bottom, #7b35bb, #5d2e86) !important;
@@ -97,7 +97,7 @@
   .list-history-time input:first-child {
     display: block;
     margin-right: 1rem;
-    width: 100%;
+    width: 129%;
   }
   .list-history-query-item .list-history-btn {
     display: block;
