@@ -61,6 +61,15 @@
           <input type="text" disabled placeholder="PDF" class="col-8">
           <button type="button" class="list-history-btn">Download</button>
         </div>
+        <div class="list-history-query-item col-4">
+           <select class="list-history-query-sub col-4" #transitionFilter (change)="onchangeTransition(transitionFilter.value)">
+              <option selected>All</option>
+              <option 
+              *ngFor="let numberTransiton of numberTransitons"
+              [value]="numberTransiton">
+              {{numberTransiton}} transaction</option>
+           </select>
+        </div>
       </div>
     </div>
       <!-- <div class="list-history-query row">
@@ -118,7 +127,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let item1 of dataHistory">
+                <tr *ngFor="let item1 of dataHistory | paginate:{ itemsPerPage : 5, currentPage : p }">
                   <td>{{ item1.id }}</td>
                   <td>{{ item1.createdAt | date: "medium" }}</td>
                   <td>{{ item1.changedAmount | currency: "VND" | lowercase }}</td>
@@ -137,26 +146,10 @@
                  
                 </tr>
               </tbody>
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
             </table>
           </div>
         </div>
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
         <p>  
           <button (click)="reset()">reset</button>
         </p>

@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { MatStepper } from '@angular/material/stepper';
+import { Router } from '@angular/router';
 import { AccountListService } from 'src/app/services/account-list.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { TransferService } from 'src/app/services/transfer.service';
@@ -17,6 +18,7 @@ export class TransferComponent implements OnInit {
     private accountlistService: AccountListService,
     private tokenStorage : TokenStorageService,
       private transferService : TransferService,
+      private route : Router
   ) { }
   stateTransferValid = false;
   amounInputInvalid = false
@@ -34,6 +36,9 @@ export class TransferComponent implements OnInit {
           this.senderInfo.balance = respone.balance
           this.reciverInfo.content = this.senderInfo.senderName.concat(' transfer money')
         })
+    } else {
+      alert('You have to choose the account to continue')
+      this.route.navigate(['dashboard/account-list'])
     }
   }
 
@@ -63,7 +68,7 @@ export class TransferComponent implements OnInit {
       accountNumber : this.senderInfo.currentAccount
     }
 
-    // this.transferService.sendTransactionOtp(acc_number).subscribe(res => console.log(res))
+    this.transferService.sendTransactionOtp(acc_number).subscribe(res => console.log(res))
 
 
     const diaLogRef = this.diaLog.open(DialogContentComponent ,{

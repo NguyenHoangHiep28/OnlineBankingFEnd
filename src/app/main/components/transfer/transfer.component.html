@@ -101,13 +101,6 @@
                         </select>
                       </div>
                    </div>
-           
-                  
-                <div class="position-relative row form-group"><label for="checkbox2" class="col-sm-2 col-form-label"></label>
-                  <div class="col-sm-10">
-                      <div class="position-relative form-check"><label class="form-check-label"><input id="checkbox2" type="checkbox" class="form-check-input"> Save reciver's info</label></div>
-                  </div>
-              </div>
                 <div class="position-relative row form-check">
                     <div class="col-sm-10 offset-sm-2">
                       <button mat-raised-button color="primary" (click)="openDiaLog()">
@@ -161,7 +154,7 @@
   <div class="amount-message">
   <div class="amount-message-text">
       <p>You are transfer successly</p>
-      <h2>{{ 100000 |currency:'VND':'symbol':'4.0-3'}}</h2>
+      <h2>{{ reciverInfo.amount|currency:'VND':'symbol':'4.0-3'}}</h2>
   </div>
 </div>
 
