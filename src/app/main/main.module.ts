@@ -20,6 +20,8 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { NgChartsModule } from 'ng2-charts';
 import { ListHistoryComponent } from './components/list-history/list-history.component';
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import { ListHistoryComponent } from './components/list-history/list-history.com
     MatIconModule , 
     MatDialogModule ,
     MatButtonModule,
-    NgChartsModule
+    NgChartsModule,
+    NgxPaginationModule
   ],
   exports: [
     SavingComponent,

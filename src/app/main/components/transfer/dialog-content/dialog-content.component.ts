@@ -35,8 +35,8 @@ verifyState = true
    this.transferSerivce.verifyTransactionOTP(verifyReq).subscribe( response => {
       console.log('Verify success fully')
       alert('Verify success fully')
-      }, (err) => {
-        this.closeDialog()
+    }, (err) => {
+      this.closeDialog()
        this.verifyError.isError = true
     })
     }

@@ -2,29 +2,40 @@
   <div class="list-history">
     <h2 class="list-history-heading">transaction history query</h2>
     <div class="list-history-query row">
-      <div class="list-history-query-item col-4">
+      <div class="list-history-query-item col-3">
         <h4 class="list-history-query-sub col-4">Number Card</h4>
         <input type="text" disabled placeholder="123456789/Vũ Văn Diệu" class="col-8">
         <div></div>
       </div>
       <form #getTime="ngForm" (ngSubmit)="onSubmit(getTime)">
-        <div class="list-history-query-item col-4">
+        <div class="list-history-query-item col-3">
           <h4 class="list-history-query-sub col-4">Duration</h4>
-          <div class="list-history-time">
-            <input type="date" name="timeStart" ngModel required [(ngModel)]='myDate1' id="test_Datetime"
+          <div class="list-history-time col-8">
+            <input class="col-4" type="date" name="timeStart" ngModel required [(ngModel)]='myDate1' id="test_Datetime"
               autocomplete="on">
-            <input type="date" name="timeEnd" ngModel [(ngModel)]='myDate2' required pattern="\d{4}-\d{2}-\d{2}">
+            <input class="col-4"  type="date" name="timeEnd" ngModel [(ngModel)]='myDate2' required pattern="\d{4}-\d{2}-\d{2}">
+            <button  type="submit" class="list-history-btn ">Filter</button>
+            <button  (click)="reset()" class="list-history-btn ms-3 ">Reset</button> 
           </div>
-          <button type="submit" class="list-history-btn">Choose</button>
-
-          <button (click)="reset()" class="list-history-btn ms-3">Reset</button>
 
         </div>
+       
       </form>
-      <div class="list-history-query-item col-4">
-        <h4 class="list-history-query-sub col-4">Format</h4>
-        <input type="text" disabled placeholder="PDF" class="col-8">
-        <button type="button" class="list-history-btn">Download</button>
+        <div class="list-history-query-item col-3">
+          <h4 class="list-history-query-sub col-4">Format</h4>
+          <input type="text" disabled placeholder="PDF" class="col-8">
+          <button type="button" class="list-history-btn">Download</button>
+        </div>
+        <div class="list-history-query-item col-3">
+          <h4 class="list-history-query-sub col-4"> Latest Transaction  </h4>
+           <select id="select-history"  class="list-history-query-sub col-8" #transitionFilter (change)="onchangeTransition(transitionFilter.value)">
+              <option selected>All</option>
+              <option 
+              *ngFor="let numberTransiton of numberTransitons"
+              [value]="numberTransiton">
+              {{numberTransiton}} transaction</option>
+           </select>
+        </div>
       </div>
     </div>
   </div>
@@ -66,62 +77,49 @@
           <button class="list-history-btn">Download</button>
         </div>
       </div> -->
-</div>
-<div class="container">
-  <div class="list-history">
-    <div class="list-history-query row">
-      <div class="panel-body">
-        <div class="table-responsive">
-          <table class="table table-striped table-hover">
-            <thead>
-              <tr>
-                <th>Code Transaction</th>
-                <th>Time</th>
-                <th>Amount</th>
-                <th>Ballance</th>
-                <th>Detail</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let item1 of dataHistory">
-                <td>{{ item1.id }}</td>
-                <td>{{ item1.createdAt | date: "medium" }}</td>
-                <td>{{ item1.changedAmount | currency: "VND" | lowercase }}</td>
-                <td>
-                  {{ item1.myCurrentBalance | currency: "VND" | lowercase }}
-                </td>
-                <td>
-                  <div class="input-group">
-                    <textarea readonly disabled class="form-control-plaintext"
-                      aria-label="With textarea">{{ item1.content }}</textarea>
-                  </div>
-                </td>
-
-              </tr>
-            </tbody>
-          </table>
+    
+  <div class="container">
+    <div class="list-history">
+      <div class="list-history-query row">
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th>Code Transaction</th>
+                  <th>Time</th>
+                  <th>Amount</th>
+                  <th>Ballance</th>
+                  <th>Detail</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item1 of dataHistory | paginate:{ itemsPerPage : 5, currentPage : p }">
+                  <td>{{ item1.id }}</td>
+                  <td>{{ item1.createdAt | date: "medium" }}</td>
+                  <td>{{ item1.changedAmount | currency: "VND" | lowercase }}</td>
+                  <td>
+                    {{ item1.myCurrentBalance | currency: "VND" | lowercase }}
+                  </td>
+                  <td>
+                    <div class="input-group">
+                      <textarea readonly disabled
+                        class="form-control-plaintext"
+                        aria-label="With textarea"
+                        >{{ item1.content }}</textarea
+                      >
+                    </div>
+                  </td>
+                 
+                </tr>
+              </tbody>
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </table>
+          </div>
         </div>
+        <p>  
+        </p>
       </div>
-      <nav aria-label="Page navigation example">
-        <ul class="pagination">
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-            </a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-
     </div>
   </div>
-</div>
-
 <!-- Luat -->

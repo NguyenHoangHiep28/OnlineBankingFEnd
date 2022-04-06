@@ -58,4 +58,7 @@ getMyAccount(accountNumber : any) : Observable<Account> {
       }
       return ''
   }
+  removeAccountNumberDisplay() : any {
+    window.sessionStorage.removeItem(Acount_KEY)
+  }
 }

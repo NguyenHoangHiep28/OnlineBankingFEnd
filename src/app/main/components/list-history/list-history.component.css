@@ -94,10 +94,13 @@
   .list-history-query-item .list-history-time {
     display: flex;
   }
+  .list-history-time input{
+    width: 87% !important;
+  }
   .list-history-time input:first-child {
     display: block;
     margin-right: 1rem;
-    width: 129%;
+    /* width: 129%; */
   }
   .list-history-query-item .list-history-btn {
     display: block;
@@ -109,3 +112,22 @@
     border-radius: 6px;
     transform: translateX(30px);
   }
+#select-history {
+  /* background: linear-gradient(to bottom, #7b35bb, #5d2e86) !important; */
+  padding: 1rem 0;
+  background: linear-gradient(to bottom, #7b35bb, #5d2e86) !important;
+  color: #fff;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  width: 129%;
+  text-align: center;
+}
+#select-history:focus{
+  border: none ;
+  outline: none;
+}
+#select-history option {
+  color: #42236a;
+  margin-bottom: 1rem !important;
+  display: block;
+}

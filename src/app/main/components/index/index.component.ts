@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { Account } from 'src/models/accounts/accounts';

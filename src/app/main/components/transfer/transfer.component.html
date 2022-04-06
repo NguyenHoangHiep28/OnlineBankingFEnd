@@ -33,8 +33,8 @@
       </mat-step>
 
       <form #transferForm="ngForm" class="">
-        <!-- [completed]="!amounInputInvalid && transferForm.valid" -->
-        <mat-step label="Step 2" >
+        [completed]="!amounInputInvalid && transferForm.valid"
+        <mat-step label="Step 2" [completed]="!amounInputInvalid && transferForm.valid" >
           <ng-template matStepLabel>Reciver's Information</ng-template>
           <ng-template matStepContent>
             <div class="main-card mb-3 card" style="margin:50px 5%;">
@@ -195,7 +195,7 @@
       <div class="amount-message">
         <div class="amount-message-text">
           <p>You are transfer successly</p>
-          <h2>{{ 100000 |currency:'VND':'symbol':'4.0-3'}}</h2>
+          <h2>{{ reciverInfo.amount |currency:'VND':'symbol':'4.0-3'}}</h2>
         </div>
       </div>
 

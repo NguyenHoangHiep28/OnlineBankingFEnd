@@ -9,9 +9,13 @@ import { Chart } from 'chart.js';
   templateUrl: './list-history.component.html',
   styleUrls: ['./list-history.component.css'],
 })
+
+
 export class ListHistoryComponent implements OnInit {
 
+ numberTransitons : number [] = [5,10,15,20]
 
+p: number = 1 
   circle: any; // variable cirle
   dataHistory: any;
   timeStart: Date | String | undefined;
@@ -57,7 +61,15 @@ export class ListHistoryComponent implements OnInit {
     
   }
 
-
+  onchangeTransition(numFilter : string) {
+    const length : number = this.dataSub.length;
+    this.p = 1
+    if(+numFilter < length) {
+      this.dataHistory = this.dataSub.slice(0,+numFilter)
+    } else {
+      this.dataHistory = this.dataSub
+    }
+  }
 
 
 
