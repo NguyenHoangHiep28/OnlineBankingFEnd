@@ -42,7 +42,7 @@ export class TransferComponent implements OnInit {
     }
   }
 
-  
+
   transferInfo = {
     transactionId : '',
     transferTime : ''
@@ -52,8 +52,8 @@ export class TransferComponent implements OnInit {
       senderName : '' ,
       balance : 0
     }
-    reciverInfo = { 
-      toAccountNumber : '', 
+    reciverInfo = {
+      toAccountNumber : '',
       name: '',
       content : '',
       amount : 0 ,
@@ -62,7 +62,7 @@ export class TransferComponent implements OnInit {
   @ViewChild('textContent',{read:HTMLTextAreaElement})  textContent!: HTMLTextAreaElement;
 
 
-  openDiaLog ()  { 
+  openDiaLog ()  {
     console.log(this.stateTransferValid)
     const acc_number = {
       accountNumber : this.senderInfo.currentAccount
@@ -73,7 +73,7 @@ export class TransferComponent implements OnInit {
 
     const diaLogRef = this.diaLog.open(DialogContentComponent ,{
       data : { fromAccountNumber : this.senderInfo.currentAccount,
-        toAccountNumber : this.reciverInfo.toAccountNumber , 
+        toAccountNumber : this.reciverInfo.toAccountNumber ,
         amount : this.reciverInfo.amount ,
         content : this.reciverInfo.content,
         }
@@ -106,7 +106,7 @@ onInput(accountNumber: string) {
 
       this.accountlistService.getMyAccount(req).subscribe(response => {
          this.reciverInfo.name =  response.userName
-        
+
       },(error) => {
         this.reciverInfo.name = ''
 
@@ -139,7 +139,7 @@ transferAgain() {
     toAccountNumber :'',
     name  :'',
     content : '',
-    amount : 0 , 
+    amount : 0 ,
     fee : 10000
   }
   if(this.stepper) {
@@ -147,6 +147,6 @@ transferAgain() {
   }
 }
 
- 
+
   }
 

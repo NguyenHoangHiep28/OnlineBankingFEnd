@@ -49,11 +49,12 @@ const routes: Routes = [
         path: 'report',
         component: ReprotComponent,
       },
-    ],},
+    ],
+  },
   {
     path: 'login',
-    component: LoginComponent
-  }
+    component: LoginComponent,
+  },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

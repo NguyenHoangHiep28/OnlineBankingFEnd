@@ -15,7 +15,7 @@ export class DialogContentComponent implements OnInit {
 verifyError : error = {isError : false}
 verifyState = true
 
-  constructor(@Inject(MAT_DIALOG_DATA)public data:any , 
+  constructor(@Inject(MAT_DIALOG_DATA)public data:any ,
               private transferSerivce : TransferService,
               private dialogRef :MatDialogRef<DialogContentComponent>
               )  { }
@@ -26,7 +26,7 @@ verifyState = true
   closeDialog() {
     this.dialogRef.close(this.verifyState)
   }
-  
+
     verify(otpCode : string) {
     const verifyReq = {
       accountNumber : this.data.fromAccountNumber,
@@ -35,9 +35,8 @@ verifyState = true
    this.transferSerivce.verifyTransactionOTP(verifyReq).subscribe( response => {
       console.log('Verify success fully')
       alert('Verify success fully')
+    }, (err) => {
       this.closeDialog()
-      }, (err) => {
-     
        this.verifyError.isError = true
     })
     }
