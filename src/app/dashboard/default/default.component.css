@@ -26307,6 +26307,3 @@ a.fc-more:hover {
 .btn-service .dropdown-menu {
   transform: translate3d(-26px, 40px, 0px) !important;
 }
-.transfer-content .mat-step-icon {
-  background: linear-gradient(to bottom, #7b35bb, #5d2e86) !important;
- }
