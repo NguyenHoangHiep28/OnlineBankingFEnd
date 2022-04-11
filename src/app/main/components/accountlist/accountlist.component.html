@@ -70,7 +70,7 @@
                               <button *ngIf="account.active === 1 ; else lockedBlock" class="btn btn-primary " (click)="onLock(account.accountNumber)">Lock
                               </button>
                               <ng-template #lockedBlock>
-                                <button  class="btn btn-primary">UnLocked
+                                <button  class="btn btn-primary" (click)="onUnLocked(account.accountNumber)">UnLocked
                                 </button>
                               </ng-template>
                           </div>

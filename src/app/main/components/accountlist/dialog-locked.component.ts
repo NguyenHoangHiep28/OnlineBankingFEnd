@@ -26,7 +26,7 @@ export class DialogLockedComponent implements OnInit {
         accountNumber : this.data.acc_number
       }
       this.accountService.lockAccount(req).subscribe(respone => {
-          console.log(respone)
+         this.accountService.removeAccountNumberDisplay()
           alert('The account is   locked successly')
           this.closeDialog(true)
       })

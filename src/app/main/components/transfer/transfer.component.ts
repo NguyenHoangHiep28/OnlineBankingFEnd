@@ -71,6 +71,7 @@ export class TransferComponent implements OnInit {
       accountNumber : accountNumber,
       phoneNumber : phoneNumber
     }
+    console.log(req)
     this.transferService.sendTransactionOtp(req).subscribe(res => console.log(res))
     
     const diaLogRef = this.diaLog.open(DialogContentComponent ,{

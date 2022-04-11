@@ -49,6 +49,17 @@ onLock (acc_number : string) : void {
       }
     })
 }
+onUnLocked(acc_number : string) : void {
+  const req = {
+    accountNumber : acc_number
+  }
+  this.accountlistService.unlockAccount(req).subscribe(respone => {
+    console.log(respone)
+    alert('This account has been unlocked')
+    window.location.reload()
+  })
+}
+
   ngOnInit(): void {
 
     if(this.accountlistService.getAccountNumberDisplay()) {

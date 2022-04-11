@@ -6,6 +6,7 @@ import { Account } from 'src/models/accounts/accounts';
 const listaccount_url = "https://localhost:44367/controller/accounts"
 const myaccount_url = "https://localhost:44367/controller/myaccount"
 const lockAccount_url = "https://localhost:44367/controller/lock-account"
+const unlockAccount_url = "https://localhost:44367/controller/unlock-account"
 
 
 const Acount_KEY = 'Account_Number';
@@ -51,7 +52,11 @@ lockAccount (acc_number : any) : Observable<any>  {
     tap(_ => console.log(`locked account ${acc_number}`)),
   )
 }
-
+unlockAccount(acc_number : any) : Observable<any> {
+  return this.http.post(unlockAccount_url,acc_number).pipe(
+    tap(_ => console.log(`unlocked account ${JSON.stringify(acc_number)}`)),
+  )
+}
 
   saveAccountNumberDisplay(accountNumber : string) {
     window.sessionStorage.removeItem(Acount_KEY);
