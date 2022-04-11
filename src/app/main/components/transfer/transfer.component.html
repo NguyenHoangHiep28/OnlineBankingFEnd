@@ -128,7 +128,8 @@
                   </div>
                   <div class="position-relative row form-group"><label for="exampleText"
                       class="col-sm-2 col-form-label">Content</label>
-                    <div class="col-sm-10"><textarea name="text" readonly [value]="reciverInfo.content === '' ? senderInfo.senderName + ' transfer money' : reciverInfo.content" maxlength="50"
+                    <div class="col-sm-10"><textarea name="text" readonly [value]="reciverInfo.content === '' ? senderInfo.senderName + ' transfer' : reciverInfo.content" maxlength="50"
+
                         class="form-control"></textarea></div>
                   </div>
 
@@ -195,7 +196,7 @@
 
       <div class="amount-message">
         <div class="amount-message-text">
-          <p>You are transfer successly</p>
+          <p>Trasfer Successfully!</p>
           <h2>{{ reciverInfo.amount |currency:'VND':'symbol':'4.0-3'}}</h2>
         </div>
       </div>

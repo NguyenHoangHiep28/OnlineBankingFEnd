@@ -15,7 +15,7 @@ export class HistoryAccountService {
     return this.http.post<any[]>(
       environment.api + 'controller/transaction-history',
       {
-        accountNumber,
+        accountNumber : accountNumber
       },
       httpOntions
     );
