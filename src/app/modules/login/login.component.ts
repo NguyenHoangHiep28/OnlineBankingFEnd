@@ -29,9 +29,9 @@ export class LoginComponent implements OnInit {
         
         
         if(data.errors){
-          this.errMessage = JSON.stringify(data.errors)       
+          this.errMessage = data.errors      
           console.log(this.errMessage)
-          if((this.errMessage).includes('locked!')){
+          if((JSON.stringify(this.errMessage)).includes('locked!')){
             this.supMessage = 'Please contact support center'
           }  
           if (logginModalElement) {
