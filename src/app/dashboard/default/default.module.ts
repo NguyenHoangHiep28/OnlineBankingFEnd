@@ -9,8 +9,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
     DefaultComponent,
   ],
   imports: [
-    CommonModule, 
-    RouterModule,
     SharedModule,
   ],
   providers :[]

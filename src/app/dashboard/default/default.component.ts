@@ -13,13 +13,17 @@ export class DefaultComponent implements OnInit {
 
     // console.log(currentAcctive);
     for (let index = 0; index < listSideBarElement.length; index++) {
-      listSideBarElement[index].addEventListener('click', () => {
+      listSideBarElement[index].addEventListener('click', (event) => {
         let currentAcctive = document.querySelector(
           '.sidebar-item.active-control'
         );
         currentAcctive?.classList.remove('active-control');
         listSideBarElement[index].classList.add('active-control');
       });
+      if (index == 2) {
+        listSideBarElement[index].classList.remove('active-control');
+        break;
+      }
     }
   }
 }

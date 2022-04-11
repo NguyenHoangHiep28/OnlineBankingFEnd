@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {  NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 // import CarouselModule
 import { CarouselModule } from 'ngx-owl-carousel-o';
@@ -21,7 +21,6 @@ export function tokenGetter () {
   imports: [
     BrowserModule,
     CarouselModule,
-    BrowserAnimationsModule,
     AppRoutingModule,
     DefaultModule,
     FormsModule,
@@ -35,7 +34,7 @@ export function tokenGetter () {
       }
     }),
   ],
-  providers: [authInterceptorProviders],
+  providers: [authInterceptorProviders,],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

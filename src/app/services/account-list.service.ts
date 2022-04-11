@@ -5,6 +5,7 @@ import { Observable ,of } from 'rxjs';
 import { Account } from 'src/models/accounts/accounts';
 const listaccount_url = "https://localhost:44367/controller/accounts"
 const myaccount_url = "https://localhost:44367/controller/myaccount"
+const lockAccount_url = "https://localhost:44367/controller/lock-account"
 
 
 const Acount_KEY = 'Account_Number';
@@ -41,8 +42,13 @@ export class AccountListService {
 
 getMyAccount(accountNumber : any) : Observable<Account> {
   return this.http.post<Account>(myaccount_url,accountNumber).pipe(
-    tap(_ => console.log('get Account list')),
+    tap(_ => console.log('get My Account')),
       // catchError(this.handleError<any>(`get Account List`))
+  )
+}
+lockAccount (acc_number : any) : Observable<any>  {
+  return this.http.post(lockAccount_url,acc_number).pipe(
+    tap(_ => console.log(`locked account ${acc_number}`)),
   )
 }
 
@@ -57,5 +63,8 @@ getMyAccount(accountNumber : any) : Observable<Account> {
         return acc_number
       }
       return ''
+  }
+  removeAccountNumberDisplay() : any {
+    window.sessionStorage.removeItem(Acount_KEY)
   }
 }

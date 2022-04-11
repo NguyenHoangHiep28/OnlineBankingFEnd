@@ -34,7 +34,19 @@ html {
 .text-secondary {
     color: #fe9901 !important;
 }
-
+/* customize .btn-transfer */
+.btn-transfer {
+  padding: 1rem 3rem;
+    background: linear-gradient(to bottom, #7b35bb, #5d2e86) !important;
+    color: rgba(254, 153, 1);
+    border: 1px solid transparent;
+    border-radius: 6px;
+}
+.transfer-content .mat-step-icon {
+    background: linear-gradient(to bottom, #7b35bb, #5d2e86) !important;
+   }
+   
+/* customize service*/
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

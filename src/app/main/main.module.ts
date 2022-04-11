@@ -20,6 +20,9 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { NgChartsModule } from 'ng2-charts';
 import { ListHistoryComponent } from './components/list-history/list-history.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { DialogLockedComponent } from './components/accountlist/dialog-locked.component';
+
 
 @NgModule({
   declarations: [
@@ -32,6 +35,7 @@ import { ListHistoryComponent } from './components/list-history/list-history.com
     ReprotComponent,
     DialogContentComponent,
     ListHistoryComponent,
+    DialogLockedComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,8 @@ import { ListHistoryComponent } from './components/list-history/list-history.com
     MatIconModule , 
     MatDialogModule ,
     MatButtonModule,
-    NgChartsModule
+    NgChartsModule,
+    NgxPaginationModule
   ],
   exports: [
     SavingComponent,
