@@ -20,7 +20,8 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { NgChartsModule } from 'ng2-charts';
 import { ListHistoryComponent } from './components/list-history/list-history.component';
-import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+import {NgxPaginationModule} from 'ngx-pagination';
+import { DialogLockedComponent } from './components/accountlist/dialog-locked.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
     AccountlistComponent,
     ReprotComponent,
     DialogContentComponent,
-    ListHistoryComponent
+    ListHistoryComponent,
+    DialogLockedComponent,
   ],
   imports: [
     BrowserModule,

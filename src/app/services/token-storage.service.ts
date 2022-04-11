@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 const TOKEN_KEY = 'auth-token';
 const USER_KEY =  'auth-user';
+const PHONENUMBER_key = 'auth_phonenumber'
 @Injectable({
   providedIn: 'root'
 })
@@ -27,5 +28,17 @@ export class TokenStorageService {
       return JSON.parse(user);
     }
     return {};
+  }
+
+  public savePhoneNumber (phoneNumber : any) : void  {
+    window.sessionStorage.removeItem(PHONENUMBER_key);
+    window.sessionStorage.setItem(PHONENUMBER_key, JSON.stringify(phoneNumber));
+  }
+  public getPhoneNumber () : any {
+    const phoneNumber = window.sessionStorage.getItem(PHONENUMBER_key);
+    if(phoneNumber) {
+      return phoneNumber
+    }
+    return ''
   }
 }

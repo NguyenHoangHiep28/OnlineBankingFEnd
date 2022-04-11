@@ -37,7 +37,7 @@ export class IndexComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private accountlistService: AccountListService,
-    private tokenStorage: TokenStorageService
+    private tokenStorage: TokenStorageService ,
   ) {}
 
   //  getlist
@@ -64,13 +64,18 @@ export class IndexComponent implements OnInit {
         // console.log(this.myAccount.balance);
         this.myAccount.userName = data.userName;
         // console.log(this.myAccount.userName);
-        // this.getChart(this.myAccount.balance, this.myAccount.totalNumberCart);
+        this.getChart(this.myAccount.balance, this.myAccount.totalNumberCart);
       });
+    } else {
+      alert('You have to choose the account to continue')
+      this.router.navigate(['dashboard/account-list'])
     }
-  }
+    }
 
   //onInit//
   ngOnInit() {
+
+
     this.getAccountListt();
     this.getMyAccount();
     // console.log(this.myAccount.balance);
@@ -120,7 +125,7 @@ export class IndexComponent implements OnInit {
       }
     });
     //dieu
-    this.getChart(1000,9999);
+
   }
 
   getChart(myBalance: number, total: number) {
@@ -129,11 +134,11 @@ export class IndexComponent implements OnInit {
 
     // console.log(myBalance);
     const data = {
-      labels: ['Total Card', 'Total Account'],
+      labels: ['This Account Balance', 'Other Accounts Balance'],
       datasets: [
         {
           label: '# of Votes',
-          data: [myBalance, total],
+          data: [myBalance, total - myBalance],
           borderWidth: 1,
           backgroundColor: ['rgba(254, 153, 1)', '#7b35bb'],
           hoverOffset: 4,
@@ -161,6 +166,6 @@ export class IndexComponent implements OnInit {
     data.forEach((item) => {
       this.myAccount.totalNumberCart += item.balance;
     });
-    // console.log(this.myAccount.totalNumberCart);
+    console.log(this.myAccount.totalNumberCart);
   }
 }

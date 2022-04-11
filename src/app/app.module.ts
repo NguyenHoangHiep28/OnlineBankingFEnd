@@ -21,7 +21,6 @@ export function tokenGetter () {
   imports: [
     BrowserModule,
     CarouselModule,
-    BrowserAnimationsModule,
     AppRoutingModule,
     DefaultModule,
     FormsModule,

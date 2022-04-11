@@ -5,7 +5,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { MainModule } from '../main/main.module';
 // import carousel
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 @NgModule({
   declarations: [HeaderComponent, FooterComponent],

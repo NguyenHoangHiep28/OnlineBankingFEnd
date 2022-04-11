@@ -33,8 +33,7 @@
       </mat-step>
 
       <form #transferForm="ngForm" class="">
-        [completed]="!amounInputInvalid && transferForm.valid"
-        <mat-step label="Step 2" [completed]="!amounInputInvalid && transferForm.valid" >
+        <mat-step label="Step 2" [completed]="(!amounInputInvalid && !reciverInfo.isLocked) && transferForm.valid">
           <ng-template matStepLabel>Reciver's Information</ng-template>
           <ng-template matStepContent>
             <div class="main-card mb-3 card" style="margin:50px 5%;">
@@ -52,7 +51,9 @@
                       onkeypress='return event.charCode >= 48 && event.charCode <= 57'
                       (input)="onInput(reciverInfo.toAccountNumber)" maxlength="12" type="text" name="toAccountNumber"
                       [(ngModel)]="reciverInfo.toAccountNumber" required class="form-control"
-                      [class.is-invalid]="!reciverInfo.toAccountNumber"></div>
+                      [class.is-invalid]="!reciverInfo.toAccountNumber && transferForm.touched"/>
+                      <span *ngIf="reciverInfo.isLocked" class="help-block text-danger">This account has been locked . Please choose another account</span>
+                    </div>
                 </div>
                 <div class="position-relative row form-group"><label for="toName" class="col-sm-2 col-form-label">To
                     Name</label>
@@ -64,9 +65,9 @@
                   <div class="col-sm-10 has-error"><input name="amount" maxlength="10" [(ngModel)]="reciverInfo.amount"
                       (input)="onAmountInput(reciverInfo.amount)" [class.is-invalid]="amounInputInvalid" required
                       type="number" min="10000" class="form-control">
-                    <span *ngIf="amounInputInvalid" class="help-block text-danger amounInputInvalid">the amount
+                    <span *ngIf="amounInputInvalid" class="help-block text-danger">the amount
                       transferred cannot exceed the balance</span>
-                    <span *ngIf="reciverInfo.amount < 10000" class="help-block text-danger amounInputInvalid">The money
+                    <span *ngIf="reciverInfo.amount < 10000 && transferForm.touched" class="help-block text-danger">The money
                       transfer must be greater than 10.000</span>
 
                   </div>
@@ -127,7 +128,7 @@
                   </div>
                   <div class="position-relative row form-group"><label for="exampleText"
                       class="col-sm-2 col-form-label">Content</label>
-                    <div class="col-sm-10"><textarea name="text" readonly [value]="reciverInfo.content" maxlength="50"
+                    <div class="col-sm-10"><textarea name="text" readonly [value]="reciverInfo.content === '' ? senderInfo.senderName + ' transfer money' : reciverInfo.content" maxlength="50"
                         class="form-control"></textarea></div>
                   </div>
 

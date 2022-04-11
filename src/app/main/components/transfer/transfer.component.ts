@@ -11,7 +11,8 @@ import { DialogContentComponent } from './dialog-content/dialog-content.componen
   selector: 'app-transfer',
   templateUrl: './transfer.component.html',
   styleUrls: ['../../../dashboard/default/default.component.css','./transfer.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
+
 })
 export class TransferComponent implements OnInit {
   constructor( public diaLog : MatDialog,
@@ -50,32 +51,32 @@ export class TransferComponent implements OnInit {
     senderInfo  = {
       currentAccount : '',
       senderName : '' ,
-      balance : 0
+      balance : 0 ,
     }
     reciverInfo = {
       toAccountNumber : '',
       name: '',
       content : '',
       amount : 0 ,
-      fee : 10000
+      fee : 10000,
+      isLocked : false
     }
   @ViewChild('textContent',{read:HTMLTextAreaElement})  textContent!: HTMLTextAreaElement;
 
 
   openDiaLog ()  {
-    console.log(this.stateTransferValid)
-    const acc_number = {
-      accountNumber : this.senderInfo.currentAccount
+    const accountNumber = this.accountlistService.getAccountNumberDisplay()
+    const phoneNumber = this.tokenStorage.getPhoneNumber()
+    const req = {
+      accountNumber : accountNumber,
+      phoneNumber : phoneNumber
     }
-
-    this.transferService.sendTransactionOtp(acc_number).subscribe(res => console.log(res))
-
-
+    this.transferService.sendTransactionOtp(req).subscribe(res => console.log(res))
+    
     const diaLogRef = this.diaLog.open(DialogContentComponent ,{
-      data : { fromAccountNumber : this.senderInfo.currentAccount,
-        toAccountNumber : this.reciverInfo.toAccountNumber ,
-        amount : this.reciverInfo.amount ,
-        content : this.reciverInfo.content,
+      data : { 
+        phoneNumber : phoneNumber,
+        accountNumber : accountNumber
         }
     });
 
@@ -89,7 +90,6 @@ export class TransferComponent implements OnInit {
           content : this.reciverInfo.content,
           type : 1
         }
-        console.log(transferReq)
         this.transferService.transferMoney(transferReq).subscribe( (respone:any) => {
           this.transferInfo.transactionId = respone.transactionId
           this.transferInfo.transferTime = respone.transferTime
@@ -103,10 +103,13 @@ onInput(accountNumber: string) {
       const req =  {
         accountNumber : accountNumber
       }
-
       this.accountlistService.getMyAccount(req).subscribe(response => {
-         this.reciverInfo.name =  response.userName
-
+        if(response.active === 0 ) {
+          this.reciverInfo.isLocked = true
+        } else {
+          this.reciverInfo.isLocked = false
+        } 
+        this.reciverInfo.name =  response.userName
       },(error) => {
         this.reciverInfo.name = ''
 
@@ -128,8 +131,6 @@ onAmountInput(amount : number) {
 }
 onContentInput(txt : string) {
   this.reciverInfo.content = txt
-  console.log(this.reciverInfo)
-  console.log(txt)
 }
 @ViewChild('stepper',{read:MatStepper}) stepper:MatStepper | undefined;
 
@@ -140,7 +141,8 @@ transferAgain() {
     name  :'',
     content : '',
     amount : 0 ,
-    fee : 10000
+    fee : 10000 ,
+    isLocked : false
   }
   if(this.stepper) {
     this.stepper.reset()
