@@ -1,18 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { windowToggle } from 'rxjs';
+import { AccountListService } from 'src/app/services/account-list.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { Account } from 'src/models/accounts/accounts';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['../../../dashboard/default/default.component.css'],
+  styleUrls: ['../../../dashboard/default/default.component.css','./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
   constructor(
     private route: Router,
-    private tokenStorage: TokenStorageService
+    private tokenStorage: TokenStorageService ,
+    private accountlistService : AccountListService
   ) { }
-  userName = 'User Name';
+  accounts :  Account []  = []
   // <span class="material-icons" >
   // keyboard_arrow_down
   // < /span>
@@ -23,6 +25,15 @@ export class HeaderComponent implements OnInit {
     this.route.navigate(['/']);
   }
   ngOnInit(): void {
+
+    const userID = this.tokenStorage.getUser();
+    const req = {
+      userID : userID
+    }
+
+   if(userID) {
+     this.accountlistService.getAccountList(req).subscribe(data => this.accounts = data)
+   }
     const listServiceElement = document.querySelectorAll('.dropdown-item');
     // let spanArrow = document.getElementById('settingService')?.textContent;
     // const listSideBar = document.querySelectorAll('.sidebar-item');

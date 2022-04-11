@@ -12,11 +12,8 @@ import * as bootstrap from 'bootstrap';
 })
 
 export class LoginComponent implements OnInit {
-
   errMessage ?= ''
   supMessage = '';
-
-
   constructor(private router: Router,
             private authSerice : AuthService,
             private tokenStorage : TokenStorageService) { }
@@ -45,11 +42,12 @@ export class LoginComponent implements OnInit {
         } else { 
           this.tokenStorage.saveToken(data.token);
           this.tokenStorage.saveUser(data.id);
+          this.tokenStorage.savePhoneNumber(data.phone)
           this.router.navigate(["/dashboard/account-list"]);
         }
       }
     );
-      
+
   }
 
 }

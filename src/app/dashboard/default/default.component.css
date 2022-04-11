@@ -11822,7 +11822,7 @@ button,
 }
 
 .fixed-sidebar .app-main .app-main__outer {
-  padding-top: 3rem;
+  /* padding-top: 3rem; */
   z-index: 9;
 }
 

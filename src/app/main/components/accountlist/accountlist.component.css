@@ -24,7 +24,7 @@
 }
 
 .card  {
-    height: 190px;
+    height: 90px;
 }
 .bg-dark {
     background-image: linear-gradient(200deg
@@ -44,7 +44,7 @@
 
 .colum  {
     position: absolute;
-    left: 30px;
+    top: 40% ;
 }
 .colum a {
     text-decoration: none;
@@ -119,12 +119,23 @@
     margin: 0 auto;
     margin-top: 15px;
 }
-
-.atm-lock {
-    margin: 0 auto;
-    margin-top: 15px;
+.card-action {
+    display: flex;
+    margin-top: 1.5rem;
 }
 
+.atm-select {
+    margin: 0 auto;
+}
+
+.card-img-overlay {
+    top: 0
+}
+
+.position-relative  span {
+    background-color: #5d2e86;
+    color: #fe9901 !important;
+}
 
 
 

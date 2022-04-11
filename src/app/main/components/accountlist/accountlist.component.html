@@ -1,6 +1,3 @@
-<!-- <div *ngFor="let accounts of  acccount">
-    <div *ngIf=""
-</div> -->
 
 <div class="accountlist_page">
     <div class="card bg-dark text-white">
@@ -18,7 +15,7 @@
       </div>
       <div class="main-content" *ngFor="let account of accounts">
 
-        <div class=" mb-3 main-item" *ngIf="account.accountNumber !== currentAccount">
+        <div class=" mb-3 main-item">
             <div class="atm-item">
                 <img src="../../../../assets/images/dashboard/account-list/card (1).png" class="img-fluid rounded-start" alt="...">
                 <div class="text-atm">
@@ -36,8 +33,8 @@
                                 Active
                               </div>
                               <ng-template #StatusLock>
-                                <div  class="badge  text-wrap">
-                                Locked
+                                <div  class="badge  text-wrap fs-6">
+                               LOCKED
                               </div>
                               </ng-template>                            
                         </li>
@@ -61,10 +58,25 @@
                         </li>
                         
                       </ul>
+                      <div class="card-action">
+                          <div class="atm-select position-relative">
+                              <button class="btn btn-primary " (click)="onSelect(account.accountNumber)" [disabled]="((account.active !== 1) || account.accountNumber == currentAccount)">Select Card
+                              </button>
+                              <span *ngIf="account.accountNumber == currentAccount && (account.active === 1)" class="position-absolute top-0 start-100 translate-middle badge rounded-pill">
+                                  selected
+                                </span>
+                          </div>
+                          <div>
+                              <button *ngIf="account.active === 1 ; else lockedBlock" class="btn btn-primary " (click)="onLock(account.accountNumber)">Lock
+                              </button>
+                              <ng-template #lockedBlock>
+                                <button  class="btn btn-primary">UnLocked
+                                </button>
+                              </ng-template>
+                          </div>
+                      </div>
                 </div>
-                <div class="atm-lock">
-                    <button class="btn btn-primary" (click)="onSelect(account.accountNumber)">Select Card</button>
-                </div>
+                
             </div>
            
             </div>
