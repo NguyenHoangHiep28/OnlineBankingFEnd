@@ -1,118 +1,129 @@
-<div class="container">
-  <div class="list-history">
-    <h2 class="list-history-heading">transaction history query</h2>
-    <div class="list-history-query row">
-      <div class="list-history-query-item col-3">
-        <h4 class="list-history-query-sub col-4">Account</h4>
-        <input type="text" disabled [placeholder]="currentAccount" class="col-8">
-        <div></div>
-      </div>
-      <form #getTime="ngForm" (ngSubmit)="onSubmit(getTime)">
+<div class="div-listory container">
+  <div class="">
+    <div class="list-history">
+      <h2 class="list-history-heading">transaction history query</h2>
+      <div class="list-history-query d-flex">
         <div class="list-history-query-item col-3">
-          <h4 class="list-history-query-sub col-4">Duration</h4>
-          <div class="list-history-time col-8">
-            <input class="col-4" type="date" name="timeStart" ngModel required [(ngModel)]='myDate1' id="test_Datetime"
-              autocomplete="on">
-            <input class="col-4"  type="date" name="timeEnd" ngModel [(ngModel)]='myDate2' required pattern="\d{4}-\d{2}-\d{2}">
-            <button  type="submit" class="list-history-btn ">Filter</button>
-            <button  (click)="reset()" class="list-history-btn ms-3 ">Reset</button> 
-          </div>
-
+          <h4 class="list-history-query-sub col-4">Account</h4>
+          <input
+            type="text"
+            disabled
+            [placeholder]="currentAccount"
+            class="col-8"
+          />
+          <div></div>
         </div>
-       
-      </form>
+        <form #getTime="ngForm" (ngSubmit)="onSubmit(getTime)">
+          <div class="list-history-query-item col-3">
+            <h4 class="list-history-query-sub col-4">Duration</h4>
+            <div class="list-history-time col-8">
+              <input
+                class="col-4"
+                type="date"
+                name="timeStart"
+                ngModel
+                required
+                [(ngModel)]="myDate1"
+                id="test_Datetime"
+                autocomplete="on"
+              />
+              <input
+                class="col-4"
+                type="date"
+                name="timeEnd"
+                ngModel
+                [(ngModel)]="myDate2"
+                required
+                pattern="\d{4}-\d{2}-\d{2}"
+              />
+              <button type="submit" class="list-history-btn">Filter</button>
+            </div>
+          </div>
+        </form>
         <div class="list-history-query-item col-3">
           <h4 class="list-history-query-sub col-4">Format</h4>
-          <input type="text" disabled placeholder="PDF" class="col-8">
-          <button type="button" class="list-history-btn" (click)="madePDF()">Download</button>
+          <input type="text" disabled placeholder="PDF" class="col-8" />
+          <button type="button" class="list-history-btn" (click)="madePDF()">
+            Download
+          </button>
         </div>
         <div class="list-history-query-item col-3">
-          <h4 class="list-history-query-sub col-4"> Latest Transaction  </h4>
-           <select id="select-history"  class="list-history-query-sub col-8" #transitionFilter (change)="onchangeTransition(transitionFilter.value)">
-              <option selected>All</option>
-              <option 
+          <h4 class="list-history-query-sub col-4">Latest Transaction</h4>
+          <select
+            id="select-history"
+            class="list-history-query-sub col-8"
+            #transitionFilter
+            (change)="onchangeTransition(transitionFilter.value)"
+          >
+            <option selected>All</option>
+            <option
               *ngFor="let numberTransiton of numberTransitons"
-              [value]="numberTransiton">
-              {{numberTransiton}} transaction</option>
-           </select>
+              [value]="numberTransiton"
+            >
+              {{ numberTransiton }} transaction
+            </option>
+          </select>
         </div>
       </div>
     </div>
   </div>
-  <!-- <div class="list-history-query row">
-        <form #getTime="ngForm" (ngSubmit)="onSubmit(getTime)">
-          <label
-            >Khoảng thời gian:
-            <input
-              type="date"
-              name="timeStart"
-              ngModel
-              required
-              [(ngModel)]='myDate1'
-              id="test_Datetime"
-              autocomplete="on"
-
-            />
-            <span class="validity"></span>
-          </label>
-          <label
-            >đến
-            <input
-              type="date"
-              name="timeEnd"
-              ngModel
-              [(ngModel)]='myDate2'
-              required
-              pattern="\d{4}-\d{2}-\d{2}"
-            />
-            <span class="validity"></span>
-          </label>
-          <p>
-            <button>Xác nhận</button>
-          </p>
-        </form>
-
-        <div class="list-history-query-item col-4">
-          <input type="text" disabled placeholder="PDF" class="col-8" />
-          <button class="list-history-btn">Download</button>
+  <div class="">
+    <div class="list-history">
+      <div class="list-history-query d-flex">
+        <div class="table-reponsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col-2">T-Code</th>
+                <th scope="col-2">Time</th>
+                <th scope="col-2">Amount</th>
+                <th scope="col-1">PartnerAccNumber</th>
+                <th scope="col-1">PartnerName</th>
+                <th scope="co-2">Content</th>
+                <th scope="col-2">Balance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let item1 of dataHistory
+                    | paginate: { itemsPerPage: 5, currentPage: p }
+                "
+              >
+                <td>{{ item1.id }}</td>
+                <td>{{ item1.createdAt | date: "medium" }}</td>
+                <td>{{ item1.changedAmount | currency: "VND" | lowercase }}</td>
+                <td>{{ item1.partnerAccountNumber }}</td>
+                <td>{{ item1.partnerName }}</td>
+                <td>
+                  <textarea
+                    class="form-control-plaintext"
+                    aria-label="With textarea"
+                    style="height: 50px; width: 200px"
+                    readonly
+                  >
+   {{ item1.content }}</textarea
+                  >
+                </td>
+                <td>
+                  {{ item1.myCurrentBalance | currency: "VND" | lowercase }}
+                </td>
+              </tr>
+            </tbody>
+            <tr>
+              <td
+                colspan="4
+                    "
+              >
+                <pagination-controls
+                  (pageChange)="p = $event"
+                  class="mt-3"
+                ></pagination-controls>
+              </td>
+            </tr>
+          </table>
         </div>
-      </div> -->
-    
-      <div class="container-fluid">
-        <div class="list-history">
-        <div class="list-history-query row">
-          <div class="table-reponsive">
-            <table class="table" >
-              <thead>
-                <tr>
-                  <th scope="col-2">T-Code</th>
-                  <th scope="col-2">Time</th>
-                  <th scope="col-2">Amount</th>
-                  <th scope="col-1">PartnerAccNumber</th>
-                  <th scope="col-1">PartnerName</th>
-                  <th scope="co-2">Content</th>
-                  <th scope="col-2">Balance</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let item1 of dataHistory | paginate:{ itemsPerPage : 5, currentPage : p }">
-                  <td>{{ item1.id }}</td>
-                  <td>{{ item1.createdAt | date: "medium" }}</td>
-                  <td>{{ item1.changedAmount | currency: "VND" | lowercase }}</td>
-                  <td>{{ item1.partnerAccountNumber }}</td>
-                  <td>{{ item1.partnerName }}</td>
-                  <td><textarea class="form-control-plaintext"
-                    aria-label="With textarea" style="height: 50px; width: 200px;" readonly> {{ item1.content }}</textarea></td>
-                  <td>{{ item1.myCurrentBalance | currency: "VND" | lowercase }}</td>
-                </tr>
-              </tbody>
-                <tr>
-                  <td colspan="4
-                  "> <pagination-controls (pageChange)="p = $event" class="mt-3"></pagination-controls></td>
-                </tr>
-            </table>
-          </div>
       </div>
-      </div>
-      </div>
-<!-- Luat -->
+    </div>
+  </div>
+</div>

@@ -8,6 +8,7 @@ const pdfMake = require('pdfmake/build/pdfmake.js');
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { AccountListService } from 'src/app/services/account-list.service';
 import { Router } from '@angular/router';
+import { AuthGuardServiceService } from 'src/app/auth/auth-guard-service.service';
 
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 
@@ -36,11 +37,13 @@ export class ListHistoryComponent implements OnInit {
   
   constructor(private historyAccountService: HistoryAccountService,
               private AccountService : AccountListService,
-              private route : Router) {
+              private route : Router,
+              private authGuardService : AuthGuardServiceService) {
   }
   
 
   ngOnInit(): void {
+    this.authGuardService.canActivate()
     if (this.AccountService.getAccountNumberDisplay()) {
       this.currentAccount = this.AccountService.getAccountNumberDisplay()
     }else {
@@ -175,9 +178,5 @@ export class ListHistoryComponent implements OnInit {
         return item;
       }
     });
-  }
-
-  reset(): void {
-    this.dataHistory = this.dataSub;
   }
 }

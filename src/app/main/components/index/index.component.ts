@@ -5,6 +5,8 @@ import { Account } from 'src/models/accounts/accounts';
 import { AccountListService } from 'src/app/services/account-list.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { Chart } from 'chart.js';
+import { SavingService } from 'src/app/services/saving.service';
+import { SavingPackages } from 'src/models/accounts/saving-package';
 
 @Component({
   selector: 'app-index',
@@ -12,18 +14,22 @@ import { Chart } from 'chart.js';
   styleUrls: ['./index.component.css'],
 })
 export class IndexComponent implements OnInit {
-  // LUAT
-  // cartID: string | number | undefined;
-  // cart: Account | undefined;
+  savingPackages : SavingPackages[] = []
+  depositCaclute = {
+    amount : 0,
+    predictProfit : 0,
+  }
 
   myAccount = {
     currentAccount: '',
     balance: 0,
     userName: '',
     totalNumberCart: 0,
+    savingTotalBalance : 0,
+    savingBooksCount : 0
   };
   valuePrice = '**********';
-  //dieu
+
   eyes = {
     eyesOpen: 'fa fa-eye',
     eyesCLose: 'fa fa-eye-slash',
@@ -31,16 +37,39 @@ export class IndexComponent implements OnInit {
   eyesDisplay = 'Show';
 
   circle: any;
-  //diru
+
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private accountlistService: AccountListService,
-    private tokenStorage: TokenStorageService ,
+    private tokenStorage: TokenStorageService , 
+    private savingService : SavingService
   ) {}
-
-  //  getlist
+  getSavingPackages() : void {
+    this.savingService.getSavingPackages().subscribe(respone => {
+      this.savingPackages = respone
+    })
+  }
+caculateDeposit(savingID : any) {
+    if(Number(savingID)> 0){
+      let saving !: SavingPackages ;
+ 
+      this.savingPackages.forEach(element => {
+        if(element.id == Number(savingID)){
+          saving = element;
+        }
+      });
+      const interest = this.depositCaclute.amount * (saving.interest/100) * (saving.duration /12)
+      this.depositCaclute.predictProfit = Math.round(this.depositCaclute.amount + interest)
+    }else {
+      alert('You are not choose a tern')
+     this.depositCaclute = {
+        amount : 0,
+        predictProfit : 0,
+      }
+    }
+}
   getAccountListt(): void {
     if (this.tokenStorage.getToken()) {
       const userID = this.tokenStorage.getUser();
@@ -50,7 +79,17 @@ export class IndexComponent implements OnInit {
       this.accountlistService
         .getAccountList(accountReq)
         .subscribe((accounts) => this.findCart(accounts));
+        const getSavingReq = {
+          userID : userID,
+          accountNumber : this.myAccount.currentAccount
+        }
+
+        this.accountlistService.getMyDashboard(getSavingReq).subscribe((respone : any) => {
+          this.myAccount.savingTotalBalance = respone.savingTotalBalance
+          this.myAccount.savingBooksCount = respone.savingBooksCount
+        })
     }
+
   }
   getMyAccount(): void {
     if (this.accountlistService.getAccountNumberDisplay()) {
@@ -61,9 +100,7 @@ export class IndexComponent implements OnInit {
       };
       this.accountlistService.getMyAccount(req).subscribe((data) => {
         this.myAccount.balance = data.balance;
-        // console.log(this.myAccount.balance);
         this.myAccount.userName = data.userName;
-        // console.log(this.myAccount.userName);
         this.getChart(this.myAccount.balance, this.myAccount.totalNumberCart);
       });
     } else {
@@ -72,23 +109,19 @@ export class IndexComponent implements OnInit {
     }
     }
 
-  //onInit//
+
   ngOnInit() {
-
-
-    this.getAccountListt();
     this.getMyAccount();
-    // console.log(this.myAccount.balance);
+    this.getAccountListt();
+    this.getSavingPackages()
 
-    //dieu
     const eyesElement = document.querySelector('#eyes');
     eyesElement?.addEventListener('click', () => {
       let listAccountPrice = document.querySelectorAll('.account-price');
-      // thay đổi tất cả số thành *
+
       if (this.valuePrice.includes('*')) {
         for (let index = 0; index < listAccountPrice.length; index++) {
-          // let valueHTML = listAccountPrice[index].innerHTML;
-          // console.log(this.myAccount.totalNumberCart.toString());
+
           switch (index) {
             case 0:
               listAccountPrice[index].innerHTML = this.myAccount.totalNumberCart
@@ -101,18 +134,20 @@ export class IndexComponent implements OnInit {
                 .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
               break;
             case 2:
-              listAccountPrice[index].innerHTML = '0';
+              console.log(this.myAccount.savingTotalBalance)
+              listAccountPrice[index].innerHTML = this.myAccount.savingTotalBalance
+                .toString()
+                .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
               break;
           }
           this.valuePrice = 'showing';
           this.eyesDisplay = 'Unshow';
         }
-        // đổi thẻ eyes
+
         eyesElement.setAttribute('class', this.eyes.eyesOpen);
       } else if (!this.valuePrice.includes('*')) {
         for (let index = 0; index < listAccountPrice.length; index++) {
-          let element = listAccountPrice[index]; // lấy ra 1 phần tử của chuỗi
-          //tìm kiếm trong chuỗi có phần từ nào khồn thì thay
+          let element = listAccountPrice[index]; 
           let hiddenString = '';
           for (let i = 0; i < element.innerHTML.length; i++) {
             hiddenString += '*';
@@ -124,15 +159,15 @@ export class IndexComponent implements OnInit {
         eyesElement.setAttribute('class', this.eyes.eyesCLose);
       }
     });
-    //dieu
+   
 
   }
 
   getChart(myBalance: number, total: number) {
-    // chart
+
     this.circle = document.getElementById('myChart');
 
-    // console.log(myBalance);
+
     const data = {
       labels: ['This Account Balance', 'Other Accounts Balance'],
       datasets: [
@@ -142,26 +177,26 @@ export class IndexComponent implements OnInit {
           borderWidth: 1,
           backgroundColor: ['rgba(254, 153, 1)', '#7b35bb'],
           hoverOffset: 4,
-          // pointHoverBackgroundColor: 'red',
+
         },
       ],
     };
     const config: any = {
       type: 'pie',
       data: data,
-      //config
+
       options: {
         tooltips: { enabled: false },
         hover: { mode: null },
         layout: {
-          // padding: 20,
+
         },
       },
     };
     const myChart = new Chart(this.circle, config);
   }
 
-  //cart + for my account
+
   findCart(data: Account[]) {
     data.forEach((item) => {
       this.myAccount.totalNumberCart += item.balance;

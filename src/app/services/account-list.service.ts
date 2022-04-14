@@ -7,7 +7,7 @@ const listaccount_url = "https://localhost:44367/controller/accounts"
 const myaccount_url = "https://localhost:44367/controller/myaccount"
 const lockAccount_url = "https://localhost:44367/controller/lock-account"
 const unlockAccount_url = "https://localhost:44367/controller/unlock-account"
-
+const dashboard_url = "https://localhost:44367/controller/dashboard"
 
 const Acount_KEY = 'Account_Number';
 
@@ -39,6 +39,12 @@ export class AccountListService {
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
+  }
+
+  getMyDashboard (myReq : any) : Observable<any> {
+    return this.http.post(dashboard_url,myReq).pipe(
+      tap(_ => console.log ('get dashboard successsly !'))
+    )
   }
 
 getMyAccount(accountNumber : any) : Observable<Account> {

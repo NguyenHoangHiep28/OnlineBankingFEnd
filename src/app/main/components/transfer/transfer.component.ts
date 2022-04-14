@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@an
 import {MatDialog} from '@angular/material/dialog';
 import { MatStepper } from '@angular/material/stepper';
 import { Router } from '@angular/router';
+import { AuthGuardServiceService } from 'src/app/auth/auth-guard-service.service';
 import { AccountListService } from 'src/app/services/account-list.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { TransferService } from 'src/app/services/transfer.service';
@@ -18,14 +19,16 @@ export class TransferComponent implements OnInit {
   constructor( public diaLog : MatDialog,
     private accountlistService: AccountListService,
     private tokenStorage : TokenStorageService,
-      private transferService : TransferService,
-      private route : Router
+    private transferService : TransferService,
+    private route : Router,
+    private authGuardService : AuthGuardServiceService
   ) { }
   stateTransferValid = false;
   amounInputInvalid = false
+  checkCurrentAccount = false
   ngOnInit(): void {
-    // Validate Form
-    // get currentAccountNumber
+    this.authGuardService.canActivate()
+
     if(this.accountlistService.getAccountNumberDisplay()) {
       const  req =  {
         accountNumber : this.accountlistService.getAccountNumberDisplay()
@@ -101,21 +104,30 @@ export class TransferComponent implements OnInit {
 
 onInput(accountNumber: string) {
     if (accountNumber.length === 12) {
-      const req =  {
-        accountNumber : accountNumber
+      if (accountNumber === this.senderInfo.currentAccount) {
+        this.checkCurrentAccount = true
+        this.reciverInfo.isLocked = false
+      } else {
+        this.checkCurrentAccount = false
+        const req =  {
+          accountNumber : accountNumber
+        }
+        this.accountlistService.getMyAccount(req).subscribe(response => {
+          if(response.active === 0 ) {
+            this.reciverInfo.isLocked = true
+          } else {
+            this.reciverInfo.isLocked = false
+          } 
+          this.reciverInfo.name =  response.userName
+        },(error) => {
+          this.reciverInfo.name = ''
+  
+        })
       }
-      this.accountlistService.getMyAccount(req).subscribe(response => {
-        if(response.active === 0 ) {
-          this.reciverInfo.isLocked = true
-        } else {
-          this.reciverInfo.isLocked = false
-        } 
-        this.reciverInfo.name =  response.userName
-      },(error) => {
-        this.reciverInfo.name = ''
 
-      })
     }else {
+      this.reciverInfo.isLocked = false
+      this.checkCurrentAccount = false
       this.reciverInfo.name = ''
     }
 }

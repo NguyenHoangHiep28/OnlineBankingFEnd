@@ -1,0 +1,126 @@
+.list-saving{
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #37236a;
+  padding: 0 2rem 2rem 2rem;
+  text-transform: capitalize;
+}
+ h2 {
+  font-size: 3rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+  color: #42236a;
+}
+.list-saving-content {
+  border: 2px solid #fff;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 1rem 0 rgb(0 0 0 / 20%);
+  background-color: #fff;
+}
+.list-saving-item {
+  border: 2px solid #fff;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+.list-saving-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+.list-saving-text p {
+  margin: 1rem;
+}
+.list-saving-text input {
+  display: block;
+  padding: 0.5rem;
+}
+.list-saving-img {
+  position: relative;
+}
+.list-saving-img button {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translate(15%,-82%);
+}
+.body {
+  position:relative !important;
+}
+.modal-view-card-saving {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0,0.3);
+  position: absolute;
+  z-index: 100;
+  left: 0;
+  top: 0;
+}
+.show-modal {
+  display: none;
+  transition: all .5s;
+}
+.modal-content {
+  border: 2px solid #fff;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 1rem 0 rgb(0 0 0 / 20%);
+  background-color: #fff;
+  max-width: 600px;
+  text-transform: capitalize;
+  color: #37236a;
+  position: absolute;
+  transform: translate(50%,50%);
+  right: 50%;
+  bottom: 45%;
+}
+.modal-content-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.modal-content label {
+  display: block;
+  font-size: 1.5rem;
+}
+.modal-content input {
+  padding: 1rem;
+  margin: 5px;
+  width: 100%;
+}
+.modal-content input:focus {
+  outline: none;
+}
+.modal-content button {
+  margin-top: 8px;
+  padding: 1rem 2rem;
+}
+.modal-title-card {
+  font-size: 3rem;
+  border-bottom: 1px solid #000;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-title-card i {
+  transform: translateX(100px);
+  cursor: pointer;
+}
+.modal-content-text form {
+  width: 60%;
+}
+
+.list-saving-msg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}

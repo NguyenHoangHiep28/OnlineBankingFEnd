@@ -1,0 +1,70 @@
+<div  class="container" style="padding: 2rem;">
+  <div *ngIf="savings" class="list-saving">
+    <h2>list of savings accounts</h2>
+    <div class="list-saving-content">
+      <div class="row">
+        <div *ngFor="let saving of savings" class="list-saving-item col-6 row">
+          <div class="list-saving-img col-6">
+            <img src="../../../../assets/images/dashboard/account-list/card (1).png" alt="" class="img-fluid">
+            <button class="btn-transfer btn-modal" (click)="showModel(saving.id)">View Details {{saving.id}}</button>
+          </div>
+          <div class="list-saving-text col-6">
+            <p>Saving Number</p>
+            <input type="text" readonly [value]="saving.savingId" disabled>
+            <p>total money</p>
+            <input type="text" readonly [value]="saving.amount" disabled>
+            <p>date of maturity</p>
+            <input type="text"[value]="saving.endDate | date: 'mediumDate'" disabled>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div  *ngIf="!savings" class="list-saving-msg">
+  <h2 style="text-transform: capitalize">you have not registered to save book</h2>
+  </div>
+</div>
+<div class="modal-view-card-saving show-modal">
+  <div class="modal-content container">
+    <div class="modal-content-text">
+      <h2 class="modal-title-card">
+        final settlement<i class="fa fa-times" id="close-modal"></i>
+      </h2>
+      <form action="">
+        <div class="form-group">
+          <label for="">Source account</label>
+          <input type="text" class="form-control" [value]="currentAccount" readonly>
+        </div>
+        <div class="form-group">
+          <label for="">Amount of money</label>
+          <input type="text"  class="form-control" [value]="modalInfo.amount + ' VND'" readonly>
+        </div>
+        <div class="form-group">
+          <label for="">Period</label>
+          <input type="text"  class="form-control" [value]="modalInfo.period" readonly>
+        </div>
+        <div class="form-group">
+          <label for="">Type of saving
+          </label>
+          <input type="text"  class="form-control" [value]="modalInfo.type" readonly>
+        </div>
+        <div class="form-group">
+          <label for="">Interest rate
+          </label>
+          <input type="text"  class="form-control"[value]="modalInfo.interestRate + ' %'" readonly>
+        </div>
+        <div class="form-group">
+          <label for="">Expect amount
+          </label>
+          <input type="text"  class="form-control" [value]="modalInfo.expectAmount" readonly>
+        </div>
+        <div class="form-group">
+          <label for="">Time
+          </label>
+          <input type="text"  class="form-control" [value]="date.toString()" readonly>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

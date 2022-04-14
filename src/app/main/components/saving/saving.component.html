@@ -1,1 +1,65 @@
-<p>This is saving page</p>
+<div class="container" style="padding: 2rem;">
+    <div class="saving">
+        <h2 class="saving-heading">Saving money</h2>
+        <div class="saving-form">
+          <h3 class="form-heading">my deposit account</h3>
+          <form #creatSavingForm ="ngForm" (ngSubmit)="isChecked && creatSavingForm.controls['listPackage'].value !== 'Select Packages' && creatSavingForm.valid && onCreateSaving(creatSavingForm)" >
+              <div class="row form-item">
+                <label for="" class="col-4">Source Account</label>
+                <input type="text" [placeholder]="myDepositAccount.accountNumber" class="col-8" readonly>
+              </div>
+              <div class="row form-item">
+                <label for="" class="col-4">amount of money</label>
+                <div class="col-8 form-input">
+                  <input type="number" min="1000000" [max]="myDepositAccount.balance" name="userInputAmount"  ngModel required  #userInputAmount ="ngModel" placeholder="Enter the amount">
+                  <span *ngIf="creatSavingForm.controls['userInputAmount'].touched && userInputAmount.value < 1000000" class="help-block text-danger">Deposit amount must be greater than 1000000</span>
+                  <span *ngIf="userInputAmount.errors?.['required'] && creatSavingForm.submitted && creatSavingForm.controls['userInputAmount'].pristine" class="help-block text-danger">amount cannot be empty</span>
+                  <span *ngIf="userInputAmount.errors?.['max']" class="help-block text-danger">Amount cannot be over the balance</span>
+                </div>
+              </div>
+              <div class="row form-item">
+                <label for="" class="col-4">Period</label>
+                <div class="col-8 form-input">
+                  <select  name="listPackage" #listPackage [(ngModel)]="listPackage.value"> 
+                    <option selected>Select Packages</option>
+                    <option *ngFor="let savingPackage of savingPackages"  [value]="savingPackage.id">
+                        Package {{savingPackage.id}} :  {{savingPackage.packageName}} - {{savingPackage.interest}} % /year
+                    </option>
+                  </select>
+                  <span *ngIf="listPackage.value === 'Select Packages' && creatSavingForm.submitted"  class="help-block text-danger">Please select package saving</span>
+
+                </div>
+                
+              </div>
+              <div class="row form-item">
+                <label for="" class="col-4">Form of settlement</label>
+                <input type="text" placeholder="Interest paid to deposit account" class="col-8" readonly>
+              </div>
+              <div class="row form-item">
+                <label for="" class="col-4">OTP</label>
+                <div class="otp-input col-8">
+                  <div class="flex-row">
+                    <input type="text" name="userInputOTP"  ngModel placeholder="Please send and enter 6 numbers otp" class="col-8" maxlength="6" minlength="6">
+                    <button type="button" class="btn btn-primary" id="btn-sendOTP">Send OTP
+                      <span id="time" style="padding:0"></span>
+                    </button>
+                  </div>
+                  <span *ngIf="isVerify || creatSavingForm.controls['userInputOTP'].invalid" class="help-block text-danger">OTP code is incorrert. Please try agian</span>
+                  </div>
+              </div>
+              <div class="row form-item">
+                <p class="col-8" style="text-transform: none;">Any transaction related to TKS account will be considered by the Bank as valid and irrevocable and the Customer commits to take full responsibility and obligation to the Bank for such transactions.</p>
+               <div class="col-4" style="display: flex;">
+                <input type="checkbox" name="rules" id="checkForm" required [(ngModel)]="isChecked">  
+                <p style="height: 60px;">I agree to the bank's policies and terms 
+                  <span *ngIf="!isChecked && creatSavingForm.submitted" class="help-block text-danger" style="margin-top: 15px;display: block;">You must agree the rules</span>     
+               </div>          
+              </div>
+                <button class="btn-transfer btn-done">Done</button>
+          </form>
+        </div>
+    </div>
+  </div>
+  
+  <!-- Modal -->
+  
