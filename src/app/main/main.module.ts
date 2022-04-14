@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { SavingComponent } from './components/saving/saving.component';
 import { RouterModule } from '@angular/router';
 import { IndexComponent } from './components/index/index.component';
-import { UserinfoComponent } from './components/userinfo/userinfo.component';
 import { TransferComponent } from './components/transfer/transfer.component';
 import { MainComponent } from './main.component';
 import { AccountlistComponent } from './components/accountlist/accountlist.component';
@@ -22,6 +21,7 @@ import { NgChartsModule } from 'ng2-charts';
 import { ListHistoryComponent } from './components/list-history/list-history.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { DialogLockedComponent } from './components/accountlist/dialog-locked.component';
+import { ListSavingComponent } from './components/list-saving/list-saving.component';
 
 
 @NgModule({
@@ -30,12 +30,12 @@ import { DialogLockedComponent } from './components/accountlist/dialog-locked.co
     TransferComponent,
     MainComponent,
     IndexComponent,
-    UserinfoComponent,
     AccountlistComponent,
     ReprotComponent,
     DialogContentComponent,
     ListHistoryComponent,
     DialogLockedComponent,
+    ListSavingComponent,
   ],
   imports: [
     BrowserModule,

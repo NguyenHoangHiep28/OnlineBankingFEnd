@@ -6,7 +6,8 @@ import { Account } from 'src/models/accounts/accounts';
 const listaccount_url = "https://localhost:44367/controller/accounts"
 const myaccount_url = "https://localhost:44367/controller/myaccount"
 const lockAccount_url = "https://localhost:44367/controller/lock-account"
-
+const unlockAccount_url = "https://localhost:44367/controller/unlock-account"
+const dashboard_url = "https://localhost:44367/controller/dashboard"
 
 const Acount_KEY = 'Account_Number';
 
@@ -40,6 +41,12 @@ export class AccountListService {
     };
   }
 
+  getMyDashboard (myReq : any) : Observable<any> {
+    return this.http.post(dashboard_url,myReq).pipe(
+      tap(_ => console.log ('get dashboard successsly !'))
+    )
+  }
+
 getMyAccount(accountNumber : any) : Observable<Account> {
   return this.http.post<Account>(myaccount_url,accountNumber).pipe(
     tap(_ => console.log('get My Account')),
@@ -51,7 +58,11 @@ lockAccount (acc_number : any) : Observable<any>  {
     tap(_ => console.log(`locked account ${acc_number}`)),
   )
 }
-
+unlockAccount(acc_number : any) : Observable<any> {
+  return this.http.post(unlockAccount_url,acc_number).pipe(
+    tap(_ => console.log(`unlocked account ${JSON.stringify(acc_number)}`)),
+  )
+}
 
   saveAccountNumberDisplay(accountNumber : string) {
     window.sessionStorage.removeItem(Acount_KEY);

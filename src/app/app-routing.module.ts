@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DefaultComponent } from './dashboard/default/default.component';
 import { LoginComponent } from './modules/login/login.component';
-import { UserinfoComponent } from './main/components/userinfo/userinfo.component';
 import { IndexComponent } from './main/components/index/index.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuardServiceService } from './auth/auth-guard-service.service';
@@ -10,6 +9,8 @@ import { AccountlistComponent } from './main/components/accountlist/accountlist.
 import { TransferComponent } from './main/components/transfer/transfer.component';
 import { ReprotComponent } from './main/components/reprot/reprot.component';
 import { ListHistoryComponent } from './main/components/list-history/list-history.component';
+import { ListSavingComponent } from './main/components/list-saving/list-saving.component';
+import { SavingComponent } from './main/components/saving/saving.component';
 
 const routes: Routes = [
   {
@@ -26,12 +27,8 @@ const routes: Routes = [
         component: IndexComponent,
       },
       {
-        path: 'profile',
-        component: UserinfoComponent,
-      },
-      {
-        path: 'transfer',
-        component: TransferComponent,
+        path: 'saving',
+        component: SavingComponent,
       },
       {
         path: 'account-list',
@@ -46,8 +43,8 @@ const routes: Routes = [
         component: ListHistoryComponent,
       },
       {
-        path: 'report',
-        component: ReprotComponent,
+        path: 'list-saving',
+        component: ListSavingComponent,
       },
     ],
   },
