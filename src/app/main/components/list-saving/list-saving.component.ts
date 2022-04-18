@@ -36,7 +36,7 @@ export class ListSavingComponent implements OnInit {
   ngOnInit(): void {
     this.authGuardService.canActivate()
     this.getListSaving()
-    
+    console.log(this.savings)
   }
   showModel(id : number) {
     console.log(id);

@@ -14,9 +14,10 @@ import { SavingPackages } from 'src/models/accounts/saving-package';
   styleUrls: ['./saving.component.css']
 })
 export class SavingComponent implements OnInit {
+  
 isChecked = false
 isVerify = false
-date : number = 60 ;
+date : number = 60
 savingPackages : SavingPackages[] = []
 myDepositAccount   = {
   accountNumber: '' ,
@@ -105,7 +106,7 @@ stopInterval(interval : any) {
   }
 
   onCreateSaving(savingForm : NgForm) : void {
-
+    
     const packageID = Number(savingForm.controls['listPackage'].value)
     const amount = Number(savingForm.controls['userInputAmount'].value)
     const otp = savingForm.controls['userInputOTP'].value
@@ -122,6 +123,7 @@ stopInterval(interval : any) {
       this.savingService.CreateSavingBook(createSavingReq).subscribe(()=> {
         alert('Create SavingBook succeeslly!')
         this.router.navigate(['dashboard/list-saving'])
+        this.date = 60
       })
     },(error : any) => {
       this.isVerify = true

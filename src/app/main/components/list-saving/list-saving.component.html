@@ -1,12 +1,12 @@
 <div  class="container" style="padding: 2rem;">
-  <div *ngIf="savings" class="list-saving">
+  <div *ngIf="savings.length" class="list-saving">
     <h2>list of savings accounts</h2>
     <div class="list-saving-content">
       <div class="row">
         <div *ngFor="let saving of savings" class="list-saving-item col-6 row">
           <div class="list-saving-img col-6">
             <img src="../../../../assets/images/dashboard/account-list/card (1).png" alt="" class="img-fluid">
-            <button class="btn-transfer btn-modal" (click)="showModel(saving.id)">View Details {{saving.id}}</button>
+            <button class="btn-transfer btn-modal" (click)="showModel(saving.id)">View Details</button>
           </div>
           <div class="list-saving-text col-6">
             <p>Saving Number</p>
@@ -21,15 +21,16 @@
       </div>
     </div>
   </div>
-  <div  *ngIf="!savings" class="list-saving-msg">
-  <h2 style="text-transform: capitalize">you have not registered to save book</h2>
-  </div>
+  <div  *ngIf="!savings.length" class="list-saving-msg">
+    <h2 style="text-transform: capitalize">you have not registered to save book</h2>
+    </div>
 </div>
+
 <div class="modal-view-card-saving show-modal">
   <div class="modal-content container">
     <div class="modal-content-text">
       <h2 class="modal-title-card">
-        final settlement<i class="fa fa-times" id="close-modal"></i>
+        saving details<i class="fa fa-times" id="close-modal"></i>
       </h2>
       <form action="">
         <div class="form-group">

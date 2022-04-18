@@ -44,10 +44,8 @@
   position: relative;
 }
 .list-saving-img button {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  transform: translate(15%,-82%);
+  margin-top: 15px;
+  transform: translate(25%);
 }
 .body {
   position:relative !important;

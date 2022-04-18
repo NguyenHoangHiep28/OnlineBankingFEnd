@@ -60,8 +60,17 @@ caculateDeposit(savingID : any) {
           saving = element;
         }
       });
-      const interest = this.depositCaclute.amount * (saving.interest/100) * (saving.duration /12)
-      this.depositCaclute.predictProfit = Math.round(this.depositCaclute.amount + interest)
+      if(this.depositCaclute.amount >= 1000000) {
+        const interest = this.depositCaclute.amount * (saving.interest/100) * (saving.duration /12)
+        this.depositCaclute.predictProfit = Math.round(this.depositCaclute.amount + interest)
+      }else {
+        alert('Deposit amount must be from 1,000,000 upwards')
+        this.depositCaclute = {
+          amount : 0,
+          predictProfit : 0,
+        }
+      }
+
     }else {
       alert('You are not choose a tern')
      this.depositCaclute = {

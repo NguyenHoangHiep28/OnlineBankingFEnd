@@ -20,7 +20,7 @@ verifyState = true
               )  { }
 
   ngOnInit(): void {
-    this.phoneNumber = this.phoneNumber.slice(1)
+   this.phoneNumber = JSON.parse(this.data.phoneNumber)
   }
   closeDialog() {
     this.dialogRef.close(this.verifyState)

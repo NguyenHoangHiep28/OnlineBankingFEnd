@@ -78,6 +78,9 @@
   justify-content: space-between;
   align-items: center;
 }
+.list-group-item h5 {
+  font-size: 1.6rem;
+}
 .mat-step-header {
   pointer-events: none;
 }
@@ -105,4 +108,8 @@
   letter-spacing: 2px !important;
   margin-bottom: 1.5rem !important;
   color: #42236a !important;
+}
+
+.form-control {
+  font-size: 1.6rem;
 }

@@ -12,7 +12,7 @@
                 <label for="" class="col-4">amount of money</label>
                 <div class="col-8 form-input">
                   <input type="number" min="1000000" [max]="myDepositAccount.balance" name="userInputAmount"  ngModel required  #userInputAmount ="ngModel" placeholder="Enter the amount">
-                  <span *ngIf="creatSavingForm.controls['userInputAmount'].touched && userInputAmount.value < 1000000" class="help-block text-danger">Deposit amount must be greater than 1000000</span>
+                  <span *ngIf="creatSavingForm.controls['userInputAmount'].touched && userInputAmount.value < 1000000" class="help-block text-danger">Deposit amount must be from 1,000,000 upwards.</span>
                   <span *ngIf="userInputAmount.errors?.['required'] && creatSavingForm.submitted && creatSavingForm.controls['userInputAmount'].pristine" class="help-block text-danger">amount cannot be empty</span>
                   <span *ngIf="userInputAmount.errors?.['max']" class="help-block text-danger">Amount cannot be over the balance</span>
                 </div>

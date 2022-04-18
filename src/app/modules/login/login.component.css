@@ -18,9 +18,7 @@
     align-items: center;
     justify-content: space-between;
 }
-.header_logo {
-    height: 100px
-}
+
 .header_navbar-item {
     margin-left: 50px;
 }
@@ -145,6 +143,13 @@
       color: white;
   }
   
-  
+  .left {
+      width: 200px;
+  }
+  .left a img {
+        width: 100%;
+        background-size: cover;
+  }
+
   
 

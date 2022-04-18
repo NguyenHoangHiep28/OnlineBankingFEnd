@@ -27,7 +27,7 @@
           <div class="account-right-item" id="account-card">
             <i class="fab fa-cc-visa"></i>
             <div class="col-6">
-              <p class="account-text"><a href="">My Account</a></p>
+              <p class="account-text"><a routerLink="account-list">My Account</a></p>
               <span class="card-number">{{myAccount.currentAccount}}</span>
             </div>
             <i class="fa fa-long-arrow-alt-right"></i>
@@ -35,7 +35,7 @@
           <div class="account-right-item">
             <i class="fa fa-dollar-sign"></i>
             <div class="col-6">
-              <p class="account-text"><a href="">My Blance</a></p>
+              <p class="account-text"><a>My Blance</a></p>
               <span class="account-price">{{valuePrice}}</span>
               VND
             </div>
@@ -46,7 +46,7 @@
           <div class="account-right-item">
             <i class="fa fa-piggy-bank"></i>
             <div class="col-6">
-              <p class="account-text"><a href="">Saving Accounts ({{this.myAccount.savingBooksCount}})</a></p>
+              <p class="account-text"><a routerLink="list-saving">Saving Accounts ({{this.myAccount.savingBooksCount}})</a></p>
               <span class="account-price">{{valuePrice}}</span>
               VND
             </div>
@@ -78,7 +78,7 @@
           </div>
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Predicted profit</label>
-            <input type="text" [value]="depositCaclute.predictProfit + ' VND'" readonly class="form-control" placeholder="-">
+            <input type="text" [value]="depositCaclute.predictProfit | number : '4.0-3' " readonly class="form-control" placeholder="-">
           </div>
           <button class="btn btn-success btn-done" (click)="caculateDeposit(listPackage.value)" type="button">Done</button>
         </form>

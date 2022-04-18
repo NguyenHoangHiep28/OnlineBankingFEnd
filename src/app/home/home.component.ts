@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     
     const token = this.tokenStorage.getToken()
-    if(token && this.jwtHelper.isTokenExpired(token)) {
+    if(token && !this.jwtHelper.isTokenExpired(token)) {
         this.isLoggin = true    
     }
   }

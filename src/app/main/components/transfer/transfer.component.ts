@@ -70,6 +70,7 @@ export class TransferComponent implements OnInit {
   openDiaLog ()  {
     const accountNumber = this.accountlistService.getAccountNumberDisplay()
     const phoneNumber = this.tokenStorage.getPhoneNumber()
+    
     const req = {
       accountNumber : accountNumber,
       phoneNumber : phoneNumber
@@ -87,13 +88,19 @@ export class TransferComponent implements OnInit {
     diaLogRef.afterClosed().subscribe (result => {
       if(result) {
         this.stateTransferValid = result
+        let deFaultcontent =  this.senderInfo.senderName + '  transfer'
+
+        if(this.reciverInfo.content){
+          deFaultcontent = this.reciverInfo.content
+        }
         const transferReq = {
           fromAccountNumber : this.senderInfo.currentAccount,
           toAccountNumber : this.reciverInfo.toAccountNumber.toString(),
           amount : this.reciverInfo.amount,
-          content : this.reciverInfo.content,
+          content : deFaultcontent,
           type : 1
         }
+        
         this.transferService.transferMoney(transferReq).subscribe( (respone:any) => {
           this.transferInfo.transactionId = respone.transactionId
           this.transferInfo.transferTime = respone.transferTime

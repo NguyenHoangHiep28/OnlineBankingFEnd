@@ -7,5 +7,7 @@
 .app-header.header-shadow.row {
     margin: 0;
 }
-
+.sidebar-item  a {
+    width: 100%;
+}
 
