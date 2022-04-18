@@ -144,10 +144,14 @@ export class ListHistoryComponent implements OnInit {
   }
   
   onchangeTransition(numFilter : string) {
-    const length : number = this.dataSub.length;
     this.p = 1
-    if(+numFilter < length) {
-      this.dataHistory = this.dataSub.slice(0,+numFilter)
+    if(Number(numFilter) > 0) {
+      const length : number = this.dataSub.length;
+      if(+numFilter < length) {
+        this.dataHistory = this.dataSub.slice(0,+numFilter)
+      } else {
+        this.dataHistory = this.dataSub
+             }
     } else {
       this.dataHistory = this.dataSub
     }
@@ -164,6 +168,7 @@ export class ListHistoryComponent implements OnInit {
   }
 
   onSubmit(getTime: NgForm) {
+    this.p = 1
     this.dataHistory = this.dataSub;
     if (!getTime.valid) return;
     this.handleFindByDate(getTime.value.timeStart, getTime.value.timeEnd);

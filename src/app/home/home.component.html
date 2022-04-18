@@ -1,7 +1,7 @@
 <!-- HEADER -->
 <header>
   <nav class="navInstruction navbar navbar-expand-lg container">
-    <a class="navbar-brand text-center">
+    <a class="navbar-brand text-center" routerLink="/">
       <img class="img-logo" src="../../assets/images/dashboard/index/logoMTBank.PNG" alt="" srcset="">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarInstruction"
@@ -19,25 +19,12 @@
         <li class="nav-item">
           <a class="nav-link" href="#">SERVICES</a>
         </li>
-        <!-- <li class="nav-item">
-                    <a class="nav-link" href="#">GALLERY</a>
-                </li> -->
-        <!-- <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        PAGES
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Codes</a>
-                        <a class="dropdown-item" href="#">Icons</a>
-                    </div>
-                </li> -->
                 <li class="nav-item">
                     <a class="nav-link" href="#">CONTACT</a>
                 </li>
             </ul>
                 
-            <button *ngIf="isLoggin ; else elseBLock " routerLink="dashboard" type="button" class="btn  btn-primary">Go to dashboard<span class="fa fa-lock"></span></button>
+            <button *ngIf="isLoggin ; else elseBLock " routerLink="dashboard/account-list" type="button" class="btn  btn-primary">Go Transfer<span class="fa fa-lock"></span></button>
             <ng-template #elseBLock>
                 <button  routerLink="login" type="button" class="btn  btn-primary">Sign In<span class="fa fa-lock"></span></button>
             </ng-template>
@@ -57,30 +44,15 @@
     <div class="carousel-inner">
       <div class="carousel-item active">
         <img src="../../assets/images/home/tab1.jpg" class="d-block w-100 img-fluid" alt="banner1">
-        <!-- <div class="container carousel-caption d-none d-md-block">
-                    <h1>Graphic Work Designing</h1>
-                    <p>Any successful career starts with good education. Together with us you will have deeper
-                        knowledge of the subjects</p>
-                    <button class="btn">Read More <i class="fa fa-angle-double-right"></i></button>
-                </div> -->
+      
       </div>
       <div class="carousel-item ">
         <img src="../../assets/images/home/tab1.jpg" class="d-block w-100 img-fluid" alt="banner1">
-        <!-- <div class="container carousel-caption d-none d-md-block">
-                    <h1>Graphic Work Designing</h1>
-                    <p>Any successful career starts with good education. Together with us you will have deeper
-                        knowledge of the subjects</p>
-                    <button class="btn">Read More <i class="fa fa-angle-double-right"></i></button>
-                </div> -->
+
       </div>
       <div class="carousel-item ">
         <img src="../../assets/images/home/tab1.jpg" class="d-block w-100 img-fluid" alt="banner1">
-        <!-- <div class="container carousel-caption d-none d-md-block">
-                    <h1>Graphic Work Designing</h1>
-                    <p>Any successful career starts with good education. Together with us you will have deeper
-                        knowledge of the subjects</p>
-                    <button class="btn">Read More <i class="fa fa-angle-double-right"></i></button>
-                </div> -->
+
       </div>
     </div>
     <a class="carousel-control-prev" href="#carouselCyber" role="button" data-slide="prev">
@@ -108,47 +80,6 @@
           qui officia deserunt mollit anim id est laboth. Duis aute irure dolor in reprehenderit in
           voluptate
           velit esse cillum dolore eu fugiat nulla pariatur sunt in culpa qui .</p>
-
-        <!-- <div class="welcome__courses container">
-                            <div class="row">
-                                <div class="welcome__col col-4 border border-dark">
-                                    <div class="welcome__item">
-                                        <i class="fa fa-desktop"></i>
-                                        <h3>Promotions</h3>
-                                        <h4>FASHION DESIGN</h4>
-                                        <p>Ncididunt ut labore et t enim ad minim.</p>
-                                        <h4>INTERIOR DESIGN</h4>
-                                        <p>Ncididunt ut labore et t enim ad minim.</p>
-                                        <h4>GRAPHIC DESIGN</h4>
-                                        <p>Ncididunt ut labore et t enim ad minim.</p>
-                                    </div>
-                                </div>
-                                <div class="welcome__col col-4 border border-dark">
-                                    <div class="welcome__item">
-                                        <i class="fa fa-arrows-alt"></i>
-                                        <h3>Marketing Course</h3>
-                                        <h4>FACEBOOK MARKETING</h4>
-                                        <p>Ncididunt ut labore et t enim ad minim.</p>
-                                        <h4>YOUTUBE MARKETING</h4>
-                                        <p>Ncididunt ut labore et t enim ad minim.</p>
-                                        <h4>TWITTER MARKETING</h4>
-                                        <p>Ncididunt ut labore et t enim ad minim.</p>
-                                    </div>
-                                </div>
-                                <div class="welcome__col col-4 border border-dark">
-                                    <div class="welcome__item">
-                                        <i class="fa fa-chart-bar"></i>
-                                        <h3>Financial Course</h3>
-                                        <h4>COMPLEXITIES OF BANKING</h4>
-                                        <p>Ncididunt ut labore et t enim ad minim.</p>
-                                        <h4>COMPLIANCE REGULATIONS</h4>
-                                        <p>Ncididunt ut labore et t enim ad minim.</p>
-                                        <h4>FINANCE PRODUCTS</h4>
-                                        <p>Ncididunt ut labore et t enim ad minim.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
       </div>
     </div>
     <div class="col-6">

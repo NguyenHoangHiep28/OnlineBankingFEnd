@@ -15,7 +15,7 @@ import { SavingComponent } from './main/components/saving/saving.component';
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    component: LoginComponent,
   },
   {
     path: 'dashboard',

@@ -15,7 +15,7 @@ export class TransferService {
 
 
   sendTransactionOtp(phoneNumber : Object) : Observable <any> {
-    return this.http.post (sendOtp_URL,phoneNumber).pipe (
+    return this.http.post (sendOtp_URL,phoneNumber, {responseType: 'text'}).pipe (
       tap(_ => console.log ('otp is sended')),
       catchError(this.handleError<any>(`get otp`))
     )

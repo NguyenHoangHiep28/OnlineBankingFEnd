@@ -368,36 +368,6 @@
             </ng-template>
           </mat-step>
         </form>
-        <!-- <mat-step label="Step 4">
-        <ng-template matStepLabel> Hoàn thành</ng-template>
-        <ng-template matStepContent>
-          <div class="main-card mb-3 card" style="margin:50px 5%;">
-            <div class="card-body"><h5 class="card-title" >Thông tin chuyển tiền </h5>
-                <div>
-                    <form class="form-inline">
-                        <div class="mb-2 mr-sm-2 mb-sm-0 position-relative form-group">
-                          <label for="exampleEmail22" class="card-title">Hình thức chuyển</label>
-                        </div>
-                        <div class="mb-2 mr-sm-2 mb-sm-0 position-relative form-group">
-                          <input name="password" id="examplePassword22" placeholder="Chuyển tiền qua số tài khoản" type="password"class="form-control">
-                        </div>
-                    </form>
-                    <div class="divider"></div>
-                    <form class="form-inline">
-                      <div class="mb-2 mr-sm-2 mb-sm-0 position-relative form-group">
-                        <label for="exampleEmail22" class="card-title">Tài khoản nguồn</label>
-                      </div>
-                      <div class="mb-2 mr-sm-2 mb-sm-0 position-relative form-group">
-                        <input name="password" id="examplePassword22" placeholder="5797934566666/NGUYEN CONG LUAT
-                        12,924,054 VND" type="password"class="form-control">
-                      </div>
-                  </form>
-                </div>
-            </div>
-        </div>
-              <button mat-raised-button matStepperNext type="button" (click)="stepper.reset() ; removeInput()" color="primary">Resert</button>
-        </ng-template>
-      </mat-step> -->
       </mat-stepper>
 
       <div *ngIf="stateTransferValid" class="main-container">
@@ -427,7 +397,10 @@
             </li>
             <li class="list-group-item">
               <p>Content</p>
-              <h5>{{ reciverInfo.content }}</h5>
+              <h5>{{ 
+                reciverInfo.content === ''
+                ? senderInfo.senderName + ' transfer'
+                : reciverInfo.content }}</h5>
             </li>
             <li class="list-group-item">
               <p>Time</p>
